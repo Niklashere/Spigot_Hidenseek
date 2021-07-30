@@ -1,0 +1,4 @@
+name: hidenseek
+version: ${project.version}
+author: Your Name
+main: de.niklashere.hidenseek.App
