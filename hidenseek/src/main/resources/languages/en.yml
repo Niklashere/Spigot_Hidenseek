@@ -11,3 +11,21 @@ countdown-end: "Server reboots in %t %s."
 
 second-singular: "second"
 second-plural: "seconds"
+
+spawnpoint-lobby: "set Lobby Spawnpoint"
+spawnpoint-seeker: "set Seeker Spawnpoint"
+spawnpoint-hider: "set Hider Spawnpoint"
+
+min-players: "min. Players to start Game: "
+max-players: "max. Players: "
+max-seeker: "max. Seekers: "
+ingametime: "Gametime: "
+
+setup-instruction-1: "Leftclick: + 1 / Rightclick: -1"
+setup-instruction-2: "Shift + Leftclick: + 10 / Rightclick + Shift: -10"
+
+missing-permission: "You don't have enough permission."
+
+inventory-setup: "Setup inventory"
+
+save-error: "Saving the changes failed."

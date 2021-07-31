@@ -5,6 +5,7 @@ import java.util.List;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.niklashere.hidenseek.gamestates.GamestateManager;
+import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 
 public class App extends JavaPlugin {
@@ -30,7 +31,9 @@ public class App extends JavaPlugin {
         Layouts.getLanguage();
         this.registerManager = RegisterManager.init(this);
         registerManager.registerEvents();
+        registerManager.registerCommands();
         GamestateManager.startLobbyCD();
+        Rolemanager.initialize();
 
     }
 

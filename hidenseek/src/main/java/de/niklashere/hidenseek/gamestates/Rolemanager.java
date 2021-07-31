@@ -10,23 +10,29 @@ public class Rolemanager {
     static HashMap<Player, String> role = new HashMap<>();
     static HashMap<String, Integer> groupsize = new HashMap<>();
 
+    public static void initialize() {
+        groupsize.put("seeker", 0);
+        groupsize.put("hider", 0);
+        groupsize.put("spectator", 0);
+
+    }
+
     public static void addSeeker(Player p) {
-        if (Fileaccess.getInt("max-seeker", Fileaccess.getConfig())-1 >= groupsize.get("seeker") && role.get(p).isEmpty()) {
+        if (Fileaccess.getInt("max-seeker", Fileaccess.getConfig())-1 >= groupsize.get("seeker") && role.get(p) == null) {
             role.put(p, "seeker");
             groupsize.put("seeker", groupsize.get("seeker") + 1);
-
         }
     }
 
     public static void addHider(Player p) {
-        if (role.get(p).isEmpty()) {
+        if (role.get(p) == null) {
             role.put(p, "hider");
             groupsize.put("hider", groupsize.get("hider") + 1);
         }
     }
 
     public static void addSpectator(Player p) {
-        if (role.get(p).isEmpty()) {
+        if (role.get(p) == null) {
             role.put(p, "spectator");
             groupsize.put("spectator", groupsize.get("spectator") + 1);
         }

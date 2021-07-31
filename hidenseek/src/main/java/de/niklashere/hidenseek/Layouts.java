@@ -60,7 +60,6 @@ public class Layouts {
         System.out.println(".|.|_).|.|.|..|.|____|_|");
         System.out.println(".|____/..|_|..|______(_)");
         System.out.println("........................");
-        System.out.println("........................");
         System.out.println(" ");
 
 

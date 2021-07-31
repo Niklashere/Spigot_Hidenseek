@@ -28,6 +28,11 @@ public class PlayerJoinListener implements Listener {
             
         } else if (Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame)) {
             Rolemanager.addSpectator(p);
+            p.teleport(Fileaccess.getLocation("spawnpoint-hider", Fileaccess.getConfig(), p));
+
+        } else {
+            p.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig(), p));
+
         }
     }
 }

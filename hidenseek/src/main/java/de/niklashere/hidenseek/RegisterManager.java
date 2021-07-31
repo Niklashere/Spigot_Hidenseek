@@ -3,6 +3,7 @@ package de.niklashere.hidenseek;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 
+import de.niklashere.hidenseek.commands.SetupCommand;
 import de.niklashere.hidenseek.listener.BlockBreakListener;
 import de.niklashere.hidenseek.listener.BlockPlaceListener;
 import de.niklashere.hidenseek.listener.DropListener;
@@ -48,5 +49,9 @@ public class RegisterManager {
         pm.registerEvents(new WeatherChangeListener(), plugin);
 
     }
-    
+
+    public void registerCommands() {
+        plugin.getCommand("setup").setExecutor(new SetupCommand());
+
+    }
 }

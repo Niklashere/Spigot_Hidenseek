@@ -1,7 +1,5 @@
 package de.niklashere.hidenseek.listener;
 
-import javax.management.relation.Role;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -10,3 +10,21 @@ countdown-ingame: "Das Spiel startet in %s sekunden."
 countdown-end: "Das Spiel startet in %s sekunden."
 second-singular: "Sekunde"
 second-plural: "Sekunden"
+
+spawnpoint-lobby: "setzte Lobby Spawnpoint"
+spawnpoint-seeker: "setzte Sucher Spawnpoint"
+spawnpoint-hider: "setzte Verstecker Spawnpoint"
+
+min-players: "min. Spieler um das Spiel zu starten: "
+max-players: "max. Spieler: "
+max-seeker: "max. Sucher: "
+ingametime: "Spielzeit: "
+
+setup-instruction-1: "Linksklick: + 1 / Rechtsklick: -1"
+setup-instruction-2: "Shift + Linksklick: + 10 / Rechtsklick + Shift: -10"
+
+missing-permission: "Du hast nicht genug Rechte."
+
+inventory-setup: "Setup Inventar"
+
+save-error: "Speichern der Änderungen sind fehlgeschlagen."

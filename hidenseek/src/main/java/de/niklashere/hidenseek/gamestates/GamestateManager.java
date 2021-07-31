@@ -7,6 +7,7 @@ import de.niklashere.hidenseek.gamestates.countdowns.EndCountdown;
 import de.niklashere.hidenseek.gamestates.countdowns.IngameCountdown;
 import de.niklashere.hidenseek.gamestates.countdowns.LobbyCountdown;
 import de.niklashere.hidenseek.gamestates.countdowns.WarmupCountdown;
+import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 
@@ -26,6 +27,11 @@ public class GamestateManager {
 		Bukkit.getScheduler().cancelTask(LobbyCountdown.task);
 		for (Player all : Bukkit.getOnlinePlayers()) {
 			clearInv(all);
+			if (Rolemanager.isHider(all) || Rolemanager.isSpectator(all)) {
+				all.teleport(Fileaccess.getLocation("spawnpoint-hider", Fileaccess.getConfig(), all));
+			} else if (Rolemanager.isSeeker(all)) {
+				all.teleport(Fileaccess.getLocation("spawnpoint-seeker", Fileaccess.getConfig(), all));
+			}
 		}
 		WarmupCountdown.startCountdown();
 		Gamestate.setState(Gamestate.WarmUp);
@@ -43,6 +49,7 @@ public class GamestateManager {
 	public static void startEndCD() {
 		Bukkit.getScheduler().cancelTask(IngameCountdown.task);
 		for (Player all : Bukkit.getOnlinePlayers()) {
+			all.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig(), all));
 		}
 		EndCountdown.startCountdown();
 		Gamestate.setState(Gamestate.End);

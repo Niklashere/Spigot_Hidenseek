@@ -4,8 +4,12 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import de.niklashere.hidenseek.App;
 
@@ -16,6 +20,12 @@ public class Fileaccess {
     static HashMap<String, Boolean> booleans = new HashMap<>();
 
     public static File[] listOfFiles;
+
+    public static void clearHash() {
+        strings.clear();
+        ints.clear();
+        booleans.clear();
+    }
 
     public static void loadLanguages() {
         File folder = new File("plugins/hidenseek/languages");
@@ -59,6 +69,23 @@ public class Fileaccess {
             return conf.getBoolean(string);
         }
     }
+        
+    public static Location getLocation(String string, File file, Player p) {
+        FileConfiguration conf = YamlConfiguration.loadConfiguration(file);
+        int x = conf.getInt(string + ".X");
+        int y = conf.getInt(string + ".Y");
+        int z = conf.getInt(string + ".Z");
+        int yaw =  conf.getInt(string + ".Yaw");
+        int pitch = conf.getInt(string + ".Pitch");
+        String world = conf.getString(string + ".World");
+
+        World w = Bukkit.getWorld(world);
+        Location l = new Location(w, x, y, z);
+        l.setYaw(yaw);
+        l.setPitch(pitch);
+
+        return l;
+    }
 
     public static int getInt(String string, File file) {
         if (ints.get(string+file.getName()) != null) {
@@ -71,10 +98,28 @@ public class Fileaccess {
         }
     }
 
-    public static void setString(String var, String string) {
-        FileConfiguration config = App.instance.getConfig();
-        config.set(string, string);
-        App.instance.saveConfig();;
+    public static void setLocation(String string, File file, Player p) {
+        FileConfiguration conf = YamlConfiguration.loadConfiguration(file);
+        conf.set(string + ".X", p.getLocation().getX());
+        conf.set(string + ".Y", p.getLocation().getY());
+        conf.set(string + ".Z", p.getLocation().getZ());
+        conf.set(string + ".Yaw", p.getLocation().getYaw());
+        conf.set(string + ".Pitch", p.getLocation().getPitch());
+        conf.set(string + ".World", p.getLocation().getWorld().getName());
+        try {
+            conf.save(file);
+        } catch (Exception e) {
+            System.out.println("save-error");
+        }
+    }
 
+    public static void setInt(String string, File file, Integer i) {
+        FileConfiguration conf = YamlConfiguration.loadConfiguration(file);
+        conf.set(string, i);
+        try {
+            conf.save(file);
+        } catch (Exception e) {
+            System.out.println("save-error");
+        }
     }
 }

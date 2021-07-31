@@ -1,4 +1,9 @@
 name: hidenseek
 version: ${project.version}
-author: Your Name
+api-version: 1.17
+author: Niklashere
+website: https://github.com/Niklashere/Spigot_Hidenseek
 main: de.niklashere.hidenseek.App
+description: WIP Hide'n'seek Plugin.
+commands:
+  setup:
