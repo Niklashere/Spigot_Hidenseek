@@ -36,12 +36,12 @@ public class Layouts {
         int i = 0;
         String languages = " ";
 
-        while (Fileaccess.getStringList("supported-languages").size()-1 >= i) {
+        while (Fileaccess.getStringList("supported-languages", Fileaccess.getConfig()).size()-1 >= i) {
             if (i >= 1) {
-                languages = languages + ", " + Fileaccess.getStringList("supported-languages").get(i);
+                languages = languages + ", " + Fileaccess.getStringList("supported-languages", Fileaccess.getConfig()).get(i);
 
             } else {
-                languages = Fileaccess.getStringList("supported-languages").get(i);
+                languages = Fileaccess.getStringList("supported-languages", Fileaccess.getConfig()).get(i);
 
             }
             i++;

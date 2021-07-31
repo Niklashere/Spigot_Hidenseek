@@ -1,1 +1,11 @@
 joinmessage: "%p hat den Server betreten."
+
+start-end-countdown: "End countdown ist gestartet"
+stop-server: "Server schaltet sich ab"
+
+countdown-lobby: "Das Spiel startet in %s sekunden."
+countdown-warmup: "Das Spiel startet in %s sekunden."
+countdown-ingame: "Das Spiel startet in %s sekunden."
+countdown-end: "Das Spiel startet in %s sekunden."
+second-singular: "Sekunde"
+second-plural: "Sekunden"

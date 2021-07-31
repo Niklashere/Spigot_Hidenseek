@@ -9,7 +9,7 @@ public class LanguageManager {
 
     static HashMap<Player, File> language = new HashMap<Player,File>();
     
-    public static String sendMessage(String string, Player p) {
+    public static String getMessage(String string, Player p) {
         return Fileaccess.getString(string, getLanguage(p));
     }
 

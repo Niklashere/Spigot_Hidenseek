@@ -1,1 +1,10 @@
 download-new-languages: true
+Lobby: 20
+Full: 20
+Warmup: 20
+Ingame: 20
+End: 20
+max-players: 10
+min-players: 1
+skip-lobby-countdown: 8
+skip-lobby-time: 30

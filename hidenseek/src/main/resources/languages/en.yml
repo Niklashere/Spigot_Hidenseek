@@ -1,1 +1,12 @@
 joinmessage: "%p has joined the server."
+
+start-end-countdown: "End countdown is starting"
+stop-server: "Server is shuting down"
+
+countdown-lobby: "The game starts in %t %s."
+countdown-warmup: "The game starts in %t %s."
+countdown-ingame: "The game ends in %t %s."
+countdown-end: "Server reboots in %t %s."
+
+second-singular: "second"
+second-plural: "seconds"

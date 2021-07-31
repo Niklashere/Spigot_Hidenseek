@@ -18,7 +18,7 @@ public class JoinListener implements Listener {
         e.setJoinMessage(null);
         LanguageManager.addLanguage(e.getPlayer(), Fileaccess.listOfFiles[0]);
         for (Player all : Bukkit.getOnlinePlayers()) {
-            VariableManager.message(LanguageManager.sendMessage("joinmessage", all), e.getPlayer());
+            all.sendMessage(VariableManager.message(LanguageManager.getMessage("joinmessage", all), e.getPlayer()));
         }
 
         if (Gamestate.isState(Gamestate.Lobby)) {
