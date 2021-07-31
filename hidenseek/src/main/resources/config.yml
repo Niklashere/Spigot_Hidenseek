@@ -6,5 +6,6 @@ Ingame: 20
 End: 20
 max-players: 10
 min-players: 1
+max-seeker: 1
 skip-lobby-countdown: 8
 skip-lobby-time: 30

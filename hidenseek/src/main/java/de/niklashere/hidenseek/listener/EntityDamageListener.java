@@ -2,12 +2,12 @@ package de.niklashere.hidenseek.listener;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 
-public class BlockPlaceListener implements Listener {
+public class EntityDamageListener implements Listener {
 
     @EventHandler
-    public void onBlockPlace(BlockPlaceEvent e) {
+    public void onDamage(EntityDamageEvent e) {
         e.setCancelled(true);
     }
 }

@@ -3,10 +3,10 @@ package de.niklashere.hidenseek.gamestates;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import de.niklashere.hidenseek.gamestates.Countdowns.EndCountdown;
-import de.niklashere.hidenseek.gamestates.Countdowns.IngameCountdown;
-import de.niklashere.hidenseek.gamestates.Countdowns.LobbyCountdown;
-import de.niklashere.hidenseek.gamestates.Countdowns.WarmupCountdown;
+import de.niklashere.hidenseek.gamestates.countdowns.EndCountdown;
+import de.niklashere.hidenseek.gamestates.countdowns.IngameCountdown;
+import de.niklashere.hidenseek.gamestates.countdowns.LobbyCountdown;
+import de.niklashere.hidenseek.gamestates.countdowns.WarmupCountdown;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 

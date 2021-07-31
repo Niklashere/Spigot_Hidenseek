@@ -1,4 +1,5 @@
 joinmessage: "%p has joined the server."
+quitmessage: "%p has left the server."
 
 start-end-countdown: "End countdown is starting"
 stop-server: "Server is shuting down"

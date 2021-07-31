@@ -1,11 +1,9 @@
 package de.niklashere.hidenseek;
 
-import java.io.File;
 import java.util.List;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.GamestateManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 
