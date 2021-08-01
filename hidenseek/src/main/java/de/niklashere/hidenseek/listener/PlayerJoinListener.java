@@ -11,27 +11,29 @@ import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
+import de.niklashere.inventorys.InventoryManager;
 
 public class PlayerJoinListener implements Listener {
    
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
+        InventoryManager.clearInv(p);
         e.setJoinMessage(null);
         LanguageManager.addLanguage(p, Fileaccess.listOfFiles[0]);
         for (Player all : Bukkit.getOnlinePlayers()) {
             all.sendMessage(VariableManager.message(LanguageManager.getMessage("joinmessage", all), p));
         }
 
-        if (Gamestate.isState(Gamestate.Lobby)) {
-            Rolemanager.addSeeker(p);
-            
-        } else if (Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame)) {
+        if (Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame)) {
             Rolemanager.addSpectator(p);
             p.teleport(Fileaccess.getLocation("spawnpoint-hider", Fileaccess.getConfig(), p));
+            InventoryManager.spectatorItems(p);
 
         } else {
+            Rolemanager.addSeeker(p);
             p.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig(), p));
+            InventoryManager.lobbyItems(p);
 
         }
     }

@@ -2,6 +2,7 @@ package de.niklashere.hidenseek.gamestates.countdowns;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.gamestates.GamestateManager;
@@ -14,27 +15,32 @@ public class EndCountdown {
   static int time = Fileaccess.getInt("End", Fileaccess.getConfig()) + 1;
 
     public static void startCountdown() {
-		task = Bukkit.getScheduler().scheduleSyncRepeatingTask(App.instance, new Runnable() {
+      new BukkitRunnable() {
 
 			@Override
 			public void run() {
-        time--;
-        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("min-players", Fileaccess.getConfig())) {
+        if (Bukkit.getOnlinePlayers().size() >= 1) {
+          time--;
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
             int i = time%60;
             if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5 || time == 3 || time == 2) {
-                all.sendMessage(VariableManager.message(LanguageManager.getMessage("countdown-end", all).replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(LanguageManager.getMessage("second-plural", all)))));
+              all.sendMessage(VariableManager.message(LanguageManager.getMessage("countdown-end", all).replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(LanguageManager.getMessage("second-plural", all)))));
               
             } else if (time == 1) {
-                all.sendMessage(VariableManager.message(LanguageManager.getMessage("countdown-end", all).replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(LanguageManager.getMessage("second-singular", all)))));
-                GamestateManager.stopServer();
-              }
+              all.sendMessage(VariableManager.message(LanguageManager.getMessage("countdown-end", all).replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(LanguageManager.getMessage("second-singular", all)))));
             }
-          } else {
-            time = Fileaccess.getInt("End", Fileaccess.getConfig())+1;
           }
+          if (time == 1) {
+            GamestateManager.stopServer();
+            cancel();
+
+          }
+        } else {
+          GamestateManager.stopServer();
+          cancel();        
         }
-		}, 0, 20);
+      }
+		}.runTaskTimer(App.instance, 0L, 20);
   }
 }

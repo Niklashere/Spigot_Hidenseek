@@ -39,8 +39,6 @@ If you have some spare Minutes, please submit your language file via a pull requ
 
 todo
 
-![Auto-generated contributors](https://raw.githubusercontent.com/Niklashere/Spigot_Hidenseek/master/docs/assets/CONTRIBUTORS.svg)
-
 ## Support
 
 todo

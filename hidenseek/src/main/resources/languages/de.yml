@@ -11,20 +11,36 @@ countdown-end: "Das Spiel startet in %s sekunden."
 second-singular: "Sekunde"
 second-plural: "Sekunden"
 
-spawnpoint-lobby: "setzte Lobby Spawnpoint"
-spawnpoint-seeker: "setzte Sucher Spawnpoint"
-spawnpoint-hider: "setzte Verstecker Spawnpoint"
-
-min-players: "min. Spieler um das Spiel zu starten: "
-max-players: "max. Spieler: "
-max-seeker: "max. Sucher: "
-ingametime: "Spielzeit: "
-
-setup-instruction-1: "Linksklick: + 1 / Rechtsklick: -1"
-setup-instruction-2: "Shift + Linksklick: + 10 / Rechtsklick + Shift: -10"
-
 missing-permission: "Du hast nicht genug Rechte."
 
-inventory-setup: "Setup Inventar"
+inventory:
+  setup: "Setup Inventar"
+  hint: "Tipp geben"
 
 save-error: "Speichern der Änderungen sind fehlgeschlagen."
+
+found: "%p wurde von %k gefunden."
+
+setup:
+  spawnpoint-lobby: "setzte Lobby Spawnpoint"
+  spawnpoint-seeker: "setzte Sucher Spawnpoint"
+  spawnpoint-hider: "setzte Verstecker Spawnpoint"
+  min-players: "min. Spieler um das Spiel zu starten: "
+  max-players: "max. Spieler: "
+  max-seeker: "max. Sucher: "
+  ingametime: "Spielzeit: "
+  setup-instruction-1: "Linksklick: + 1 / Rechtsklick: -1"
+  setup-instruction-2: "Shift + Linksklick: + 10 / Rechtsklick + Shift: -10"
+  
+stunned:
+  stunned: "%p wurde von %k betäubt"
+  Firework: "Feuerwerk"
+  Meow: "Meow"
+  Explosion: "Explosion"
+
+item:
+  spectator: "Zuschauer Einstellungen"
+  sword: "Schwert"
+  bow: "Bogen"
+  stun: "Stunner"
+  hint: "Tipps"

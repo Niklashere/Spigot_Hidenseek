@@ -2,10 +2,31 @@ download-new-languages: true
 Lobby: 20
 Full: 20
 Warmup: 20
-Ingame: 20
+Ingame: 120
 End: 20
 max-players: 10
 min-players: 1
 max-seeker: 1
 skip-lobby-countdown: 8
 skip-lobby-time: 30
+spawnpoint-seeker:
+  X: -93.75801768672811
+  Y: 67.0
+  Z: 110.04841099234135
+  Yaw: 58.650177
+  Pitch: 17.74985
+  World: world
+spawnpoint-hider:
+  X: -107.61226519569223
+  Y: 65.0
+  Z: 114.25708273845869
+  Yaw: 53.250458
+  Pitch: 18.349848
+  World: world
+spawnpoint-lobby:
+  X: -99.33487143047729
+  Y: 69.0
+  Z: 100.53326965213392
+  Yaw: -83.85
+  Pitch: 54.34994
+  World: world

@@ -120,7 +120,7 @@ public class ItemBuilder {
     }
 
     public ItemBuilder setUnbreakable(boolean value) {
-        this.meta.setUnbreakable(true);
+        this.meta.setUnbreakable(value);
         return this;
     }
 

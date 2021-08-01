@@ -10,27 +10,32 @@ import de.niklashere.hidenseek.gamestates.countdowns.WarmupCountdown;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
+import de.niklashere.inventorys.InventoryManager;
 
 public class GamestateManager {
 
-	public static void clearInv(Player p) {
-		p.getInventory().clear();
-		p.getInventory().setArmorContents(null);
-	}
 
 	public static void startLobbyCD() {
 		LobbyCountdown.startCountdown();
 		Gamestate.setState(Gamestate.Lobby);
+		for (Player all : Bukkit.getOnlinePlayers()) {
+			InventoryManager.lobbyItems(all);
+		}
 	}
 
 	public static void startWarmupCD() {
-		Bukkit.getScheduler().cancelTask(LobbyCountdown.task);
 		for (Player all : Bukkit.getOnlinePlayers()) {
-			clearInv(all);
-			if (Rolemanager.isHider(all) || Rolemanager.isSpectator(all)) {
+			InventoryManager.clearInv(all);
+			if (Rolemanager.isHider(all)) {
 				all.teleport(Fileaccess.getLocation("spawnpoint-hider", Fileaccess.getConfig(), all));
+				InventoryManager.hiderItems(all);
 			} else if (Rolemanager.isSeeker(all)) {
 				all.teleport(Fileaccess.getLocation("spawnpoint-seeker", Fileaccess.getConfig(), all));
+				InventoryManager.seekerItems(all);
+			} else if (Rolemanager.isSpectator(all)) {
+				all.teleport(Fileaccess.getLocation("spawnpoint-hider", Fileaccess.getConfig(), all));
+				InventoryManager.spectatorItems(all);
+
 			}
 		}
 		WarmupCountdown.startCountdown();
@@ -38,28 +43,25 @@ public class GamestateManager {
 	}
 
 	public static void startIngameCD() {
-		Bukkit.getScheduler().cancelTask(WarmupCountdown.task);
-		for (Player all : Bukkit.getOnlinePlayers()) {
-			clearInv(all);
-		}
 		IngameCountdown.startCountdown();
 		Gamestate.setState(Gamestate.Ingame);
 	}
 
 	public static void startEndCD() {
-		Bukkit.getScheduler().cancelTask(IngameCountdown.task);
 		for (Player all : Bukkit.getOnlinePlayers()) {
 			all.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig(), all));
+			InventoryManager.clearInv(all);
+			InventoryManager.lobbyItems(all);
 		}
 		EndCountdown.startCountdown();
 		Gamestate.setState(Gamestate.End);
-
 	}
 
 	public static void stopServer() {
 		for (Player all : Bukkit.getOnlinePlayers()) {
 			all.kickPlayer(VariableManager.message(LanguageManager.getMessage("stop-server", all)));
 		}
+		Bukkit.shutdown();
 
 	}
 }

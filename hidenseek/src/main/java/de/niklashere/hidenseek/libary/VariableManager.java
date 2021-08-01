@@ -14,4 +14,10 @@ public class VariableManager {
         string = message(string);
         return string;
     }
+
+    public static String message(String string, Player p, Player k) {
+        string = string.replaceAll("%k", k.getName());
+        string = message(string, p);
+        return string;
+    }
 }
