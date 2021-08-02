@@ -25,9 +25,9 @@ public class MapvotingInventory {
         }
 
         ArrayList<File> maps = WorldManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
-        inv.setItem(0, new ItemBuilder(Material.GRASS).setDisplayName(VariableManager.message(LanguageManager.getMessage("map." + maps.get(0).getName().replace(".yml", ""), p))).build());
-        inv.setItem(9, new ItemBuilder(Material.DIRT).setDisplayName(VariableManager.message(LanguageManager.getMessage("map." + maps.get(1).getName().replace(".yml", ""), p))).build());
-        inv.setItem(18, new ItemBuilder(Material.STONE).setDisplayName(VariableManager.message(LanguageManager.getMessage("map." + maps.get(2).getName().replace(".yml", ""), p))).build());
+        inv.setItem(11, new ItemBuilder(Material.GRASS).setDisplayName(VariableManager.message(LanguageManager.getMessage("map." + maps.get(0).getName().replace(".yml", ""), p))).build());
+        inv.setItem(13, new ItemBuilder(Material.DIRT).setDisplayName(VariableManager.message(LanguageManager.getMessage("map." + maps.get(1).getName().replace(".yml", ""), p))).build());
+        inv.setItem(15, new ItemBuilder(Material.STONE).setDisplayName(VariableManager.message(LanguageManager.getMessage("map." + maps.get(2).getName().replace(".yml", ""), p))).build());
 
         p.openInventory(inv);
     }

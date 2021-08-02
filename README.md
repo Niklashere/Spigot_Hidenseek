@@ -1,5 +1,5 @@
 # Hide'n'Seek
-Opensource hide'n'seek plugin for Spigot Minecraft Servers.
+Hide'n'Seek is a mini game for spigot 1.17. Goal of this game is, that the seeker tries to find all hidden players. 
 
 ## Features
 
@@ -9,8 +9,8 @@ Basic Functions
 
 Additonal functionality
 - [x] Language support
-- [ ] Map voting
-- [ ] Choose roles
+- [x] Map voting
+- [x] Choose roles
 - [x] Hints
 - [ ] Points
 - [ ] Leaderboard/Stats

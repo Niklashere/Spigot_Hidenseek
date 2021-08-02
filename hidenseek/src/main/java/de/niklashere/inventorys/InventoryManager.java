@@ -3,6 +3,7 @@ package de.niklashere.inventorys;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
+import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
@@ -15,7 +16,11 @@ public class InventoryManager {
 	}
 
 	public static void lobbyItems(Player p) {
-        p.getInventory().setItem(4, new ItemBuilder(Material.CHEST).setDisplayName(VariableManager.message(LanguageManager.getMessage("item.chest", p), p)).build());
+        if (Gamestate.isState(Gamestate.Lobby)) {
+            p.getInventory().setItem(1, new ItemBuilder(Material.CHEST).setDisplayName(VariableManager.message(LanguageManager.getMessage("item.chest", p), p)).build());
+            p.getInventory().setItem(2, new ItemBuilder(Material.RED_BANNER).setDisplayName(VariableManager.message(LanguageManager.getMessage("item.red_banner", p), p)).build());
+
+        }
 
 	}
 

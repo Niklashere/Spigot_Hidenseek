@@ -35,7 +35,6 @@ public class PlayerJoinListener implements Listener {
             InventoryManager.spectatorItems(p);
 
         } else {
-            Rolemanager.addSeeker(p);
             p.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig(), p));
             InventoryManager.lobbyItems(p);
 

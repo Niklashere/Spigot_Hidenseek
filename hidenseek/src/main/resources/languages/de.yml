@@ -17,6 +17,7 @@ inventory:
   setup: "Setup Inventar"
   hint: "Tipp geben"
   mapvoting: "Mapvoting"
+  role: "Rolle wählen"
 
 save-error: "Speichern der Änderungen sind fehlgeschlagen."
 
@@ -46,9 +47,14 @@ item:
   stun: "Stunner"
   hint: "Tipps"
   chest: "Karte wählen"
+  red_banner: "Rolle wählen"
 
 map:
   Map-1: "Map-1"
   Map-2: "Map-2"
   Map-3: "Map-3"
   Lobby: "Lobby"
+
+role:
+  hider: "Verstecker"
+  seeker: "Sucher"

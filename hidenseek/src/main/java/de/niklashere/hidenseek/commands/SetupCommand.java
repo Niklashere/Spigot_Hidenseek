@@ -13,5 +13,6 @@ public class SetupCommand implements CommandExecutor {
 		Player p = (Player) sender;
 		SetupInventory.openInventory(p);
 		return false;
+		
 	}
 }

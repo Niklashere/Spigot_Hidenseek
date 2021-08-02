@@ -17,6 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 
+import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
@@ -165,6 +166,12 @@ public class InventoryClickListener implements Listener {
             } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("map." + maps.get(2).getName().replace(".yml", ""), p)))) {
                 WorldManager.addVote(maps.get(2), p);
                 MapvotingInventory.openInventory(p);
+            }
+        } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta() && p.getOpenInventory().getTitle().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("inventory.role", p), p))) {
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("role.hider", p), p))) {
+                Rolemanager.addHider(p);
+            } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("role.seeker", p), p))) {
+                Rolemanager.addSeeker(p);
             }
         }
     }

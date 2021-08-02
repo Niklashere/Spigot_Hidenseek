@@ -27,6 +27,7 @@ public class GamestateManager {
 	public static void startWarmupCD() {
 		for (Player all : Bukkit.getOnlinePlayers()) {
 			InventoryManager.clearInv(all);
+			Rolemanager.addSeeker(all);
 			if (Rolemanager.isHider(all)) {
 				all.teleport(Fileaccess.getLocation("spawnpoint-hider", WorldManager.getResults(), all));
 				InventoryManager.hiderItems(all);

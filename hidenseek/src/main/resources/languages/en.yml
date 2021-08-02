@@ -18,7 +18,8 @@ inventory:
   setup: "Setup inventory"
   hint: "Hint inventory"
   mapvoting: "Mapvoting"
-  
+  role: "choose Role"
+
 save-error: "Saving the changes failed."
 
 found: "%p was found by %k"
@@ -47,9 +48,14 @@ item:
   stun: "Stunner"
   hint: "Hints"
   chest: "Map voting"
+  red_banner: "Choose role"
 
 map:
   Map-1: "Map-1"
   Map-2: "Map-2"
   Map-3: "Map-3"
   Lobby: "Lobby"
+
+role:
+  hider: "hider"
+  seeker: "seeker"

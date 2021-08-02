@@ -10,6 +10,7 @@ import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.inventorys.HintInventory;
 import de.niklashere.inventorys.MapvotingInventory;
+import de.niklashere.inventorys.RoleInventory;
 
 public class PlayerInteractListener implements Listener {
 
@@ -29,6 +30,8 @@ public class PlayerInteractListener implements Listener {
                 MapvotingInventory.openInventory(p);
             } else if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("item.hint", p), p))) {
                 HintInventory.openInventory(p);
+            } else if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("item.red_banner", p), p))) {
+                RoleInventory.openInventory(p);
             }
         } else {
             e.setCancelled(true);
