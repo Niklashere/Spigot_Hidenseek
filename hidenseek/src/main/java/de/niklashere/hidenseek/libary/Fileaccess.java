@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek.libary;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,8 +19,7 @@ public class Fileaccess {
     static HashMap<String, String> strings = new HashMap<>();
     static HashMap<String, Integer> ints = new HashMap<>();
     static HashMap<String, Boolean> booleans = new HashMap<>();
-
-    public static File[] listOfFiles;
+    public static HashMap<String, File[]> listOfFiles = new HashMap<>();
 
     public static void clearHash() {
         strings.clear();
@@ -27,15 +27,26 @@ public class Fileaccess {
         booleans.clear();
     }
 
-    public static void loadLanguages() {
-        File folder = new File("plugins/hidenseek/languages");
-        listOfFiles = folder.listFiles();
+    public static void loadFolder(String subfolder) {
+        File folder = new File("plugins/hidenseek/" + subfolder);
+        listOfFiles.put(subfolder, folder.listFiles());
     }
 
+    public static ArrayList<File> fileListToArrayList(File[] files) {
+        ArrayList<File> fileList = new ArrayList<>();
+        for (int i = 0; i <= files.length-1; i++) {
+            fileList.add(files[i]);
+        }
+        return fileList;
+    }
+    
     public static void createConfig() {
         FileConfiguration config = App.instance.getConfig();
         List<String> lang = List.of("en", "de");
+        List<String> maps = List.of("Lobby", "Map-1", "Map-2", "Map-3");
+
         config.set("supported-languages", lang);
+        config.set("supported-maps", maps);
         App.instance.saveConfig();
     }
 
@@ -116,6 +127,16 @@ public class Fileaccess {
     public static void setInt(String string, File file, Integer i) {
         FileConfiguration conf = YamlConfiguration.loadConfiguration(file);
         conf.set(string, i);
+        try {
+            conf.save(file);
+        } catch (Exception e) {
+            System.out.println("save-error");
+        }
+    }
+
+    public static void setString(String string, File file, String string2) {
+        FileConfiguration conf = YamlConfiguration.loadConfiguration(file);
+        conf.set(string, string2);
         try {
             conf.save(file);
         } catch (Exception e) {

@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.inventorys.HintInventory;
+import de.niklashere.inventorys.MapvotingInventory;
 
 public class PlayerInteractListener implements Listener {
 
@@ -24,7 +25,9 @@ public class PlayerInteractListener implements Listener {
 
             }
 
-            if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("item.hint", p), p))) {
+            if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("item.chest", p), p))) {
+                MapvotingInventory.openInventory(p);
+            } else if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("item.hint", p), p))) {
                 HintInventory.openInventory(p);
             }
         } else {

@@ -16,6 +16,7 @@ missing-permission: "Du hast nicht genug Rechte."
 inventory:
   setup: "Setup Inventar"
   hint: "Tipp geben"
+  mapvoting: "Mapvoting"
 
 save-error: "Speichern der Änderungen sind fehlgeschlagen."
 
@@ -29,8 +30,8 @@ setup:
   max-players: "max. Spieler: "
   max-seeker: "max. Sucher: "
   ingametime: "Spielzeit: "
-  setup-instruction-1: "Linksklick: + 1 / Rechtsklick: -1"
-  setup-instruction-2: "Shift + Linksklick: + 10 / Rechtsklick + Shift: -10"
+  instruction-1: "Linksklick: + 1 / Rechtsklick: -1"
+  instruction-2: "Shift + Linksklick: + 10 / Rechtsklick + Shift: -10"
   
 stunned:
   stunned: "%p wurde von %k betäubt"
@@ -44,3 +45,10 @@ item:
   bow: "Bogen"
   stun: "Stunner"
   hint: "Tipps"
+  chest: "Karte wählen"
+
+map:
+  Map-1: "Map-1"
+  Map-2: "Map-2"
+  Map-3: "Map-3"
+  Lobby: "Lobby"

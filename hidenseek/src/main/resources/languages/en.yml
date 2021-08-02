@@ -17,7 +17,8 @@ missing-permission: "You don't have enough permission."
 inventory:
   setup: "Setup inventory"
   hint: "Hint inventory"
-
+  mapvoting: "Mapvoting"
+  
 save-error: "Saving the changes failed."
 
 found: "%p was found by %k"
@@ -31,8 +32,8 @@ setup:
   max-players: "max. Players: "
   max-seeker: "max. Seekers: "
   ingametime: "Gametime: "
-  setup-instruction-1: "Leftclick: + 1 / Rightclick: -1"
-  setup-instruction-2: "Shift + Leftclick: + 10 / Rightclick + Shift: -10"
+  instruction-1: "Leftclick: + 1 / Rightclick: -1"
+  instruction-2: "Shift + Leftclick: + 10 / Rightclick + Shift: -10"
   
 hint:
   Firework: "Firework"
@@ -45,3 +46,10 @@ item:
   bow: "Bow"
   stun: "Stunner"
   hint: "Hints"
+  chest: "Map voting"
+
+map:
+  Map-1: "Map-1"
+  Map-2: "Map-2"
+  Map-3: "Map-3"
+  Lobby: "Lobby"

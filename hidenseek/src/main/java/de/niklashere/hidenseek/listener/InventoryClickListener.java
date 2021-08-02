@@ -1,5 +1,8 @@
 package de.niklashere.hidenseek.listener;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -17,6 +20,8 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
+import de.niklashere.hidenseek.libary.WorldManager;
+import de.niklashere.inventorys.MapvotingInventory;
 import de.niklashere.inventorys.SetupInventory;
 
 public class InventoryClickListener implements Listener {
@@ -31,10 +36,14 @@ public class InventoryClickListener implements Listener {
                 Fileaccess.setLocation("spawnpoint-lobby", Fileaccess.getConfig(), p);
 
             } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("setup.spawnpoint-seeker", p), p))) {
-                Fileaccess.setLocation("spawnpoint-seeker", Fileaccess.getConfig(), p);
+                File file = new File("plugins/hidenseek/maps", p.getWorld().getName() + ".yml");
+                Fileaccess.setString("world", file, p.getWorld().getName());
+                Fileaccess.setLocation("spawnpoint-seeker", file, p);
 
             } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("setup.spawnpoint-hider", p), p))) {
-                Fileaccess.setLocation("spawnpoint-hider", Fileaccess.getConfig(), p);
+                File file = new File("plugins/hidenseek/maps", p.getWorld().getName() + ".yml");
+                Fileaccess.setString("world", file, p.getWorld().getName());
+                Fileaccess.setLocation("spawnpoint-hider", file, p);
 
             } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("setup.min-players", p), p) + Fileaccess.getInt("min-players", Fileaccess.getConfig()))) {
                 String string = "min-players";
@@ -144,6 +153,18 @@ public class InventoryClickListener implements Listener {
                     all.playSound(l, Sound.ENTITY_GENERIC_EXPLODE, 5, 1);
                     all.spawnParticle(Particle.EXPLOSION_LARGE, l, 3);
                 }
+            }
+        } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta() && p.getOpenInventory().getTitle().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("inventory.mapvoting", p), p))) {
+            ArrayList<File> maps = WorldManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("map." + maps.get(0).getName().replace(".yml", ""), p)))) {
+                WorldManager.addVote(maps.get(0), p);
+                MapvotingInventory.openInventory(p);
+            } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("map." + maps.get(1).getName().replace(".yml", ""), p)))) {
+                WorldManager.addVote(maps.get(1), p);
+                MapvotingInventory.openInventory(p);
+            } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage("map." + maps.get(2).getName().replace(".yml", ""), p)))) {
+                WorldManager.addVote(maps.get(2), p);
+                MapvotingInventory.openInventory(p);
             }
         }
     }

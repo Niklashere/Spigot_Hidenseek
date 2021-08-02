@@ -10,6 +10,7 @@ import de.niklashere.hidenseek.gamestates.countdowns.WarmupCountdown;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
+import de.niklashere.hidenseek.libary.WorldManager;
 import de.niklashere.inventorys.InventoryManager;
 
 public class GamestateManager {
@@ -27,13 +28,13 @@ public class GamestateManager {
 		for (Player all : Bukkit.getOnlinePlayers()) {
 			InventoryManager.clearInv(all);
 			if (Rolemanager.isHider(all)) {
-				all.teleport(Fileaccess.getLocation("spawnpoint-hider", Fileaccess.getConfig(), all));
+				all.teleport(Fileaccess.getLocation("spawnpoint-hider", WorldManager.getResults(), all));
 				InventoryManager.hiderItems(all);
 			} else if (Rolemanager.isSeeker(all)) {
-				all.teleport(Fileaccess.getLocation("spawnpoint-seeker", Fileaccess.getConfig(), all));
+				all.teleport(Fileaccess.getLocation("spawnpoint-seeker", WorldManager.getResults(), all));
 				InventoryManager.seekerItems(all);
 			} else if (Rolemanager.isSpectator(all)) {
-				all.teleport(Fileaccess.getLocation("spawnpoint-hider", Fileaccess.getConfig(), all));
+				all.teleport(Fileaccess.getLocation("spawnpoint-hider", WorldManager.getResults(), all));
 				InventoryManager.spectatorItems(all);
 
 			}

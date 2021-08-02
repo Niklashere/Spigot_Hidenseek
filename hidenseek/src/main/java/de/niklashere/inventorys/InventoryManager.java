@@ -15,6 +15,7 @@ public class InventoryManager {
 	}
 
 	public static void lobbyItems(Player p) {
+        p.getInventory().setItem(4, new ItemBuilder(Material.CHEST).setDisplayName(VariableManager.message(LanguageManager.getMessage("item.chest", p), p)).build());
 
 	}
 
