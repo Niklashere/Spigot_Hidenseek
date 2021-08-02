@@ -6,10 +6,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
+import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
-import de.niklashere.inventorys.InventoryManager;
 
 public class Rolemanager {
     static HashMap<Player, String> role = new HashMap<>();

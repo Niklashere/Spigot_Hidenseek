@@ -10,11 +10,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.hidenseek.libary.WorldManager;
-import de.niklashere.inventorys.InventoryManager;
 
 public class PlayerJoinListener implements Listener {
    

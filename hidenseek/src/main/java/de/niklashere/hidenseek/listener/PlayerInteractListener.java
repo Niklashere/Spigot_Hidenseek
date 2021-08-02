@@ -6,11 +6,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import de.niklashere.hidenseek.inventorys.HintInventory;
+import de.niklashere.hidenseek.inventorys.MapvotingInventory;
+import de.niklashere.hidenseek.inventorys.RoleInventory;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
-import de.niklashere.inventorys.HintInventory;
-import de.niklashere.inventorys.MapvotingInventory;
-import de.niklashere.inventorys.RoleInventory;
 
 public class PlayerInteractListener implements Listener {
 

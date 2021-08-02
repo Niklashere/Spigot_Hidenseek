@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.niklashere.inventorys.SetupInventory;
+import de.niklashere.hidenseek.inventorys.SetupInventory;
 
 public class SetupCommand implements CommandExecutor {
 

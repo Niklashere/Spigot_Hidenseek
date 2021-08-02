@@ -1,4 +1,4 @@
-package de.niklashere.inventorys;
+package de.niklashere.hidenseek.inventorys;
 
 import java.io.File;
 import java.util.ArrayList;

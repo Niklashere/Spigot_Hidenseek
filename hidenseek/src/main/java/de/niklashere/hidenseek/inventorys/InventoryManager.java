@@ -1,4 +1,4 @@
-package de.niklashere.inventorys;
+package de.niklashere.hidenseek.inventorys;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

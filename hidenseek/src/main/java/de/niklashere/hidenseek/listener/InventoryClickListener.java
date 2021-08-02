@@ -18,12 +18,12 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 
 import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.inventorys.MapvotingInventory;
+import de.niklashere.hidenseek.inventorys.SetupInventory;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.hidenseek.libary.WorldManager;
-import de.niklashere.inventorys.MapvotingInventory;
-import de.niklashere.inventorys.SetupInventory;
 
 public class InventoryClickListener implements Listener {
 
