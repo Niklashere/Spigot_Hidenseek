@@ -3,6 +3,7 @@ package de.niklashere.hidenseek.libary;
 import java.io.File;
 import java.util.HashMap;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 /**
@@ -19,11 +20,36 @@ public class LanguageManager {
    * Get a message from the language file for this player.
    * 
    * @param string String under which this message is saved
-   * @param p Player which language should be used
+   * @param p      Player which language should be used
    * @return message from lanuage file
    */
   public static String getMessage(String string, Player p) {
-    return Fileaccess.getString(string, getLanguage(p));
+    return VariableManager.message(Fileaccess.getString(string, getLanguage(p)), p);
+  }
+
+  /**
+   * Get a message from the language file for this player.
+   * 
+   * @param string String under which this message is saved
+   * @param p1     Player which language should be used
+   * @param p2     Player wich should be used for the variablemanager
+   * @param k      Second player for %k
+   * @return message from lanuage file
+   */
+  public static String getMessage(String string, Player p1, Player p2, Player k) {
+    return VariableManager.message(Fileaccess.getString(string, getLanguage(p1)), p2, k);
+  }
+
+  /**
+   * Get a message from the language file for this player.
+   * 
+   * @param string String under which this message is saved
+   * @param p      Player which language should be used
+   * @param k      Second player for %k
+   * @return message from lanuage file
+   */
+  public static String getMessage(String string, Player p, OfflinePlayer k) {
+    return VariableManager.message(Fileaccess.getString(string, getLanguage(p)), p, k);
   }
 
   /**
@@ -39,7 +65,7 @@ public class LanguageManager {
   /**
    * Saves the language used by the player.
    * 
-   * @param p Player
+   * @param p    Player
    * @param file language file
    */
   public static void addLanguage(Player p, File file) {

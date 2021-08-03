@@ -6,7 +6,6 @@ import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 import de.niklashere.hidenseek.libary.LanguageManager;
-import de.niklashere.hidenseek.libary.VariableManager;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
@@ -60,28 +59,25 @@ public class EntityDamageByEntityListener implements Listener {
     if (Rolemanager.isSeeker(k) && !Rolemanager.isSeeker(p)) {
       Rolemanager.founded(p, k);
 
-    } else if (k.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase(
-        VariableManager.message(LanguageManager.getMessage(Variablelist.items_hider_stun, p), p))) {
+    } else if (k.getInventory().getItemInMainHand().getItemMeta().getDisplayName()
+        .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.items_hider_stun, p))) {
       p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3 * 20, 5));
       p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 3 * 20, 5));
-      p.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.chat_stunned, p), p, k));
-      k.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.chat_stunned, p), p, k));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.chat_stunned, p, k));
+      k.sendMessage(LanguageManager.getMessage(Variablelist.chat_stunned, p, k));
       int i = Fileaccess.getInt("stun-duration", Fileaccess.getConfig());
       new BukkitRunnable() {
         @Override
         public void run() {
           p.getInventory().setItem(0,
               new ItemBuilder(Material.STICK).setUnbreakable(true)
-                  .setDisplayName(VariableManager.message(
-                      LanguageManager.getMessage(Variablelist.items_hider_stun, p), p) + " " + i)
+                  .setDisplayName(
+                      LanguageManager.getMessage(Variablelist.items_hider_stun, p) + " " + i)
                   .build());
           if (i == 0) {
             p.getInventory().setItem(0,
                 new ItemBuilder(Material.BLAZE_ROD).setUnbreakable(true)
-                    .setDisplayName(VariableManager
-                        .message(LanguageManager.getMessage(Variablelist.items_hider_stun, p), p))
+                    .setDisplayName(LanguageManager.getMessage(Variablelist.items_hider_stun, p))
                     .build());
             cancel();
           }

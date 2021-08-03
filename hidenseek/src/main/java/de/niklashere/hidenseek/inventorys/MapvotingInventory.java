@@ -4,7 +4,6 @@ import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 import de.niklashere.hidenseek.libary.LanguageManager;
-import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
 import java.io.File;
@@ -30,7 +29,7 @@ public class MapvotingInventory {
    */
   public static void openInventory(final Player p) {
     Inventory inv = Bukkit.createInventory(null, 9 * 3,
-        VariableManager.message(LanguageManager.getMessage(Variablelist.inv_mapvoting_Name, p), p));
+        LanguageManager.getMessage(Variablelist.inv_mapvoting_Name, p));
     int x = 0;
     while (x < inv.getSize()) {
       inv.setItem(x, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setNoName().build());
@@ -38,21 +37,12 @@ public class MapvotingInventory {
     }
 
     ArrayList<File> maps = VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
-    inv.setItem(11,
-        new ItemBuilder(Material.GRASS)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage(maps.get(0).getName().replace(".yml", ""), p)))
-            .build());
-    inv.setItem(13,
-        new ItemBuilder(Material.DIRT)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage(maps.get(1).getName().replace(".yml", ""), p)))
-            .build());
-    inv.setItem(15,
-        new ItemBuilder(Material.STONE)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage(maps.get(2).getName().replace(".yml", ""), p)))
-            .build());
+    inv.setItem(11, new ItemBuilder(Material.GRASS)
+        .setDisplayName(maps.get(0).getName().replace(".yml", "")).build());
+    inv.setItem(13, new ItemBuilder(Material.DIRT)
+        .setDisplayName(maps.get(1).getName().replace(".yml", "")).build());
+    inv.setItem(15, new ItemBuilder(Material.STONE)
+        .setDisplayName(maps.get(2).getName().replace(".yml", "")).build());
 
     p.openInventory(inv);
   }

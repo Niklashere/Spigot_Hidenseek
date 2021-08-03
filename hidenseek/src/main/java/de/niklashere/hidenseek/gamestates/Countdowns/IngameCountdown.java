@@ -6,7 +6,6 @@ import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
-import de.niklashere.hidenseek.libary.VariableManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -49,16 +48,14 @@ public class IngameCountdown {
             int i = time % 60;
             if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5 || time == 3
                 || time == 2) {
-              all.sendMessage(VariableManager
-                  .message(LanguageManager.getMessage(Variablelist.chat_countdownIngame, all)
-                      .replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(
-                          LanguageManager.getMessage(Variablelist.chat_secondPlural, all)))));
+              all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownIngame, all)
+                  .replaceAll("%t", time + "").replaceAll("%s",
+                      LanguageManager.getMessage(Variablelist.chat_secondPlural, all)));
 
             } else if (time == 1) {
-              all.sendMessage(VariableManager
-                  .message(LanguageManager.getMessage(Variablelist.chat_countdownIngame, all)
-                      .replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(
-                          LanguageManager.getMessage(Variablelist.chat_secondSingular, all)))));
+              all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownIngame, all)
+                  .replaceAll("%t", time + "").replaceAll("%s",
+                      LanguageManager.getMessage(Variablelist.chat_secondSingular, all)));
             }
           }
           if (time == 1) {

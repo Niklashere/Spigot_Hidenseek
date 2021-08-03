@@ -4,7 +4,6 @@ import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 import de.niklashere.hidenseek.libary.LanguageManager;
-import de.niklashere.hidenseek.libary.VariableManager;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -41,15 +40,11 @@ public class InventoryManager {
    */
   public static void lobbyItems(final Player p) {
     if (Gamestate.isState(Gamestate.Lobby)) {
-      p.getInventory().setItem(1,
-          new ItemBuilder(Material.CHEST)
-              .setDisplayName(VariableManager
-                  .message(LanguageManager.getMessage(Variablelist.items_lobby_chest, p), p))
-              .build());
+      p.getInventory().setItem(1, new ItemBuilder(Material.CHEST)
+          .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_chest, p)).build());
       p.getInventory().setItem(2,
           new ItemBuilder(Material.RED_BANNER)
-              .setDisplayName(VariableManager
-                  .message(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p), p))
+              .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p))
               .build());
 
     }
@@ -62,17 +57,10 @@ public class InventoryManager {
    * @param p Player to receive seeker items.
    */
   public static void seekerItems(final Player p) {
-    p.getInventory().setItem(0,
-        new ItemBuilder(Material.IRON_SWORD)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage(Variablelist.items_seeker_sword, p), p))
-            .build());
-    p.getInventory()
-        .setItem(1,
-            new ItemBuilder(Material.BOW).setUnbreakable(true)
-                .setDisplayName(VariableManager
-                    .message(LanguageManager.getMessage(Variablelist.items_seeker_bow, p), p))
-                .build());
+    p.getInventory().setItem(0, new ItemBuilder(Material.IRON_SWORD)
+        .setDisplayName(LanguageManager.getMessage(Variablelist.items_seeker_sword, p)).build());
+    p.getInventory().setItem(1, new ItemBuilder(Material.BOW).setUnbreakable(true)
+        .setDisplayName(LanguageManager.getMessage(Variablelist.items_seeker_bow, p)).build());
     p.getInventory().setItem(9, new ItemBuilder(Material.ARROW).setAmount(2).build());
 
   }
@@ -83,18 +71,10 @@ public class InventoryManager {
    * @param p Player to receive hider items.
    */
   public static void hiderItems(final Player p) {
-    p.getInventory()
-        .setItem(0,
-            new ItemBuilder(Material.BLAZE_ROD).setUnbreakable(true)
-                .setDisplayName(VariableManager
-                    .message(LanguageManager.getMessage(Variablelist.items_hider_stun, p), p))
-                .build());
-    p.getInventory()
-        .setItem(1,
-            new ItemBuilder(Material.BLAZE_POWDER)
-                .setDisplayName(VariableManager
-                    .message(LanguageManager.getMessage(Variablelist.items_hider_hint, p), p))
-                .build());
+    p.getInventory().setItem(0, new ItemBuilder(Material.BLAZE_ROD).setUnbreakable(true)
+        .setDisplayName(LanguageManager.getMessage(Variablelist.items_hider_stun, p)).build());
+    p.getInventory().setItem(1, new ItemBuilder(Material.BLAZE_POWDER)
+        .setDisplayName(LanguageManager.getMessage(Variablelist.items_hider_hint, p)).build());
   }
 
   /**

@@ -6,7 +6,6 @@ import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
-import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
 import java.io.File;
@@ -38,8 +37,7 @@ public class PlayerJoinListener implements Listener {
     File[] file = Fileaccess.listOfFiles.get("languages");
     LanguageManager.addLanguage(p, file[0]);
     for (Player all : Bukkit.getOnlinePlayers()) {
-      all.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.chat_joinMessage, all), p));
+      all.sendMessage(LanguageManager.getMessage(Variablelist.chat_joinMessage, all, p, null));
     }
 
     if (Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame)) {

@@ -3,7 +3,6 @@ package de.niklashere.hidenseek.commands;
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.UuidFetcher;
-import de.niklashere.hidenseek.libary.VariableManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -25,41 +24,26 @@ public class StatsCommand implements CommandExecutor {
       final String[] args) {
     Player p = (Player) sender;
     if (args.length == 0) {
-      p.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.command_stats_m1, p), p));
-      p.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.command_stats_m2, p), p));
-      p.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.command_stats_m3, p), p));
-      p.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.command_stats_m4, p), p));
-      p.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.command_stats_m5, p), p));
-      p.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.command_stats_m6, p), p));
-      p.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.command_stats_m7, p), p));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m1, p));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m2, p));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m3, p));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m4, p));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m5, p));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m6, p));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m7, p));
 
     } else if (args.length == 1) {
       OfflinePlayer k = Bukkit.getOfflinePlayer(UuidFetcher.getUuid(args[0]));
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.command_stats_m1, p), p, k));
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.command_stats_m2, p), p, k));
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.command_stats_m3, p), p, k));
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.command_stats_m4, p), p, k));
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.command_stats_m5, p), p, k));
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.command_stats_m6, p), p, k));
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.command_stats_m7, p), p, k));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m1, p, k));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m2, p, k));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m3, p, k));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m4, p, k));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m5, p, k));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m6, p, k));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m7, p, k));
 
     } else {
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.command_stats_usage, p), p));
+      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_usage, p));
     }
     return false;
   }

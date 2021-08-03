@@ -5,7 +5,6 @@ import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.StatsManager;
-import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
 import java.util.HashMap;
@@ -64,8 +63,7 @@ public class Rolemanager {
     InventoryManager.seekerItems(p);
     for (Player all : Bukkit.getOnlinePlayers()) {
       all.spawnParticle(Particle.FLAME, p.getLocation(), 10);
-      all.sendMessage(
-          VariableManager.message(LanguageManager.getMessage(Variablelist.chat_found, all), p, k));
+      all.sendMessage(LanguageManager.getMessage(Variablelist.chat_found, all, p, k));
     }
     p.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
     StatsManager.addCought(p.getUniqueId(), 1);

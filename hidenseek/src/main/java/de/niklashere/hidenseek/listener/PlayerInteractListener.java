@@ -5,7 +5,6 @@ import de.niklashere.hidenseek.inventorys.HintInventory;
 import de.niklashere.hidenseek.inventorys.MapvotingInventory;
 import de.niklashere.hidenseek.inventorys.RoleInventory;
 import de.niklashere.hidenseek.libary.LanguageManager;
-import de.niklashere.hidenseek.libary.VariableManager;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -38,14 +37,14 @@ public class PlayerInteractListener implements Listener {
 
       }
 
-      if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.items_lobby_chest, p), p))) {
+      if (e.getItem().getItemMeta().getDisplayName()
+          .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.items_lobby_chest, p))) {
         MapvotingInventory.openInventory(p);
-      } else if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.items_hider_hint, p), p))) {
+      } else if (e.getItem().getItemMeta().getDisplayName()
+          .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.items_hider_hint, p))) {
         HintInventory.openInventory(p);
-      } else if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
-          .message(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p), p))) {
+      } else if (e.getItem().getItemMeta().getDisplayName()
+          .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p))) {
         RoleInventory.openInventory(p);
       }
     } else {
