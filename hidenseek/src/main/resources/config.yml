@@ -20,3 +20,8 @@ MySQL:
   database: hidenseek
   user: hidenseek
   password: password
+points:
+  found: 10
+  cought: 5
+  win: 10
+  play: 5

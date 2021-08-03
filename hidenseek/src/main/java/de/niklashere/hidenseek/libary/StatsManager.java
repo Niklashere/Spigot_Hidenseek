@@ -155,6 +155,8 @@ public class StatsManager {
     if (playerExists(uuid)) {
       setWins(uuid,
           Integer.valueOf(getWins(uuid).intValue() + wins.intValue()));
+      addPoints(uuid, Fileaccess.getInt("points.win", Fileaccess.getConfig()));
+
     } else {
       createPlayer(uuid);
       addWins(uuid, wins);
@@ -216,6 +218,8 @@ public class StatsManager {
     if (playerExists(uuid)) {
       setPlayes(uuid,
           Integer.valueOf(getPlayes(uuid).intValue() + plays.intValue()));
+      addPoints(uuid, Fileaccess.getInt("points.play", Fileaccess.getConfig()));
+
     } else {
       createPlayer(uuid);
       addPlayes(uuid, plays);
@@ -313,6 +317,8 @@ public class StatsManager {
     if (playerExists(uuid)) {
       setCought(uuid,
           Integer.valueOf(getCought(uuid).intValue() + cought.intValue()));
+      addPoints(uuid,
+          Fileaccess.getInt("points.cought", Fileaccess.getConfig()));
     } else {
       createPlayer(uuid);
       addCought(uuid, cought);
@@ -349,6 +355,9 @@ public class StatsManager {
     if (playerExists(uuid)) {
       setFound(uuid,
           Integer.valueOf(getFound(uuid).intValue() + found.intValue()));
+      addPoints(uuid,
+          Fileaccess.getInt("points.found", Fileaccess.getConfig()));
+
     } else {
       createPlayer(uuid);
       addFound(uuid, found);
