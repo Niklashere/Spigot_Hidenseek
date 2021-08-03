@@ -1,6 +1,10 @@
 # Hide'n'Seek
 Opensource hide'n'seek plugin for Spigot Minecraft Servers.
 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Niklashere/Spigot_Hidenseek)](https://github.com/Niklashere/Spigot_Hidenseek/releases)
+[![GitHub licence](https://img.shields.io/github/license/niklashere/Spigot_Hidenseek)](LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](.github/CODE_OF_CONDUCT.md)
+
 ## Features
 
 Basic Functions
