@@ -5,6 +5,7 @@ import de.niklashere.hidenseek.libary.UuidFetcher;
 import de.niklashere.hidenseek.libary.VariableManager;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -30,12 +31,12 @@ public class StatsCommand implements CommandExecutor {
       p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m5", p), p));
 
     } else if (args.length == 1) {
-      Player k = (Player) Bukkit.getOfflinePlayer(UuidFetcher.getUuid(args[0]));
-      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m1", p), k));
-      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m2", p), k));
-      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m3", p), k));
-      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m4", p), k));
-      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m5", p), k));
+      OfflinePlayer k = Bukkit.getOfflinePlayer(UuidFetcher.getUuid(args[0]));
+      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m1", p), p, k));
+      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m2", p), p, k));
+      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m3", p), p, k));
+      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m4", p), p, k));
+      p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.m5", p), p, k));
       
     } else {
       p.sendMessage(VariableManager.message(LanguageManager.getMessage("stats.usage", p), p));

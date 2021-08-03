@@ -61,7 +61,7 @@ public class EndCountdown {
           time--;
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
-            int i = time % 0;
+            int i = time % 60;
             if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5
                 || time == 3 || time == 2) {
               all.sendMessage(VariableManager.message(LanguageManager

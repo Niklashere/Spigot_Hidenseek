@@ -1,7 +1,9 @@
 package de.niklashere.hidenseek.listener;
 
+import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.StatsManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 
 import org.bukkit.Bukkit;
@@ -31,6 +33,10 @@ public class PlayerQuitListener implements Listener {
     for (Player all : Bukkit.getOnlinePlayers()) {
       VariableManager.message(LanguageManager.getMessage("quitmessage", all),
           p);
+    }
+
+    if (Gamestate.isState(Gamestate.Ingame) || Gamestate.isState(Gamestate.WarmUp)) {
+      StatsManager.addPlayes(p.getUniqueId(), 1);
     }
 
     Rolemanager.removeRole(p);

@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek.libary;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.UUID;
 
 /**
@@ -57,23 +58,21 @@ public class StatsManager {
    * @return wins
    */
   public static Integer getWins(UUID uuid) {
-    Integer i = Integer.valueOf(0);
-
     if (playerExists(uuid)) {
       try {
         ResultSet rs = MysqlManager
             .query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
-
-        i = Integer.valueOf(rs.getInt("wins"));
-      } catch (java.sql.SQLException e) {
-        e.printStackTrace();
+        if (rs.next()) {
+          return rs.getInt("wins");
+        }
+      } catch (SQLException ex) {
+        return -1;
       }
     } else {
       createPlayer(uuid);
       getWins(uuid);
     }
-
-    return i;
+    return -1;
   }
 
   /**
@@ -84,23 +83,21 @@ public class StatsManager {
    * @return coughts
    */
   public static Integer getCought(UUID uuid) {
-    Integer i = Integer.valueOf(0);
-
     if (playerExists(uuid)) {
       try {
         ResultSet rs = MysqlManager
             .query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
-
-        i = Integer.valueOf(rs.getInt("cought"));
-      } catch (java.sql.SQLException e) {
-        e.printStackTrace();
+        if (rs.next()) {
+          return rs.getInt("cought");
+        }
+      } catch (SQLException ex) {
+        return -1;
       }
     } else {
       createPlayer(uuid);
       getWins(uuid);
     }
-
-    return i;
+    return -1;
   }
 
   /**
@@ -111,23 +108,21 @@ public class StatsManager {
    * @return founds
    */
   public static Integer getFound(UUID uuid) {
-    Integer i = Integer.valueOf(0);
-
     if (playerExists(uuid)) {
       try {
         ResultSet rs = MysqlManager
             .query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
-
-        i = Integer.valueOf(rs.getInt("found"));
-      } catch (java.sql.SQLException e) {
-        e.printStackTrace();
+        if (rs.next()) {
+          return rs.getInt("found");
+        }
+      } catch (SQLException ex) {
+        return -1;
       }
     } else {
       createPlayer(uuid);
       getWins(uuid);
     }
-
-    return i;
+    return -1;
   }
 
   /**
@@ -174,23 +169,21 @@ public class StatsManager {
    * @return played games
    */
   public static Integer getPlayes(UUID uuid) {
-    Integer i = Integer.valueOf(0);
-
     if (playerExists(uuid)) {
       try {
         ResultSet rs = MysqlManager
             .query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
-
-        i = Integer.valueOf(rs.getInt("plays"));
-      } catch (java.sql.SQLException e) {
-        e.printStackTrace();
+        if (rs.next()) {
+          return rs.getInt("plays");
+        }
+      } catch (SQLException ex) {
+        return -1;
       }
     } else {
       createPlayer(uuid);
       getWins(uuid);
     }
-
-    return i;
+    return -1;
   }
 
   /**
@@ -203,8 +196,8 @@ public class StatsManager {
    */
   public static void setPlayes(UUID uuid, Integer plays) {
     if (playerExists(uuid)) {
-      MysqlManager.update("UPDATE Stats SET plays= '" + plays + "' WHERE UUID= '"
-          + uuid + "';");
+      MysqlManager.update("UPDATE Stats SET plays= '" + plays
+          + "' WHERE UUID= '" + uuid + "';");
     } else {
       createPlayer(uuid);
       setPlayes(uuid, plays);
@@ -237,23 +230,21 @@ public class StatsManager {
    * @return points
    */
   public static Integer getPoints(UUID uuid) {
-    Integer i = Integer.valueOf(0);
-
     if (playerExists(uuid)) {
       try {
         ResultSet rs = MysqlManager
             .query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
-
-        i = Integer.valueOf(rs.getInt("points"));
-      } catch (java.sql.SQLException e) {
-        e.printStackTrace();
+        if (rs.next()) {
+          return rs.getInt("points");
+        }
+      } catch (SQLException ex) {
+        return -1;
       }
     } else {
       createPlayer(uuid);
       getWins(uuid);
     }
-
-    return i;
+    return -1;
   }
 
   /**
@@ -266,8 +257,8 @@ public class StatsManager {
    */
   public static void setPoints(UUID uuid, Integer points) {
     if (playerExists(uuid)) {
-      MysqlManager.update("UPDATE Stats SET points= '" + points + "' WHERE UUID= '"
-          + uuid + "';");
+      MysqlManager.update("UPDATE Stats SET points= '" + points
+          + "' WHERE UUID= '" + uuid + "';");
     } else {
       createPlayer(uuid);
       setPoints(uuid, points);
@@ -302,8 +293,8 @@ public class StatsManager {
    */
   public static void setCought(UUID uuid, Integer cought) {
     if (playerExists(uuid)) {
-      MysqlManager.update("UPDATE Stats SET cought= '" + cought + "' WHERE UUID= '"
-          + uuid + "';");
+      MysqlManager.update("UPDATE Stats SET cought= '" + cought
+          + "' WHERE UUID= '" + uuid + "';");
     } else {
       createPlayer(uuid);
       setCought(uuid, cought);
@@ -338,8 +329,8 @@ public class StatsManager {
    */
   public static void setFound(UUID uuid, Integer found) {
     if (playerExists(uuid)) {
-      MysqlManager.update("UPDATE Stats SET found= '" + found + "' WHERE UUID= '"
-          + uuid + "';");
+      MysqlManager.update("UPDATE Stats SET found= '" + found
+          + "' WHERE UUID= '" + uuid + "';");
     } else {
       createPlayer(uuid);
       setFound(uuid, found);

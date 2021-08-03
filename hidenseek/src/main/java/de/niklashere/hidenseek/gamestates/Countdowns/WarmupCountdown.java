@@ -6,6 +6,7 @@ import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.StatsManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
@@ -33,6 +34,7 @@ public class WarmupCountdown {
     for (Player all : Bukkit.getOnlinePlayers()) {
       InventoryManager.clearInv(all);
       Rolemanager.addSeeker(all);
+      StatsManager.addPlayes(all.getUniqueId(), 1);
       if (Rolemanager.isHider(all)) {
         all.teleport(Fileaccess.getLocation("spawnpoint-hider",
             VoteManager.getResults()));
@@ -61,7 +63,8 @@ public class WarmupCountdown {
       @Override
       public void run() {
         if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("min-players",
-            Fileaccess.getConfig()) && Rolemanager.getGroupsize("hider") >= 1) {
+            Fileaccess.getConfig()) && Rolemanager.getGroupsize("hider") >= 1
+            && Rolemanager.getGroupsize("seeker") >= 1) {
           time--;
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
@@ -80,6 +83,7 @@ public class WarmupCountdown {
                   .replaceAll("%t", time + "")
                   .replaceAll("%s", VariableManager.message(
                       LanguageManager.getMessage("second-singular", all)))));
+
             }
           }
           if (time == 1) {
@@ -87,6 +91,11 @@ public class WarmupCountdown {
             cancel();
           }
         } else {
+          if (Rolemanager.getGroupsize("hider") < 1) {
+            Rolemanager.endGame("seeker");
+          } else if (Rolemanager.getGroupsize("seeker") < 1) {
+            Rolemanager.endGame("hider");
+          }
           EndCountdown.startEndCD();
           cancel();
         }

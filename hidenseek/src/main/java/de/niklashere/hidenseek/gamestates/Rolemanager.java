@@ -3,7 +3,9 @@ package de.niklashere.hidenseek.gamestates;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.StatsManager;
 import de.niklashere.hidenseek.libary.VariableManager;
+import de.niklashere.hidenseek.libary.VoteManager;
 
 import java.util.HashMap;
 
@@ -68,7 +70,31 @@ public class Rolemanager {
           .message(LanguageManager.getMessage("found", all), p, k));
     }
     p.teleport(
-        Fileaccess.getLocation("spawnpoint-seeker", Fileaccess.getConfig()));
+        Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
+    StatsManager.addCought(p.getUniqueId(), 1);
+    StatsManager.addFound(k.getUniqueId(), 1);
+  }
+
+  /**
+   * Give points to the teams.
+   * 
+   * @param winnerTeam
+   *          team who has won
+   */
+  public static void endGame(String winnerTeam) {
+    if (winnerTeam.equalsIgnoreCase("hider")) {
+      for (Player all : Bukkit.getOnlinePlayers()) {
+        if (Rolemanager.isHider(all)) {
+          StatsManager.addWins(all.getUniqueId(), 1);
+        }
+      }
+    } else if (winnerTeam.equalsIgnoreCase("seeker")) {
+      for (Player all : Bukkit.getOnlinePlayers()) {
+        if (Rolemanager.isSeeker(all)) {
+          StatsManager.addWins(all.getUniqueId(), 1);
+        }
+      }
+    }
   }
 
   /**
@@ -79,7 +105,8 @@ public class Rolemanager {
    */
   public static void addSeeker(final Player p) {
     if (Fileaccess.getInt("max-seeker", Fileaccess.getConfig()) - 1 >= groupsize
-        .get("seeker") && role.get(p) == null) {
+        .get("seeker")) {
+      removeRole(p);
       role.put(p, "seeker");
       groupsize.put("seeker", groupsize.get("seeker") + 1);
     }
