@@ -15,3 +15,8 @@ spawnpoint-lobby:
   Yaw: -83.85
   Pitch: 54.34994
   World: world
+MySQL:
+  host: 192.168.0.1:3306
+  database: hidenseek
+  user: hidenseek
+  password: password

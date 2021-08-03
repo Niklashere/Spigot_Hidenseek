@@ -7,3 +7,4 @@ main: de.niklashere.hidenseek.App
 description: WIP Hide'n'seek Plugin.
 commands:
   setup:
+  stats:

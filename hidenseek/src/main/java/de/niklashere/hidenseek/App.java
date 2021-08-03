@@ -3,6 +3,7 @@ package de.niklashere.hidenseek;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.gamestates.countdowns.LobbyCountdown;
 import de.niklashere.hidenseek.libary.Fileaccess;
+import de.niklashere.hidenseek.libary.MysqlManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
 import java.io.File;
@@ -60,6 +61,8 @@ public class App extends JavaPlugin {
     for (int e = 0; e <= file.size() - 1; e++) {
       System.out.println(file.get(e));
     }
+    MysqlManager.connect();
+
   }
 
   /**
@@ -67,6 +70,7 @@ public class App extends JavaPlugin {
    */
   @Override
   public void onDisable() {
+    MysqlManager.close();
     Layouts.getBanner();
     Layouts.getBye();
   }

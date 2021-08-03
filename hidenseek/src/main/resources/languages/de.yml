@@ -58,3 +58,11 @@ map:
 role:
   hider: "Verstecker"
   seeker: "Sucher"
+
+stats:
+  usage: "/stats <player>"
+  m1: "cought: %sc"
+  m2: "found: %sf"
+  m3: "wins: %sw"
+  m4: "plays: %spl"
+  m5: "points: %spo"

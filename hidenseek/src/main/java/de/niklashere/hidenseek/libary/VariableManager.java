@@ -30,6 +30,11 @@ public class VariableManager {
    */
   public static String message(String string, Player p) {
     string = string.replaceAll("%p", p.getName());
+    string = string.replaceAll("%sc", StatsManager.getCought(p.getUniqueId()) + "");
+    string = string.replaceAll("%sf", StatsManager.getCought(p.getUniqueId()) + "");
+    string = string.replaceAll("%sw", StatsManager.getCought(p.getUniqueId()) + "");
+    string = string.replaceAll("%spl", StatsManager.getCought(p.getUniqueId()) + "");
+    string = string.replaceAll("%spo", StatsManager.getCought(p.getUniqueId()) + "");
     string = message(string);
     return string;
   }

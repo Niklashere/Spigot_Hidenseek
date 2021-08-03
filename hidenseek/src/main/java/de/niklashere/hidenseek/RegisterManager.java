@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek;
 
 import de.niklashere.hidenseek.commands.SetupCommand;
+import de.niklashere.hidenseek.commands.StatsCommand;
 import de.niklashere.hidenseek.listener.BlockBreakListener;
 import de.niklashere.hidenseek.listener.BlockPlaceListener;
 import de.niklashere.hidenseek.listener.EntityDamageByEntityListener;
@@ -69,6 +70,7 @@ public class RegisterManager {
    */
   public void registerCommands() {
     plugin.getCommand("setup").setExecutor(new SetupCommand());
+    plugin.getCommand("stats").setExecutor(new StatsCommand());
 
   }
 }
