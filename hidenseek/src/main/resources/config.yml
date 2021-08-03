@@ -25,3 +25,4 @@ points:
   cought: 5
   win: 10
   play: 5
+stun-duration: 10
