@@ -21,7 +21,7 @@ public class VoteManager {
   /**
    * Outputs random maps for map voting.
    * 
-   * @param file files of the maps
+   * @param file    files of the maps
    * @param maxMaps Number of maps for map voting
    * @return Arraylist of choosen files.
    */
@@ -40,7 +40,7 @@ public class VoteManager {
    * Adds a vote.
    * 
    * @param file Map wich a voted for.
-   * @param p player who has voted.
+   * @param p    player who has voted.
    */
   public static void addVote(File file, Player p) {
     votes.put(p, file);
@@ -51,7 +51,7 @@ public class VoteManager {
    * Remove a vote.
    * 
    * @param file Map wich voted gets removed.
-   * @param p player who removed his vote.
+   * @param p    player who removed his vote.
    */
   public static void removeVote(File file, Player p) {
     votes.remove(p);
@@ -67,8 +67,7 @@ public class VoteManager {
     if (result == null) {
       File result = maps.get(0);
       LinkedHashmap<File, Integer> results = new LinkedHashmap<>();
-      ArrayList<File> map = VoteManager
-          .rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
+      ArrayList<File> map = VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
       for (int i = 0; map.size() - 1 >= i; i++) {
         results.put(map.get(i), 0);
 

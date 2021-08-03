@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek.gamestates.countdowns;
 
 import de.niklashere.hidenseek.App;
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
@@ -21,16 +22,14 @@ public class EndCountdown {
   /**
    * Countdown length configured in config file.
    */
-  private static int time = Fileaccess.getInt("End", Fileaccess.getConfig())
-      + 1;
+  private static int time = Fileaccess.getInt("End", Fileaccess.getConfig()) + 1;
 
   /**
    * Method to start the End countdown.
    */
   public static void startEndCD() {
     for (Player all : Bukkit.getOnlinePlayers()) {
-      all.teleport(Fileaccess.getLocation("spawnpoint-lobby",
-          Fileaccess.getConfig()));
+      all.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig()));
       InventoryManager.clearInv(all);
       InventoryManager.lobbyItems(all);
     }
@@ -43,8 +42,8 @@ public class EndCountdown {
    */
   private static void stopServer() {
     for (Player all : Bukkit.getOnlinePlayers()) {
-      all.kickPlayer(VariableManager
-          .message(LanguageManager.getMessage("stop-server", all)));
+      all.kickPlayer(
+          VariableManager.message(LanguageManager.getMessage(Variablelist.chat_stopServer, all)));
     }
     Bukkit.shutdown();
 
@@ -62,18 +61,18 @@ public class EndCountdown {
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
             int i = time % 60;
-            if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5
-                || time == 3 || time == 2) {
-              all.sendMessage(VariableManager.message(LanguageManager
-                  .getMessage("countdown-end", all).replaceAll("%t", time + "")
-                  .replaceAll("%s", VariableManager.message(
-                      LanguageManager.getMessage("second-plural", all)))));
+            if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5 || time == 3
+                || time == 2) {
+              all.sendMessage(VariableManager
+                  .message(LanguageManager.getMessage(Variablelist.chat_countdownEnd, all)
+                      .replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(
+                          LanguageManager.getMessage(Variablelist.chat_secondSingular, all)))));
 
             } else if (time == 1) {
-              all.sendMessage(VariableManager.message(LanguageManager
-                  .getMessage("countdown-end", all).replaceAll("%t", time + "")
-                  .replaceAll("%s", VariableManager.message(
-                      LanguageManager.getMessage("second-singular", all)))));
+              all.sendMessage(VariableManager
+                  .message(LanguageManager.getMessage(Variablelist.chat_countdownEnd, all)
+                      .replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(
+                          LanguageManager.getMessage(Variablelist.chat_secondSingular, all)))));
             }
           }
           if (time == 1) {

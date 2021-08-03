@@ -16,8 +16,8 @@ import org.bukkit.entity.Player;
 public class SetupCommand implements CommandExecutor {
 
   @Override
-  public final boolean onCommand(final CommandSender sender, final Command cmd,
-      final String label, final String[] args) {
+  public final boolean onCommand(final CommandSender sender, final Command cmd, final String label,
+      final String[] args) {
     Player p = (Player) sender;
     SetupInventory.openInventory(p);
     return false;

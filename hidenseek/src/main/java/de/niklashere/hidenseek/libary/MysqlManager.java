@@ -12,27 +12,19 @@ import java.sql.Statement;
  * @since 03.08.2021
  */
 public class MysqlManager {
-  private static String HOST = Fileaccess.getString("MySQL.host",
-      Fileaccess.getConfig());
-  private static String DATABASE = Fileaccess.getString("MySQL.database",
-      Fileaccess.getConfig());
-  private static String USER = Fileaccess.getString("MySQL.user",
-      Fileaccess.getConfig());
-  private static String PASSWORD = Fileaccess.getString("MySQL.password",
-      Fileaccess.getConfig());
+  private static String HOST = Fileaccess.getString("MySQL.host", Fileaccess.getConfig());
+  private static String DATABASE = Fileaccess.getString("MySQL.database", Fileaccess.getConfig());
+  private static String USER = Fileaccess.getString("MySQL.user", Fileaccess.getConfig());
+  private static String PASSWORD = Fileaccess.getString("MySQL.password", Fileaccess.getConfig());
   private static Connection con;
 
   /**
    * Needed parameter to establish a MySQL connection.
    * 
-   * @param host
-   *          DB Host
-   * @param database
-   *          DB name
-   * @param user
-   *          DB user
-   * @param password
-   *          DB password
+   * @param host     DB Host
+   * @param database DB name
+   * @param user     DB user
+   * @param password DB password
    */
   public MysqlManager(String host, String database, String user, String password) {
     HOST = host;
@@ -49,8 +41,7 @@ public class MysqlManager {
   public static void connect() {
     try {
       con = java.sql.DriverManager.getConnection(
-          "jdbc:mysql://" + HOST + "/" + DATABASE + "?autoReconnect=true",
-          USER, PASSWORD);
+          "jdbc:mysql://" + HOST + "/" + DATABASE + "?autoReconnect=true", USER, PASSWORD);
 
       update("CREATE TABLE IF NOT EXISTS Stats(UUID varchar(64),"
           + " cought int, found int, wins int, plays int, points int)");
@@ -70,8 +61,7 @@ public class MysqlManager {
         System.out.println("Connection to MySQL successfull closed.");
       }
     } catch (SQLException e) {
-      System.out
-          .println("Error while closing MySQL connection: " + e.getMessage());
+      System.out.println("Error while closing MySQL connection: " + e.getMessage());
     }
   }
 
@@ -80,8 +70,7 @@ public class MysqlManager {
    * statement or an SQL statement that returns nothing, such as an SQL DDL
    * statement.
    *
-   * @param qry
-   *          query to execute
+   * @param qry query to execute
    */
   public static void update(String qry) {
     try {
@@ -97,8 +86,7 @@ public class MysqlManager {
   /**
    * Executes the given SQL statement, which returns a single ResultSet object.
    * 
-   * @param qry
-   *          query to execute
+   * @param qry query to execute
    * @return result
    */
   public static ResultSet query(String qry) {

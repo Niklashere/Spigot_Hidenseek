@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek.gamestates.countdowns;
 
 import de.niklashere.hidenseek.App;
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
@@ -24,8 +25,7 @@ public class WarmupCountdown {
   /**
    * Countdown length configured in config file.
    */
-  private static int time = Fileaccess.getInt("Warmup", Fileaccess.getConfig())
-      + 1;
+  private static int time = Fileaccess.getInt("Warmup", Fileaccess.getConfig()) + 1;
 
   /**
    * Method to start the Warmup countdown.
@@ -36,16 +36,13 @@ public class WarmupCountdown {
       Rolemanager.addSeeker(all);
       StatsManager.addPlayes(all.getUniqueId(), 1);
       if (Rolemanager.isHider(all)) {
-        all.teleport(Fileaccess.getLocation("spawnpoint-hider",
-            VoteManager.getResults()));
+        all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
         InventoryManager.hiderItems(all);
       } else if (Rolemanager.isSeeker(all)) {
-        all.teleport(Fileaccess.getLocation("spawnpoint-seeker",
-            VoteManager.getResults()));
+        all.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
         InventoryManager.seekerItems(all);
       } else if (Rolemanager.isSpectator(all)) {
-        all.teleport(Fileaccess.getLocation("spawnpoint-hider",
-            VoteManager.getResults()));
+        all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
         InventoryManager.spectatorItems(all);
 
       }
@@ -69,20 +66,18 @@ public class WarmupCountdown {
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
             int i = time % 60;
-            if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5
-                || time == 3 || time == 2) {
+            if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5 || time == 3
+                || time == 2) {
               all.sendMessage(VariableManager
-                  .message(LanguageManager.getMessage("countdown-warmup", all)
-                      .replaceAll("%t", time + "")
-                      .replaceAll("%s", VariableManager.message(
-                          LanguageManager.getMessage("second-plural", all)))));
+                  .message(LanguageManager.getMessage(Variablelist.chat_countdownWarmup, all)
+                      .replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(
+                          LanguageManager.getMessage(Variablelist.chat_secondPlural, all)))));
 
             } else if (time == 1) {
-              all.sendMessage(VariableManager.message(LanguageManager
-                  .getMessage("countdown-warmup", all)
-                  .replaceAll("%t", time + "")
-                  .replaceAll("%s", VariableManager.message(
-                      LanguageManager.getMessage("second-singular", all)))));
+              all.sendMessage(VariableManager
+                  .message(LanguageManager.getMessage(Variablelist.chat_countdownWarmup, all)
+                      .replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(
+                          LanguageManager.getMessage(Variablelist.chat_secondSingular, all)))));
 
             }
           }

@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek.inventorys;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
@@ -20,33 +21,30 @@ public class HintInventory {
   /**
    * Opens hint inventory.
    *
-   * @param p
-   *          Players for whom the inventory should be opened
+   * @param p Players for whom the inventory should be opened
    */
   public static void openInventory(final Player p) {
-    Inventory inv = Bukkit.createInventory(null, 9 * 3, VariableManager
-        .message(LanguageManager.getMessage("inventory.hint", p), p));
+    Inventory inv = Bukkit.createInventory(null, 9 * 3,
+        VariableManager.message(LanguageManager.getMessage(Variablelist.inv_hint_name, p), p));
     int x = 0;
     while (x < inv.getSize()) {
-      inv.setItem(x, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE)
-          .setNoName().build());
+      inv.setItem(x, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setNoName().build());
       x++;
     }
 
     inv.setItem(11,
         new ItemBuilder(Material.FIREWORK_ROCKET)
             .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage("hint.Firework", p), p))
+                .message(LanguageManager.getMessage(Variablelist.inv_hint_Firework, p), p))
             .build());
     inv.setItem(13,
-        new ItemBuilder(Material.CAT_SPAWN_EGG)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage("hint.Meow", p), p))
+        new ItemBuilder(Material.CAT_SPAWN_EGG).setDisplayName(
+            VariableManager.message(LanguageManager.getMessage(Variablelist.inv_hint_Meow, p), p))
             .build());
     inv.setItem(15,
         new ItemBuilder(Material.TNT)
             .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage("hint.Explosion", p), p))
+                .message(LanguageManager.getMessage(Variablelist.inv_hint_Explosion, p), p))
             .build());
 
     p.openInventory(inv);

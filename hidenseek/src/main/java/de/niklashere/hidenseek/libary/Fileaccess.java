@@ -1,7 +1,5 @@
 package de.niklashere.hidenseek.libary;
 
-import de.niklashere.hidenseek.App;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,8 +36,7 @@ public class Fileaccess {
   /**
    * Loads all files from a folder.
    * 
-   * @param subfolder
-   *          Name of the directory in the hidenseek folder.
+   * @param subfolder Name of the directory in the hidenseek folder.
    */
   public static void loadFolder(String subfolder) {
     File folder = new File("plugins/hidenseek/" + subfolder);
@@ -49,8 +46,7 @@ public class Fileaccess {
   /**
    * Converts a filelist to a Arraylist.
    * 
-   * @param files
-   *          list of files
+   * @param files list of files
    * @return arraylist with files
    */
   public static ArrayList<File> fileListToArrayList(File[] files) {
@@ -59,19 +55,6 @@ public class Fileaccess {
       fileList.add(files[i]);
     }
     return fileList;
-  }
-
-  /**
-   * create a config.
-   */
-  public static void createConfig() {
-    FileConfiguration config = App.instance.getConfig();
-    List<String> lang = List.of("en", "de");
-    List<String> maps = List.of("Lobby", "Map-1", "Map-2", "Map-3");
-
-    config.set("supported-languages", lang);
-    config.set("supported-maps", maps);
-    App.instance.saveConfig();
   }
 
   /**
@@ -86,10 +69,8 @@ public class Fileaccess {
   /**
    * Get a string form a file.
    * 
-   * @param string
-   *          string to access.
-   * @param file
-   *          file to access
+   * @param string string to access.
+   * @param file   file to access
    * @return string
    */
   public static String getString(String string, File file) {
@@ -106,10 +87,8 @@ public class Fileaccess {
   /**
    * Get a stringlist from a file.
    * 
-   * @param string
-   *          string to access
-   * @param file
-   *          file to access
+   * @param string string to access
+   * @param file   file to access
    * @return stringlist
    */
   public static List<String> getStringList(String string, File file) {
@@ -120,10 +99,8 @@ public class Fileaccess {
   /**
    * Get a boolean from a file.
    * 
-   * @param string
-   *          string to access
-   * @param file
-   *          file to access
+   * @param string string to access
+   * @param file   file to access
    * @return boolean
    */
   public static Boolean getBoolean(String string, File file) {
@@ -140,10 +117,8 @@ public class Fileaccess {
   /**
    * Get a location from a file.
    * 
-   * @param string
-   *          string to access
-   * @param file
-   *          file to access
+   * @param string string to access
+   * @param file   file to access
    * @return location
    */
   public static Location getLocation(String string, File file) {
@@ -166,10 +141,8 @@ public class Fileaccess {
   /**
    * Get integer from file.
    * 
-   * @param string
-   *          string to access
-   * @param file
-   *          file to access
+   * @param string string to access
+   * @param file   file to access
    * @return integer
    */
   public static int getInt(String string, File file) {
@@ -186,12 +159,9 @@ public class Fileaccess {
   /**
    * Save the location in a file.
    * 
-   * @param string
-   *          String under which to save
-   * @param file
-   *          file to access
-   * @param p
-   *          player to get location
+   * @param string String under which to save
+   * @param file   file to access
+   * @param p      player to get location
    */
   public static void setLocation(String string, File file, Player p) {
     FileConfiguration conf = YamlConfiguration.loadConfiguration(file);
@@ -211,12 +181,9 @@ public class Fileaccess {
   /**
    * Save a Integer in a file.
    * 
-   * @param string
-   *          String under which to save
-   * @param file
-   *          file to access
-   * @param i
-   *          integer to save
+   * @param string String under which to save
+   * @param file   file to access
+   * @param i      integer to save
    */
   public static void setInt(String string, File file, Integer i) {
     FileConfiguration conf = YamlConfiguration.loadConfiguration(file);
@@ -231,12 +198,9 @@ public class Fileaccess {
   /**
    * Save String in a file.
    * 
-   * @param string
-   *          String under which to save
-   * @param file
-   *          file to access
-   * @param string2
-   *          string to save
+   * @param string  String under which to save
+   * @param file    file to access
+   * @param string2 string to save
    */
   public static void setString(String string, File file, String string2) {
     FileConfiguration conf = YamlConfiguration.loadConfiguration(file);

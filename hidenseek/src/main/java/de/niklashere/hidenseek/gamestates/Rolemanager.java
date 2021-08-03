@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek.gamestates;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
@@ -42,8 +43,7 @@ public class Rolemanager {
   /**
    * Get playersize of a specific group.
    *
-   * @param string
-   *          name of the group
+   * @param string name of the group
    * @return groupsize
    */
   public static int getGroupsize(final String string) {
@@ -53,10 +53,8 @@ public class Rolemanager {
   /**
    * Methode wich managed p after he was found.
    *
-   * @param p
-   *          player who was found
-   * @param k
-   *          player who catched p.
+   * @param p player who was found
+   * @param k player who catched p.
    */
   public static void founded(final Player p, final Player k) {
     removeRole(p);
@@ -66,11 +64,10 @@ public class Rolemanager {
     InventoryManager.seekerItems(p);
     for (Player all : Bukkit.getOnlinePlayers()) {
       all.spawnParticle(Particle.FLAME, p.getLocation(), 10);
-      all.sendMessage(VariableManager
-          .message(LanguageManager.getMessage("found", all), p, k));
+      all.sendMessage(
+          VariableManager.message(LanguageManager.getMessage(Variablelist.chat_found, all), p, k));
     }
-    p.teleport(
-        Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
+    p.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
     StatsManager.addCought(p.getUniqueId(), 1);
     StatsManager.addFound(k.getUniqueId(), 1);
   }
@@ -78,8 +75,7 @@ public class Rolemanager {
   /**
    * Give points to the teams.
    * 
-   * @param winnerTeam
-   *          team who has won
+   * @param winnerTeam team who has won
    */
   public static void endGame(String winnerTeam) {
     if (winnerTeam.equalsIgnoreCase("hider")) {
@@ -100,12 +96,10 @@ public class Rolemanager {
   /**
    * Add a player to the seeker group.
    *
-   * @param p
-   *          Player to be added.
+   * @param p Player to be added.
    */
   public static void addSeeker(final Player p) {
-    if (Fileaccess.getInt("max-seeker", Fileaccess.getConfig()) - 1 >= groupsize
-        .get("seeker")) {
+    if (Fileaccess.getInt("max-seeker", Fileaccess.getConfig()) - 1 >= groupsize.get("seeker")) {
       removeRole(p);
       role.put(p, "seeker");
       groupsize.put("seeker", groupsize.get("seeker") + 1);
@@ -115,8 +109,7 @@ public class Rolemanager {
   /**
    * Add a player to the hider group.
    *
-   * @param p
-   *          Player to be added.
+   * @param p Player to be added.
    */
   public static void addHider(final Player p) {
     if (role.get(p) == null) {
@@ -128,8 +121,7 @@ public class Rolemanager {
   /**
    * Add a player to the spectator group.
    *
-   * @param p
-   *          Player to be added.
+   * @param p Player to be added.
    */
   public static void addSpectator(final Player p) {
     if (role.get(p) == null) {
@@ -141,8 +133,7 @@ public class Rolemanager {
   /**
    * Remove player form his role.
    *
-   * @param p
-   *          Player to be removed.
+   * @param p Player to be removed.
    */
   public static void removeRole(final Player p) {
     if (getRole(p) == "seeker") {
@@ -157,8 +148,7 @@ public class Rolemanager {
   /**
    * Remove a player from the seeker group.
    *
-   * @param p
-   *          Player to be removed.
+   * @param p Player to be removed.
    */
   public static void removeSeeker(final Player p) {
     role.remove(p);
@@ -169,8 +159,7 @@ public class Rolemanager {
   /**
    * Remove a player from the hider group.
    *
-   * @param p
-   *          Player to be removed.
+   * @param p Player to be removed.
    */
   public static void removeHider(final Player p) {
     role.remove(p);
@@ -180,8 +169,7 @@ public class Rolemanager {
   /**
    * Remove a player from the spectator group.
    *
-   * @param p
-   *          Player to be removed.
+   * @param p Player to be removed.
    */
   public static void removeSpectator(final Player p) {
     role.remove(p);
@@ -191,8 +179,7 @@ public class Rolemanager {
   /**
    * Get the role of the player p.
    *
-   * @param p
-   *          Player which role should be queried
+   * @param p Player which role should be queried
    * @return role of p
    */
   public static String getRole(final Player p) {
@@ -203,8 +190,7 @@ public class Rolemanager {
   /**
    * Query whether the player is a seeker.
    *
-   * @param p
-   *          Player to be queried
+   * @param p Player to be queried
    * @return is seeker
    */
   public static boolean isSeeker(final Player p) {
@@ -214,8 +200,7 @@ public class Rolemanager {
   /**
    * Query whether the player is a hider.
    *
-   * @param p
-   *          Player to be queried
+   * @param p Player to be queried
    * @return is hider
    */
   public static boolean isHider(final Player p) {
@@ -225,8 +210,7 @@ public class Rolemanager {
   /**
    * Query whether the player is a spectator.
    *
-   * @param p
-   *          Player to be queried
+   * @param p Player to be queried
    * @return is hider
    */
   public static boolean isSpectator(final Player p) {

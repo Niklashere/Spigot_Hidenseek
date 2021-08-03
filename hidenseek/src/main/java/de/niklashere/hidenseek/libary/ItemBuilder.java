@@ -43,7 +43,7 @@ public class ItemBuilder {
   /**
    * Create a new item.
    * 
-   * @param mat material of the item
+   * @param mat    material of the item
    * @param amount stacksize
    */
   public ItemBuilder(Material mat, int amount) {
@@ -75,15 +75,13 @@ public class ItemBuilder {
   /**
    * Add a potioneffect to the item.
    * 
-   * @param type Type of potioneffect
+   * @param type     Type of potioneffect
    * @param duration duration of the effect
-   * @param power power of the effect
+   * @param power    power of the effect
    * @return itembuilder
    */
-  public ItemBuilder addPotionEffect(PotionEffectType type, int duration,
-      int power) {
-    ((PotionMeta) this.meta)
-        .addCustomEffect(new PotionEffect(type, duration, power), true);
+  public ItemBuilder addPotionEffect(PotionEffectType type, int duration, int power) {
+    ((PotionMeta) this.meta).addCustomEffect(new PotionEffect(type, duration, power), true);
     return this;
   }
 
@@ -192,7 +190,7 @@ public class ItemBuilder {
    * Add an Enchantment for the item.
    * 
    * @param ench Enchantment
-   * @param lvl Level of the Enchantment
+   * @param lvl  Level of the Enchantment
    * @return itembuilder
    */
   public ItemBuilder addEnchantment(Enchantment ench, int lvl) {
@@ -225,7 +223,7 @@ public class ItemBuilder {
   /**
    * Add a banner pattern.
    * 
-   * @param color color of the pattern
+   * @param color   color of the pattern
    * @param pattern patterntype
    * @return itembuilder
    */

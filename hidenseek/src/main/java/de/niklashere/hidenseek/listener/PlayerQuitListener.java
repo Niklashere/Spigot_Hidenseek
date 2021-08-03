@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek.listener;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.LanguageManager;
@@ -31,8 +32,7 @@ public class PlayerQuitListener implements Listener {
     e.setQuitMessage(null);
 
     for (Player all : Bukkit.getOnlinePlayers()) {
-      VariableManager.message(LanguageManager.getMessage("quitmessage", all),
-          p);
+      VariableManager.message(LanguageManager.getMessage(Variablelist.chat_quitMessage, all), p);
     }
 
     if (Gamestate.isState(Gamestate.Ingame) || Gamestate.isState(Gamestate.WarmUp)) {

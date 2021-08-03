@@ -75,8 +75,7 @@ public final class UuidFetcher {
         urlConn.setReadTimeout(60 * 1000);
       }
       if (urlConn != null && urlConn.getInputStream() != null) {
-        in = new InputStreamReader(urlConn.getInputStream(),
-            Charset.defaultCharset());
+        in = new InputStreamReader(urlConn.getInputStream(), Charset.defaultCharset());
         BufferedReader bufferedReader = new BufferedReader(in);
         int cp;
         while ((cp = bufferedReader.read()) != -1) {

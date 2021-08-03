@@ -1,20 +1,15 @@
-Lobby: 20
-Full: 20
-Warmup: 20
-Ingame: 120
-End: 20
-max-players: 10
-min-players: 1
-max-seeker: 1
-skip-lobby-countdown: 8
-skip-lobby-time: 30
-spawnpoint-lobby:
-  X: -99.33487143047729
-  Y: 69.0
-  Z: 100.53326965213392
-  Yaw: -83.85
-  Pitch: 54.34994
-  World: world
+Countdown:
+  Lobby: 20
+  Full: 20
+  Warmup: 20
+  Ingame: 120
+  End: 20
+  skip-lobby: 30
+Players:
+  max: 10
+  min: 1
+  seeker: 1
+  skip-lobby: 8
 MySQL:
   host: 192.168.0.1:3306
   database: hidenseek
@@ -25,4 +20,17 @@ points:
   cought: 5
   win: 10
   play: 5
-stun-duration: 10
+items:
+  stun-duration: 10
+spawnpoint-lobby:
+  X: -99.33487143047729
+  Y: 69.0
+  Z: 100.53326965213392
+  Yaw: -83.85
+  Pitch: 54.34994
+  World: world
+supported-maps:
+  - Lobby
+  - Map-1
+  - Map-2
+  - Map-3

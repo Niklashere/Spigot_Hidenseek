@@ -20,8 +20,7 @@ public enum Gamestate {
   /**
    * Change the current gamestate.
    *
-   * @param gamestate
-   *          gamestate to which to switch
+   * @param gamestate gamestate to which to switch
    */
   public static void setState(final Gamestate gamestate) {
     Gamestate.state = gamestate;
@@ -30,8 +29,7 @@ public enum Gamestate {
   /**
    * Query whether gamestate is the current gamestate.
    *
-   * @param gamestate
-   *          Gamestate which should be queried
+   * @param gamestate Gamestate which should be queried
    * @return if state is the current gamestate
    */
   public static boolean isState(final Gamestate gamestate) {

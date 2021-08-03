@@ -26,7 +26,7 @@ public class VariableManager {
    * Replaces all variables with a suitable element.
    * 
    * @param string message
-   * @param p player
+   * @param p      player
    * @return message
    */
   public static String message(String string, Player p) {
@@ -44,8 +44,8 @@ public class VariableManager {
    * Replaces all variables with a suitable element.
    * 
    * @param string message
-   * @param p player
-   * @param k killer: player who killed p
+   * @param p      player
+   * @param k      killer: player who killed p
    * @return message
    */
   public static String message(String string, Player p, Player k) {
@@ -58,8 +58,8 @@ public class VariableManager {
    * Replaces all variables with a suitable element.
    * 
    * @param string message
-   * @param p player
-   * @param k offlineplayer
+   * @param p      player
+   * @param k      offlineplayer
    * @return message
    */
   public static String message(String string, Player p, OfflinePlayer k) {

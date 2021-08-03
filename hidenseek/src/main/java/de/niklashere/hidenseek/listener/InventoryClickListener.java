@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek.listener;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.inventorys.MapvotingInventory;
 import de.niklashere.hidenseek.inventorys.SetupInventory;
@@ -45,31 +46,26 @@ public class InventoryClickListener implements Listener {
 
     if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle().equalsIgnoreCase(VariableManager
-            .message(LanguageManager.getMessage("inventory.setup", p), p))) {
-      if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager.message(
-              LanguageManager.getMessage("setup.spawnpoint-lobby", p), p))) {
+            .message(LanguageManager.getMessage(Variablelist.inv_setup_name, p), p))) {
+      if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
+          .message(LanguageManager.getMessage(Variablelist.inv_setup_spawnpointLobby, p), p))) {
         Fileaccess.setLocation("spawnpoint-lobby", Fileaccess.getConfig(), p);
 
-      } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager.message(
-              LanguageManager.getMessage("setup.spawnpoint-seeker", p), p))) {
-        File file = new File("plugins/hidenseek/maps",
-            p.getWorld().getName() + ".yml");
+      } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
+          .message(LanguageManager.getMessage(Variablelist.inv_setup_spawnpointSeeker, p), p))) {
+        File file = new File("plugins/hidenseek/maps", p.getWorld().getName() + ".yml");
         Fileaccess.setString("world", file, p.getWorld().getName());
         Fileaccess.setLocation("spawnpoint-seeker", file, p);
 
-      } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager.message(
-              LanguageManager.getMessage("setup.spawnpoint-hider", p), p))) {
-        File file = new File("plugins/hidenseek/maps",
-            p.getWorld().getName() + ".yml");
+      } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
+          .message(LanguageManager.getMessage(Variablelist.inv_setup_spawnpointHider, p), p))) {
+        File file = new File("plugins/hidenseek/maps", p.getWorld().getName() + ".yml");
         Fileaccess.setString("world", file, p.getWorld().getName());
         Fileaccess.setLocation("spawnpoint-hider", file, p);
 
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("setup.min-players", p), p)
+              .message(LanguageManager.getMessage(Variablelist.inv_setup_minPlayers, p), p)
               + Fileaccess.getInt("min-players", Fileaccess.getConfig()))) {
         String string = "min-players";
         if (e.getClick().isRightClick()) {
@@ -96,7 +92,7 @@ public class InventoryClickListener implements Listener {
 
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("setup.max-players", p), p)
+              .message(LanguageManager.getMessage(Variablelist.inv_setup_maxPlayers, p), p)
               + Fileaccess.getInt("max-players", Fileaccess.getConfig()))) {
         String string = "max-players";
         if (e.getClick().isRightClick()) {
@@ -124,7 +120,7 @@ public class InventoryClickListener implements Listener {
 
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("setup.max-seeker", p), p)
+              .message(LanguageManager.getMessage(Variablelist.inv_setup_maxSeeker, p), p)
               + Fileaccess.getInt("max-seeker", Fileaccess.getConfig()))) {
         String string = "max-seeker";
         if (e.getClick().isRightClick()) {
@@ -152,7 +148,7 @@ public class InventoryClickListener implements Listener {
 
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("setup.ingametime", p), p)
+              .message(LanguageManager.getMessage(Variablelist.inv_setup_inGameTime, p), p)
               + Fileaccess.getInt("Ingame", Fileaccess.getConfig()))) {
         String string = "Ingame";
         if (e.getClick().isRightClick()) {
@@ -181,74 +177,63 @@ public class InventoryClickListener implements Listener {
       }
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle().equalsIgnoreCase(VariableManager
-            .message(LanguageManager.getMessage("inventory.hint", p), p))) {
-      if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("hint.Firework", p), p))) {
-        FireworkEffect effect = FireworkEffect.builder().withColor(Color.GREEN)
-            .withFade(Color.RED).with(FireworkEffect.Type.BURST).trail(false)
-            .flicker(true).build();
-        Firework fw = (Firework) p.getWorld().spawnEntity(p.getLocation(),
-            EntityType.FIREWORK);
+            .message(LanguageManager.getMessage(Variablelist.inv_hint_name, p), p))) {
+      if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
+          .message(LanguageManager.getMessage(Variablelist.inv_hint_Firework, p), p))) {
+        FireworkEffect effect = FireworkEffect.builder().withColor(Color.GREEN).withFade(Color.RED)
+            .with(FireworkEffect.Type.BURST).trail(false).flicker(true).build();
+        Firework fw = (Firework) p.getWorld().spawnEntity(p.getLocation(), EntityType.FIREWORK);
         FireworkMeta meta = fw.getFireworkMeta();
         meta.addEffect(effect);
         meta.setPower(1);
         fw.setFireworkMeta(meta);
 
-      } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("hint.Meow", p), p))) {
+      } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(
+          VariableManager.message(LanguageManager.getMessage(Variablelist.inv_hint_Meow, p), p))) {
         for (Player all : Bukkit.getOnlinePlayers()) {
           Location pl = p.getLocation();
-          Location l = new Location(pl.getWorld(), pl.getX(), pl.getY() + 1,
-              pl.getZ());
+          Location l = new Location(pl.getWorld(), pl.getX(), pl.getY() + 1, pl.getZ());
           all.playSound(l, Sound.ENTITY_CAT_BEG_FOR_FOOD, 5, 1);
           all.spawnParticle(Particle.HEART, l, 3);
         }
 
-      } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("hint.Explosion", p), p))) {
+      } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
+          .message(LanguageManager.getMessage(Variablelist.inv_hint_Explosion, p), p))) {
         for (Player all : Bukkit.getOnlinePlayers()) {
           Location pl = p.getLocation();
-          Location l = new Location(pl.getWorld(), pl.getX(), pl.getY() + 1,
-              pl.getZ());
+          Location l = new Location(pl.getWorld(), pl.getX(), pl.getY() + 1, pl.getZ());
           all.playSound(l, Sound.ENTITY_GENERIC_EXPLODE, 5, 1);
           all.spawnParticle(Particle.EXPLOSION_LARGE, l, 3);
         }
       }
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
-        && p.getOpenInventory().getTitle()
-            .equalsIgnoreCase(VariableManager.message(
-                LanguageManager.getMessage("inventory.mapvoting", p), p))) {
-      ArrayList<File> maps = VoteManager
-          .rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
+        && p.getOpenInventory().getTitle().equalsIgnoreCase(VariableManager
+            .message(LanguageManager.getMessage(Variablelist.inv_mapvoting_Name, p), p))) {
+      ArrayList<File> maps = VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
       if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage(
-              "map." + maps.get(0).getName().replace(".yml", ""), p)))) {
+          .equalsIgnoreCase(VariableManager.message(
+              LanguageManager.getMessage("map." + maps.get(0).getName().replace(".yml", ""), p)))) {
         VoteManager.addVote(maps.get(0), p);
         MapvotingInventory.openInventory(p);
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage(
-              "map." + maps.get(1).getName().replace(".yml", ""), p)))) {
+          .equalsIgnoreCase(VariableManager.message(
+              LanguageManager.getMessage("map." + maps.get(1).getName().replace(".yml", ""), p)))) {
         VoteManager.addVote(maps.get(1), p);
         MapvotingInventory.openInventory(p);
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager.message(LanguageManager.getMessage(
-              "map." + maps.get(2).getName().replace(".yml", ""), p)))) {
+          .equalsIgnoreCase(VariableManager.message(
+              LanguageManager.getMessage("map." + maps.get(2).getName().replace(".yml", ""), p)))) {
         VoteManager.addVote(maps.get(2), p);
         MapvotingInventory.openInventory(p);
       }
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle().equalsIgnoreCase(VariableManager
-            .message(LanguageManager.getMessage("inventory.role", p), p))) {
-      if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("role.hider", p), p))) {
+            .message(LanguageManager.getMessage(Variablelist.inv_role_name, p), p))) {
+      if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(
+          VariableManager.message(LanguageManager.getMessage(Variablelist.inv_role_hider, p), p))) {
         Rolemanager.addHider(p);
-      } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(VariableManager
-              .message(LanguageManager.getMessage("role.seeker", p), p))) {
+      } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(VariableManager
+          .message(LanguageManager.getMessage(Variablelist.inv_role_seeker, p), p))) {
         Rolemanager.addSeeker(p);
       }
     }

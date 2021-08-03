@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek.listener;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
@@ -38,19 +39,16 @@ public class PlayerJoinListener implements Listener {
     LanguageManager.addLanguage(p, file[0]);
     for (Player all : Bukkit.getOnlinePlayers()) {
       all.sendMessage(VariableManager
-          .message(LanguageManager.getMessage("joinmessage", all), p));
+          .message(LanguageManager.getMessage(Variablelist.chat_joinMessage, all), p));
     }
 
-    if (Gamestate.isState(Gamestate.WarmUp)
-        || Gamestate.isState(Gamestate.Ingame)) {
+    if (Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame)) {
       Rolemanager.addSpectator(p);
-      p.teleport(
-          Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
+      p.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
       InventoryManager.spectatorItems(p);
 
     } else {
-      p.teleport(
-          Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig()));
+      p.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig()));
       InventoryManager.lobbyItems(p);
 
     }

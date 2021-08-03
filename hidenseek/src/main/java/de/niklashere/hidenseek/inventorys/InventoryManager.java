@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek.inventorys;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 import de.niklashere.hidenseek.libary.LanguageManager;
@@ -26,8 +27,7 @@ public class InventoryManager {
   /**
    * Clears player p inventory.
    *
-   * @param p
-   *          Player who should have their inventory cleared.
+   * @param p Player who should have their inventory cleared.
    */
   public static void clearInv(final Player p) {
     p.getInventory().clear();
@@ -37,20 +37,19 @@ public class InventoryManager {
   /**
    * Give the lobby items to player p.
    *
-   * @param p
-   *          Player to receive lobby items.
+   * @param p Player to receive lobby items.
    */
   public static void lobbyItems(final Player p) {
     if (Gamestate.isState(Gamestate.Lobby)) {
       p.getInventory().setItem(1,
           new ItemBuilder(Material.CHEST)
               .setDisplayName(VariableManager
-                  .message(LanguageManager.getMessage("item.chest", p), p))
+                  .message(LanguageManager.getMessage(Variablelist.items_lobby_chest, p), p))
               .build());
       p.getInventory().setItem(2,
           new ItemBuilder(Material.RED_BANNER)
               .setDisplayName(VariableManager
-                  .message(LanguageManager.getMessage("item.red_banner", p), p))
+                  .message(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p), p))
               .build());
 
     }
@@ -60,56 +59,50 @@ public class InventoryManager {
   /**
    * Give the seeker items to player p.
    *
-   * @param p
-   *          Player to receive seeker items.
+   * @param p Player to receive seeker items.
    */
   public static void seekerItems(final Player p) {
     p.getInventory().setItem(0,
         new ItemBuilder(Material.IRON_SWORD)
             .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage("item.sword", p), p))
+                .message(LanguageManager.getMessage(Variablelist.items_seeker_sword, p), p))
             .build());
-    p.getInventory().setItem(1,
-        new ItemBuilder(Material.BOW).setUnbreakable(true)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage("item.bow", p), p))
-            .build());
-    p.getInventory().setItem(9,
-        new ItemBuilder(Material.ARROW).setAmount(2).build());
+    p.getInventory()
+        .setItem(1,
+            new ItemBuilder(Material.BOW).setUnbreakable(true)
+                .setDisplayName(VariableManager
+                    .message(LanguageManager.getMessage(Variablelist.items_seeker_bow, p), p))
+                .build());
+    p.getInventory().setItem(9, new ItemBuilder(Material.ARROW).setAmount(2).build());
 
   }
 
   /**
    * Give the hider items to player p.
    *
-   * @param p
-   *          Player to receive hider items.
+   * @param p Player to receive hider items.
    */
   public static void hiderItems(final Player p) {
-    p.getInventory().setItem(0,
-        new ItemBuilder(Material.BLAZE_ROD).setUnbreakable(true)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage("item.stun", p), p))
-            .build());
-    p.getInventory().setItem(1,
-        new ItemBuilder(Material.BLAZE_POWDER)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage("item.hint", p), p))
-            .build());
+    p.getInventory()
+        .setItem(0,
+            new ItemBuilder(Material.BLAZE_ROD).setUnbreakable(true)
+                .setDisplayName(VariableManager
+                    .message(LanguageManager.getMessage(Variablelist.items_hider_stun, p), p))
+                .build());
+    p.getInventory()
+        .setItem(1,
+            new ItemBuilder(Material.BLAZE_POWDER)
+                .setDisplayName(VariableManager
+                    .message(LanguageManager.getMessage(Variablelist.items_hider_hint, p), p))
+                .build());
   }
 
   /**
    * Give the spectator items to player p.
    *
-   * @param p
-   *          Player to receive spectator items.
+   * @param p Player to receive spectator items.
    */
   public static void spectatorItems(final Player p) {
-    p.getInventory().setItem(0,
-        new ItemBuilder(Material.CHEST)
-            .setDisplayName(VariableManager
-                .message(LanguageManager.getMessage("item.spectator", p), p))
-            .build());
 
   }
 }

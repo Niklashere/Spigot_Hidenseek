@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek.listener;
 
 import de.niklashere.hidenseek.App;
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.ItemBuilder;
@@ -28,8 +29,7 @@ public class EntityDamageByEntityListener implements Listener {
   /**
    * Called when the event occurs.
    * 
-   * @param e
-   *          event
+   * @param e event
    */
   @EventHandler
   public void onDamage(EntityDamageByEntityEvent e) {
@@ -39,8 +39,7 @@ public class EntityDamageByEntityListener implements Listener {
       Player k = (Player) e.getDamager();
 
       damage(p, k);
-    } else if (e.getEntity() instanceof Player
-        && e.getDamager() instanceof Arrow) {
+    } else if (e.getEntity() instanceof Player && e.getDamager() instanceof Arrow) {
       Arrow arrow = (Arrow) e.getDamager();
       if (arrow.getShooter() instanceof Player) {
         Player p = (Player) e.getEntity();
@@ -54,25 +53,21 @@ public class EntityDamageByEntityListener implements Listener {
   /**
    * Manage the case when a player harms another player.
    * 
-   * @param p
-   *          player who was damaged
-   * @param k
-   *          player who damaged p
+   * @param p player who was damaged
+   * @param k player who damaged p
    */
   private static void damage(Player p, Player k) {
     if (Rolemanager.isSeeker(k) && !Rolemanager.isSeeker(p)) {
       Rolemanager.founded(p, k);
 
-    } else if (k.getInventory().getItemInMainHand().getItemMeta()
-        .getDisplayName().equalsIgnoreCase(VariableManager
-            .message(LanguageManager.getMessage("item.stun", p), p))) {
-      p.addPotionEffect(
-          new PotionEffect(PotionEffectType.BLINDNESS, 3 * 20, 5));
+    } else if (k.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase(
+        VariableManager.message(LanguageManager.getMessage(Variablelist.items_hider_stun, p), p))) {
+      p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3 * 20, 5));
       p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 3 * 20, 5));
-      p.sendMessage(VariableManager
-          .message(LanguageManager.getMessage("stunned", p), p, k));
-      k.sendMessage(VariableManager
-          .message(LanguageManager.getMessage("stunned", p), p, k));
+      p.sendMessage(
+          VariableManager.message(LanguageManager.getMessage(Variablelist.chat_stunned, p), p, k));
+      k.sendMessage(
+          VariableManager.message(LanguageManager.getMessage(Variablelist.chat_stunned, p), p, k));
       int i = Fileaccess.getInt("stun-duration", Fileaccess.getConfig());
       new BukkitRunnable() {
         @Override
@@ -80,13 +75,13 @@ public class EntityDamageByEntityListener implements Listener {
           p.getInventory().setItem(0,
               new ItemBuilder(Material.STICK).setUnbreakable(true)
                   .setDisplayName(VariableManager.message(
-                      LanguageManager.getMessage("item.stun", p), p) + " " + i)
+                      LanguageManager.getMessage(Variablelist.items_hider_stun, p), p) + " " + i)
                   .build());
           if (i == 0) {
             p.getInventory().setItem(0,
                 new ItemBuilder(Material.BLAZE_ROD).setUnbreakable(true)
                     .setDisplayName(VariableManager
-                        .message(LanguageManager.getMessage("item.stun", p), p))
+                        .message(LanguageManager.getMessage(Variablelist.items_hider_stun, p), p))
                     .build());
             cancel();
           }
