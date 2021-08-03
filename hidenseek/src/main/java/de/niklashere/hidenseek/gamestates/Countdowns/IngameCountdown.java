@@ -1,47 +1,77 @@
 package de.niklashere.hidenseek.gamestates.countdowns;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import de.niklashere.hidenseek.App;
-import de.niklashere.hidenseek.gamestates.GamestateManager;
+import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+
+/**
+ * Countdown functionality during the game phase.
+ *
+ * @author Niklashere
+ * @since 31-07-2021
+ */
 public class IngameCountdown {
-	public static int task;
-  static int time = Fileaccess.getInt("Ingame", Fileaccess.getConfig()) + 1;
+  /**
+   * Countdown length configured in config file.
+   */
+  private static int time = Fileaccess.getInt("Ingame", Fileaccess.getConfig())
+      + 1;
 
-    public static void startCountdown() {
-      new BukkitRunnable() {
+  /**
+   * Method to start the Ingame countdown.
+   */
+  public static void startIngameCD() {
+    startCountdown();
+    Gamestate.setState(Gamestate.Ingame);
+  }
 
-			@Override
-			public void run() {
-        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("min-players", Fileaccess.getConfig()) && Rolemanager.getGroupsize("hider") >= 1) {
+  /**
+   * Start Ingamecountdown.
+   */
+  private static void startCountdown() {
+    new BukkitRunnable() {
+
+      @Override
+      public void run() {
+        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("min-players",
+            Fileaccess.getConfig()) && Rolemanager.getGroupsize("hider") >= 1) {
           time--;
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
-            int i = time%60;
-            if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5 || time == 3 || time == 2) {
-              all.sendMessage(VariableManager.message(LanguageManager.getMessage("countdown-ingame", all).replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(LanguageManager.getMessage("second-plural", all)))));
-              
+            int i = time % 60;
+            if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5
+                || time == 3 || time == 2) {
+              all.sendMessage(VariableManager
+                  .message(LanguageManager.getMessage("countdown-ingame", all)
+                      .replaceAll("%t", time + "")
+                      .replaceAll("%s", VariableManager.message(
+                          LanguageManager.getMessage("second-plural", all)))));
+
             } else if (time == 1) {
-              all.sendMessage(VariableManager.message(LanguageManager.getMessage("countdown-ingame", all).replaceAll("%t", time + "").replaceAll("%s", VariableManager.message(LanguageManager.getMessage("second-singular", all)))));
+              all.sendMessage(VariableManager.message(LanguageManager
+                  .getMessage("countdown-ingame", all)
+                  .replaceAll("%t", time + "")
+                  .replaceAll("%s", VariableManager.message(
+                      LanguageManager.getMessage("second-singular", all)))));
             }
           }
           if (time == 1) {
-            GamestateManager.startEndCD();
+            EndCountdown.startEndCD();
             cancel();
 
           }
         } else {
-          GamestateManager.startEndCD();
+          EndCountdown.startEndCD();
           cancel();
         }
       }
-		}.runTaskTimer(App.instance, 0L, 20);
+    }.runTaskTimer(App.instance, 0L, 20);
   }
 }

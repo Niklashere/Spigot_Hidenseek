@@ -1,18 +1,25 @@
 package de.niklashere.hidenseek.commands;
 
+import de.niklashere.hidenseek.inventorys.SetupInventory;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.niklashere.hidenseek.inventorys.SetupInventory;
-
+/**
+ * Setup command which allows admin to setup this plugin.
+ *
+ * @author Niklashere
+ * @since 01.08.2021
+ */
 public class SetupCommand implements CommandExecutor {
 
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		Player p = (Player) sender;
-		SetupInventory.openInventory(p);
-		return false;
-		
-	}
+  @Override
+  public final boolean onCommand(final CommandSender sender, final Command cmd,
+      final String label, final String[] args) {
+    Player p = (Player) sender;
+    SetupInventory.openInventory(p);
+    return false;
+  }
 }
