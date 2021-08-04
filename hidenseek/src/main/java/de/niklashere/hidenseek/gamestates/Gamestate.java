@@ -10,7 +10,7 @@ public enum Gamestate {
   /**
    * Definition of current gamestates.
    */
-  Lobby, Full, WarmUp, Ingame, End;
+  Lobby, WarmUp, Ingame, End;
 
   /**
    * Saves current gamestate.

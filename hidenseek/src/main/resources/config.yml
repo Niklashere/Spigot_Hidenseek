@@ -11,7 +11,7 @@ Players:
   seeker: 1
   skip-lobby: 8
 MySQL:
-  host: 192.168.0.1:3306
+  host: 127.0.0.1:3306
   database: hidenseek
   user: hidenseek
   password: password

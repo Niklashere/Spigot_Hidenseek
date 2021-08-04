@@ -39,6 +39,7 @@ public class DE {
     addMessage(Variablelist.chat_countdownWarmup, "%pc%Das Spiel startet in %cs%%t% %s%%cp%.");
     addMessage(Variablelist.chat_countdownIngame, "%pc%Das Spiel startet in %cs%%t% %s%%cp%.");
     addMessage(Variablelist.chat_countdownEnd, "%pc%Das Spiel startet in %cs%%t% %s%%cp%.");
+    addMessage(Variablelist.chat_skiplobby, "%pc%Maximale Spielerzahl erreicht.");
     addMessage(Variablelist.chat_secondSingular, "Sekunde");
     addMessage(Variablelist.chat_secondPlural, "Sekunden");
     addMessage(Variablelist.chat_missingPermission, "%pc%Du hast nicht genug Rechte.");

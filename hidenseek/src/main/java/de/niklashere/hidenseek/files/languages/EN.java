@@ -39,6 +39,7 @@ public class EN {
     addMessage(Variablelist.chat_countdownWarmup, "%pc%The game starts in %cs%%t% %s%%cp%.");
     addMessage(Variablelist.chat_countdownIngame, "%pc%The game ends in %cs%%t% %s%%cp%.");
     addMessage(Variablelist.chat_countdownEnd, "%pc%Server reboots in %cs%%t% %s%%cp%.");
+    addMessage(Variablelist.chat_skiplobby, "%pc%Max Player reachead.");
     addMessage(Variablelist.chat_secondSingular, "second");
     addMessage(Variablelist.chat_secondPlural, "seconds");
     addMessage(Variablelist.chat_missingPermission, "%pc%You don't have enough permission.");
