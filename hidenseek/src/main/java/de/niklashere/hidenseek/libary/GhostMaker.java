@@ -21,7 +21,7 @@ public class GhostMaker {
   /**
    * Make a player translucent like a ghost.
    * 
-   * @param p player, who should get translucent
+   * @param p        player, who should get translucent
    * @param teamName name of the team, who can see him translucent
    */
   public static void addGhost(Player p, String teamName) {
@@ -31,6 +31,7 @@ public class GhostMaker {
     team.setAllowFriendlyFire(true);
     team.setCanSeeFriendlyInvisibles(true);
     team.setDisplayName("Ghost");
+    team.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.NEVER);
     p.setScoreboard(board);
     team.addEntry(p.getName());
   }

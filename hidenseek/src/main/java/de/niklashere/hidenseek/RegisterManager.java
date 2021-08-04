@@ -8,7 +8,6 @@ import de.niklashere.hidenseek.files.languages.EN;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.listener.BlockBreakListener;
 import de.niklashere.hidenseek.listener.BlockPlaceListener;
-import de.niklashere.hidenseek.listener.EntityChangeBlockListener;
 import de.niklashere.hidenseek.listener.EntityDamageByEntityListener;
 import de.niklashere.hidenseek.listener.EntityDamageListener;
 import de.niklashere.hidenseek.listener.EntityShootBowListener;
@@ -26,7 +25,6 @@ import de.niklashere.hidenseek.listener.ServerListPingListener;
 import de.niklashere.hidenseek.listener.WeatherChangeListener;
 
 import org.bukkit.Bukkit;
-import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.plugin.PluginManager;
 
 /**
@@ -53,7 +51,6 @@ public class RegisterManager {
     PluginManager pm = Bukkit.getPluginManager();
     pm.registerEvents(new BlockBreakListener(), plugin);
     pm.registerEvents(new BlockPlaceListener(), plugin);
-    pm.registerEvents(new EntityChangeBlockListener(), plugin);
     pm.registerEvents(new EntityDamageByEntityListener(), plugin);
     pm.registerEvents(new EntityDamageListener(), plugin);
     pm.registerEvents(new EntityShootBowListener(), plugin);

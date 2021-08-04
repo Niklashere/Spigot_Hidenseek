@@ -30,9 +30,6 @@ import org.bukkit.potion.PotionEffectType;
  */
 public class PlayerJoinListener implements Listener {
 
-  public static HashMap<Player, PropManager> props = new HashMap<>();
-
-
   /**
    * Called when the event occurs.
    * 
@@ -41,13 +38,11 @@ public class PlayerJoinListener implements Listener {
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent e) {
     Player p = e.getPlayer();
-    p.setCollidable(false);
+    for (PotionEffect effect : p.getActivePotionEffects()) {
+      p.removePotionEffect(effect.getType());
+    }
     InventoryManager.clearInv(p);
     e.setJoinMessage(null);
-    PropManager prop = new PropManager(p);
-    prop.setProp(Material.STONE);
-    prop.follow(p);
-    props.put(p, prop);
     for (Player all : Bukkit.getOnlinePlayers()) {
       all.sendMessage(LanguageManager.getMessage(Variablelist.chat_joinMessage, all, p, null));
     }

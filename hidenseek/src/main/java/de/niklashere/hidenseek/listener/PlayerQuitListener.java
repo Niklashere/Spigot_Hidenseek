@@ -31,8 +31,8 @@ public class PlayerQuitListener implements Listener {
     Player p = e.getPlayer();
     e.setQuitMessage(null);
 
-    PropManager props = PlayerJoinListener.props.get(p);
-    props.deleteBallon();
+    PropManager props = PropManager.propsList.get(p);
+    props.stopfollow();
 
     for (Player all : Bukkit.getOnlinePlayers()) {
       LanguageManager.getMessage(Variablelist.chat_quitMessage, all, p, null);

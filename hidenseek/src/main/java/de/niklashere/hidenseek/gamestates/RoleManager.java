@@ -4,6 +4,7 @@ import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.PropManager;
 import de.niklashere.hidenseek.libary.StatsManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 
 /**
  * Rolemanager wich manages player Roles.
@@ -98,9 +100,13 @@ public class RoleManager {
    * @param k player who catched p.
    */
   public static void founded(final Player p, final Player k) {
+    for (PotionEffect effect : p.getActivePotionEffects()) {
+      p.removePotionEffect(effect.getType());
+    }
     playerList.get(getPlayer(p)).setHider(false);
     playerList.get(getPlayer(p)).setSeeker(true);
-
+    PropManager props = PropManager.propsList.get(p);
+    props.stopfollow();
     InventoryManager.clearInv(p);
     InventoryManager.seekerItems(p);
     for (Player all : Bukkit.getOnlinePlayers()) {
