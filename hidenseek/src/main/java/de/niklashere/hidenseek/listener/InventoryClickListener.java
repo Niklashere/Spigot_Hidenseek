@@ -1,7 +1,8 @@
 package de.niklashere.hidenseek.listener;
 
 import de.niklashere.hidenseek.files.languages.Variablelist;
-import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.gamestates.PlayerData;
+import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.inventorys.MapvotingInventory;
 import de.niklashere.hidenseek.inventorys.SetupInventory;
 import de.niklashere.hidenseek.libary.Fileaccess;
@@ -220,12 +221,27 @@ public class InventoryClickListener implements Listener {
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle()
             .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_name, p))) {
+      // if (e.getCurrentItem().getItemMeta().getDisplayName()
+      // .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_hider,
+      // p))) {
+
+      // }
+
       if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_hider, p))) {
-        Rolemanager.addHider(p);
-      } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_seeker, p))) {
-        Rolemanager.addSeeker(p);
+        if (RoleManager.getSeekers()
+            .size() <= Fileaccess.getInt("max-seeker", Fileaccess.getConfig()) - 1) {
+          if (RoleManager.playerList.get(RoleManager.getPlayer(p)) == null) {
+            PlayerData playerData = new PlayerData(p);
+            playerData.setHider(true);
+            RoleManager.playerList.add(playerData);
+
+          } else {
+            RoleManager.playerList.get(RoleManager.getPlayer(p)).setHider(false);
+            RoleManager.playerList.get(RoleManager.getPlayer(p)).setSeeker(true);
+
+          }
+        }
       }
     }
   }

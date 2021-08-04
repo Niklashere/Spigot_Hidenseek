@@ -7,7 +7,7 @@ import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.StatsManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
@@ -17,36 +17,78 @@ import org.bukkit.entity.Player;
  * Rolemanager wich manages player Roles.
  *
  * @author Niklashere
- * @since 01.08.2021
+ * @since 04.08.2021
  */
-public class Rolemanager {
-  /**
-   * Saves the role of a player.
-   */
-  private static HashMap<Player, String> role = new HashMap<>();
-  /**
-   * Saves the size of all roles.
-   */
-  private static HashMap<String, Integer> groupsize = new HashMap<>();
+public class RoleManager {
+
+  public static ArrayList<PlayerData> playerList = new ArrayList<PlayerData>();
 
   /**
-   * Initilize roles.
+   * Get the position in the arraylist from player p.
+   * 
+   * @param p player
+   * @return position
    */
-  public static void initialize() {
-    groupsize.put("seeker", 0);
-    groupsize.put("hider", 0);
-    groupsize.put("spectator", 0);
-
+  public static int getPlayer(Player p) {
+    int i = 0;
+    while (playerList.size() - 1 >= i) {
+      if (playerList.get(i).getPlayer() == p) {
+        return i;
+      }
+      i++;
+    }
+    return 0;
   }
 
   /**
-   * Get playersize of a specific group.
-   *
-   * @param string name of the group
-   * @return groupsize
+   * Get a list of all seekers.
+   * 
+   * @return Arraylist of seekers
    */
-  public static int getGroupsize(final String string) {
-    return groupsize.get(string);
+  public static ArrayList<PlayerData> getSeekers() {
+    int i = 0;
+    ArrayList<PlayerData> seekers = new ArrayList<>();
+    while (playerList.size() - 1 >= i) {
+      if (playerList.get(i).isSeeker()) {
+        seekers.add(playerList.get(i));
+      }
+      i++;
+    }
+    return seekers;
+  }
+
+  /**
+   * Get a list of all hiders.
+   * 
+   * @return Arraylist of hiders
+   */
+  public static ArrayList<PlayerData> getHiders() {
+    int i = 0;
+    ArrayList<PlayerData> hiders = new ArrayList<>();
+    while (playerList.size() - 1 >= i) {
+      if (playerList.get(i).isHider()) {
+        hiders.add(playerList.get(i));
+      }
+      i++;
+    }
+    return hiders;
+  }
+
+  /**
+   * Get a list of all spectators.
+   * 
+   * @return Arraylist of spectators
+   */
+  public static ArrayList<PlayerData> getSpectators() {
+    int i = 0;
+    ArrayList<PlayerData> spectator = new ArrayList<>();
+    while (playerList.size() - 1 >= i) {
+      if (playerList.get(i).isSpectator()) {
+        spectator.add(playerList.get(i));
+      }
+      i++;
+    }
+    return spectator;
   }
 
   /**
@@ -56,9 +98,9 @@ public class Rolemanager {
    * @param k player who catched p.
    */
   public static void founded(final Player p, final Player k) {
-    removeRole(p);
-    role.put(p, "seeker");
-    groupsize.put("seeker", groupsize.get("seeker") + 1);
+    playerList.get(getPlayer(p)).setHider(false);
+    playerList.get(getPlayer(p)).setSeeker(true);
+
     InventoryManager.clearInv(p);
     InventoryManager.seekerItems(p);
     for (Player all : Bukkit.getOnlinePlayers()) {
@@ -77,141 +119,23 @@ public class Rolemanager {
    */
   public static void endGame(String winnerTeam) {
     if (winnerTeam.equalsIgnoreCase("hider")) {
-      for (Player all : Bukkit.getOnlinePlayers()) {
-        if (Rolemanager.isHider(all)) {
+      int i = 0;
+      while (playerList.size() - 1 >= i) {
+        Player all = playerList.get(i).getPlayer();
+        if (playerList.get(i).isHider()) {
           StatsManager.addWins(all.getUniqueId(), 1);
         }
+        i++;
       }
     } else if (winnerTeam.equalsIgnoreCase("seeker")) {
-      for (Player all : Bukkit.getOnlinePlayers()) {
-        if (Rolemanager.isSeeker(all)) {
+      int i = 0;
+      while (playerList.size() - 1 >= i) {
+        Player all = playerList.get(i).getPlayer();
+        if (playerList.get(i).isSeeker()) {
           StatsManager.addWins(all.getUniqueId(), 1);
         }
+        i++;
       }
     }
-  }
-
-  /**
-   * Add a player to the seeker group.
-   *
-   * @param p Player to be added.
-   */
-  public static void addSeeker(final Player p) {
-    if (Fileaccess.getInt("max-seeker", Fileaccess.getConfig()) - 1 >= groupsize.get("seeker")) {
-      removeRole(p);
-      role.put(p, "seeker");
-      groupsize.put("seeker", groupsize.get("seeker") + 1);
-    }
-  }
-
-  /**
-   * Add a player to the hider group.
-   *
-   * @param p Player to be added.
-   */
-  public static void addHider(final Player p) {
-    if (role.get(p) == null) {
-      role.put(p, "hider");
-      groupsize.put("hider", groupsize.get("hider") + 1);
-    }
-  }
-
-  /**
-   * Add a player to the spectator group.
-   *
-   * @param p Player to be added.
-   */
-  public static void addSpectator(final Player p) {
-    if (role.get(p) == null) {
-      role.put(p, "spectator");
-      groupsize.put("spectator", groupsize.get("spectator") + 1);
-    }
-  }
-
-  /**
-   * Remove player form his role.
-   *
-   * @param p Player to be removed.
-   */
-  public static void removeRole(final Player p) {
-    if (getRole(p) == "seeker") {
-      Rolemanager.removeSeeker(p);
-    } else if (getRole(p) == "hider") {
-      Rolemanager.removeHider(p);
-    } else if (getRole(p) == "spectator") {
-      Rolemanager.removeSpectator(p);
-    }
-  }
-
-  /**
-   * Remove a player from the seeker group.
-   *
-   * @param p Player to be removed.
-   */
-  public static void removeSeeker(final Player p) {
-    role.remove(p);
-    groupsize.put("seeker", groupsize.get("seeker") - 1);
-
-  }
-
-  /**
-   * Remove a player from the hider group.
-   *
-   * @param p Player to be removed.
-   */
-  public static void removeHider(final Player p) {
-    role.remove(p);
-    groupsize.put("hider", groupsize.get("hider") - 1);
-  }
-
-  /**
-   * Remove a player from the spectator group.
-   *
-   * @param p Player to be removed.
-   */
-  public static void removeSpectator(final Player p) {
-    role.remove(p);
-    groupsize.put("spectator", groupsize.get("spectator") - 1);
-  }
-
-  /**
-   * Get the role of the player p.
-   *
-   * @param p Player which role should be queried
-   * @return role of p
-   */
-  public static String getRole(final Player p) {
-    return role.get(p);
-
-  }
-
-  /**
-   * Query whether the player is a seeker.
-   *
-   * @param p Player to be queried
-   * @return is seeker
-   */
-  public static boolean isSeeker(final Player p) {
-    return role.get(p) == "seeker";
-  }
-
-  /**
-   * Query whether the player is a hider.
-   *
-   * @param p Player to be queried
-   * @return is hider
-   */
-  public static boolean isHider(final Player p) {
-    return role.get(p) == "hider";
-  }
-
-  /**
-   * Query whether the player is a spectator.
-   *
-   * @param p Player to be queried
-   * @return is hider
-   */
-  public static boolean isSpectator(final Player p) {
-    return role.get(p) == "spectator";
   }
 }

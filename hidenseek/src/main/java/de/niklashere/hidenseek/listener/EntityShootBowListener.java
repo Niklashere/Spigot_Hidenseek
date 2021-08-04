@@ -1,6 +1,6 @@
 package de.niklashere.hidenseek.listener;
 
-import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 
 import org.bukkit.Material;
@@ -27,7 +27,7 @@ public class EntityShootBowListener implements Listener {
     e.setCancelled(false);
     if (e.getEntity() instanceof Player) {
       Player p = (Player) e.getEntity();
-      if (Rolemanager.isSeeker(p)) {
+      if (RoleManager.playerList.get(RoleManager.getPlayer(p)).isSeeker()) {
         p.getInventory().addItem(new ItemBuilder(Material.ARROW).build());
       }
     }

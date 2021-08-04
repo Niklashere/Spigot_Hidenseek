@@ -2,10 +2,13 @@ package de.niklashere.hidenseek.listener;
 
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
-import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.gamestates.Gamestate;
+import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 import de.niklashere.hidenseek.libary.LanguageManager;
+
+import java.util.HashMap;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
@@ -24,6 +27,8 @@ import org.bukkit.scheduler.BukkitRunnable;
  * @since 01.08.2021
  */
 public class EntityDamageByEntityListener implements Listener {
+
+  private static HashMap<Player, Integer> timer = new HashMap<>();
 
   /**
    * Called when the event occurs.
@@ -56,35 +61,39 @@ public class EntityDamageByEntityListener implements Listener {
    * @param k player who damaged p
    */
   private static void damage(Player p, Player k) {
-    if (Rolemanager.isSeeker(k) && !Rolemanager.isSeeker(p)) {
-      Rolemanager.founded(p, k);
+    if (Gamestate.isState(Gamestate.Ingame)) {
+      if (RoleManager.playerList.get(RoleManager.getPlayer(k)).isSeeker()
+          && !RoleManager.playerList.get(RoleManager.getPlayer(p)).isSeeker()) {
+        RoleManager.founded(p, k);
 
-    } else if (k.getInventory().getItemInMainHand().getItemMeta().getDisplayName()
-        .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.items_hider_stun, p))) {
-      p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3 * 20, 5));
-      p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 3 * 20, 5));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.chat_stunned, p, k));
-      k.sendMessage(LanguageManager.getMessage(Variablelist.chat_stunned, p, k));
-      int i = Fileaccess.getInt("stun-duration", Fileaccess.getConfig());
-      new BukkitRunnable() {
-        @Override
-        public void run() {
-          p.getInventory().setItem(0,
-              new ItemBuilder(Material.STICK).setUnbreakable(true)
-                  .setDisplayName(
-                      LanguageManager.getMessage(Variablelist.items_hider_stun, p) + " " + i)
-                  .build());
-          if (i == 0) {
-            p.getInventory().setItem(0,
-                new ItemBuilder(Material.BLAZE_ROD).setUnbreakable(true)
-                    .setDisplayName(LanguageManager.getMessage(Variablelist.items_hider_stun, p))
+      } else if (k.getInventory().getItemInMainHand().getItemMeta().getDisplayName()
+          .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.items_hider_stun, p))) {
+        p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3 * 20, 5));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 3 * 20, 5));
+        p.sendMessage(LanguageManager.getMessage(Variablelist.chat_stunned, p, k));
+        k.sendMessage(LanguageManager.getMessage(Variablelist.chat_stunned, p, k));
+        timer.put(k, Fileaccess.getInt("items.stun-duration", Fileaccess.getConfig()));
+        new BukkitRunnable() {
+          @Override
+          public void run() {
+            k.getInventory().setItem(0,
+                new ItemBuilder(Material.STICK).setUnbreakable(true)
+                    .setDisplayName(LanguageManager.getMessage(Variablelist.items_hider_stun, p)
+                        + " " + timer.get(k))
                     .build());
-            cancel();
+            if (timer.get(k) == 0) {
+              k.getInventory().setItem(0,
+                  new ItemBuilder(Material.BLAZE_ROD).setUnbreakable(true)
+                      .setDisplayName(LanguageManager.getMessage(Variablelist.items_hider_stun, p))
+                      .build());
+              cancel();
+            }
+            timer.put(k, timer.get(k) - 1);
+
           }
+        }.runTaskTimer(App.instance, 0, 20);
 
-        }
-      }.runTaskTimer(App.instance, 0, 20);
-
+      }
     }
   }
 }

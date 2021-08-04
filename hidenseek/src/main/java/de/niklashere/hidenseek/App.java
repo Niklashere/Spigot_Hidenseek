@@ -1,9 +1,9 @@
 package de.niklashere.hidenseek;
 
-import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.gamestates.countdowns.LobbyCountdown;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.MysqlManager;
+import de.niklashere.hidenseek.libary.VoteManager;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class App extends JavaPlugin {
       a++;
     }
     Fileaccess.loadFolder("maps");
-
+    VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
     this.registerManager = RegisterManager.init(this);
     registerManager.loadLanguages();
     Layouts.getBanner();
@@ -43,7 +43,6 @@ public class App extends JavaPlugin {
     registerManager.registerEvents();
     registerManager.registerCommands();
     LobbyCountdown.startLobbyCD();
-    Rolemanager.initialize();
     MysqlManager.connect();
 
   }

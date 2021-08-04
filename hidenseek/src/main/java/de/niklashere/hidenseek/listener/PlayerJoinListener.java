@@ -2,7 +2,8 @@ package de.niklashere.hidenseek.listener;
 
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
-import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.gamestates.PlayerData;
+import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
@@ -41,7 +42,9 @@ public class PlayerJoinListener implements Listener {
     }
 
     if (Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame)) {
-      Rolemanager.addSpectator(p);
+      PlayerData playerData = new PlayerData(p);
+      playerData.setSpectator(true);
+      RoleManager.playerList.add(playerData);
       p.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
       InventoryManager.spectatorItems(p);
 

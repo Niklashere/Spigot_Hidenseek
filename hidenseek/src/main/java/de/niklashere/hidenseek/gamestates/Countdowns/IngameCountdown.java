@@ -3,9 +3,11 @@ package de.niklashere.hidenseek.gamestates.countdowns;
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
-import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.gamestates.RoleManager;
+import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.VoteManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -21,7 +23,7 @@ public class IngameCountdown {
   /**
    * Countdown length configured in config file.
    */
-  private static int time = Fileaccess.getInt("Ingame", Fileaccess.getConfig()) + 1;
+  private static int time = Fileaccess.getInt("Countdown.Ingame", Fileaccess.getConfig()) + 1;
 
   /**
    * Method to start the Ingame countdown.
@@ -29,6 +31,18 @@ public class IngameCountdown {
   public static void startIngameCD() {
     startCountdown();
     Gamestate.setState(Gamestate.Ingame);
+    int i = 0;
+    while (RoleManager.playerList.size() - 1 >= i) {
+
+      Player all = RoleManager.playerList.get(i).getPlayer();
+
+      if (RoleManager.playerList.get(i).isSeeker()) {
+        all.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
+        InventoryManager.seekerItems(all);
+      }
+
+      i++;
+    }
   }
 
   /**
@@ -39,9 +53,9 @@ public class IngameCountdown {
 
       @Override
       public void run() {
-        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("min-players",
-            Fileaccess.getConfig()) && Rolemanager.getGroupsize("hider") >= 1
-            && Rolemanager.getGroupsize("seeker") >= 1) {
+        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.min",
+            Fileaccess.getConfig()) && RoleManager.getHiders().size() >= 1
+            && RoleManager.getSeekers().size() >= 1) {
           time--;
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
@@ -59,16 +73,16 @@ public class IngameCountdown {
             }
           }
           if (time == 1) {
-            Rolemanager.endGame("hider");
+            RoleManager.endGame("hider");
             EndCountdown.startEndCD();
             cancel();
 
           }
         } else {
-          if (Rolemanager.getGroupsize("hider") < 1) {
-            Rolemanager.endGame("seeker");
-          } else if (Rolemanager.getGroupsize("seeker") < 1) {
-            Rolemanager.endGame("hider");
+          if (RoleManager.getHiders().size() < 1) {
+            RoleManager.endGame("seeker");
+          } else if (RoleManager.getSeekers().size() < 1) {
+            RoleManager.endGame("hider");
           }
           EndCountdown.startEndCD();
           cancel();

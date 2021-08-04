@@ -20,8 +20,8 @@ public class Variablelist {
   public static String chat_countdownWarmup = chat + "countdown-warmup";
   public static String chat_countdownIngame = chat + "countdown-ingame";
   public static String chat_countdownEnd = chat + "countdown-end";
-  public static String chat_secondSingular = chat + "stop-server";
-  public static String chat_secondPlural = chat + "second-singular";
+  public static String chat_secondSingular = chat + "second-singular";
+  public static String chat_secondPlural = chat + "second-plural";
   public static String chat_missingPermission = chat + "missing-permission";
   public static String chat_saveError = chat + "save-error";
   public static String chat_found = chat + "found";

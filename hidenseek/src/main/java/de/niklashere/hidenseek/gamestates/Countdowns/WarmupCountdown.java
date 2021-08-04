@@ -3,11 +3,11 @@ package de.niklashere.hidenseek.gamestates.countdowns;
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
-import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.gamestates.PlayerData;
+import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
-import de.niklashere.hidenseek.libary.StatsManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
 import org.bukkit.Bukkit;
@@ -24,27 +24,59 @@ public class WarmupCountdown {
   /**
    * Countdown length configured in config file.
    */
-  private static int time = Fileaccess.getInt("Warmup", Fileaccess.getConfig()) + 1;
+  private static int time = Fileaccess.getInt("Countdown.Warmup", Fileaccess.getConfig()) + 1;
 
   /**
    * Method to start the Warmup countdown.
    */
   public static void startWarmupCD() {
+
     for (Player all : Bukkit.getOnlinePlayers()) {
+      PlayerData playerData = new PlayerData(all);
+      if (!RoleManager.playerList.contains(playerData)) {
+        playerData.setHider(true);
+        RoleManager.playerList.add(playerData);
+
+      }
+
+    }
+
+    int i = 0;
+    int seeker = 0;
+    while (RoleManager.playerList.size() - 1 >= i) {
+      if (RoleManager.playerList.get(i).isSeeker()) {
+        seeker = seeker + 1;
+      }
+      i++;
+    }
+
+    i = 0;
+    while (Fileaccess.getInt("Players.seeker", Fileaccess.getConfig()) - 1 >= seeker) {
+      if (RoleManager.playerList.get(i).isHider()) {
+        RoleManager.playerList.get(i).setHider(false);
+        RoleManager.playerList.get(i).setSeeker(true);
+        seeker = seeker + 1;
+      }
+
+      i++;
+    }
+
+    i = 0;
+    while (RoleManager.playerList.size() - 1 >= i) {
+
+      Player all = RoleManager.playerList.get(i).getPlayer();
+
       InventoryManager.clearInv(all);
-      Rolemanager.addSeeker(all);
-      StatsManager.addPlayes(all.getUniqueId(), 1);
-      if (Rolemanager.isHider(all)) {
+      if (RoleManager.playerList.get(i).isHider()) {
         all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
         InventoryManager.hiderItems(all);
-      } else if (Rolemanager.isSeeker(all)) {
-        all.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
-        InventoryManager.seekerItems(all);
-      } else if (Rolemanager.isSpectator(all)) {
+      } else if (RoleManager.playerList.get(i).isSpectator()) {
         all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
         InventoryManager.spectatorItems(all);
 
       }
+
+      i++;
     }
     startCountdown();
     Gamestate.setState(Gamestate.WarmUp);
@@ -58,9 +90,9 @@ public class WarmupCountdown {
 
       @Override
       public void run() {
-        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("min-players",
-            Fileaccess.getConfig()) && Rolemanager.getGroupsize("hider") >= 1
-            && Rolemanager.getGroupsize("seeker") >= 1) {
+        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.min",
+            Fileaccess.getConfig()) && RoleManager.getHiders().size() >= 1
+            && RoleManager.getSeekers().size() >= 1) {
           time--;
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
@@ -83,10 +115,10 @@ public class WarmupCountdown {
             cancel();
           }
         } else {
-          if (Rolemanager.getGroupsize("hider") < 1) {
-            Rolemanager.endGame("seeker");
-          } else if (Rolemanager.getGroupsize("seeker") < 1) {
-            Rolemanager.endGame("hider");
+          if (RoleManager.getHiders().size() < 1) {
+            RoleManager.endGame("seeker");
+          } else if (RoleManager.getSeekers().size() < 1) {
+            RoleManager.endGame("hider");
           }
           EndCountdown.startEndCD();
           cancel();

@@ -20,7 +20,7 @@ public class StatsManager {
    */
   public static boolean playerExists(UUID uuid) {
     try {
-      ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
+      ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
 
       if (rs.next()) {
         return rs.getString("UUID") != null;
@@ -55,7 +55,7 @@ public class StatsManager {
   public static Integer getWins(UUID uuid) {
     if (playerExists(uuid)) {
       try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
+        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
         if (rs.next()) {
           return rs.getInt("wins");
         }
@@ -78,7 +78,7 @@ public class StatsManager {
   public static Integer getCought(UUID uuid) {
     if (playerExists(uuid)) {
       try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
+        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
         if (rs.next()) {
           return rs.getInt("cought");
         }
@@ -87,7 +87,7 @@ public class StatsManager {
       }
     } else {
       createPlayer(uuid);
-      getWins(uuid);
+      getCought(uuid);
     }
     return -1;
   }
@@ -101,7 +101,7 @@ public class StatsManager {
   public static Integer getFound(UUID uuid) {
     if (playerExists(uuid)) {
       try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
+        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
         if (rs.next()) {
           return rs.getInt("found");
         }
@@ -110,7 +110,7 @@ public class StatsManager {
       }
     } else {
       createPlayer(uuid);
-      getWins(uuid);
+      getFound(uuid);
     }
     return -1;
   }
@@ -156,7 +156,7 @@ public class StatsManager {
   public static Integer getPlayes(UUID uuid) {
     if (playerExists(uuid)) {
       try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
+        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
         if (rs.next()) {
           return rs.getInt("plays");
         }
@@ -165,7 +165,7 @@ public class StatsManager {
       }
     } else {
       createPlayer(uuid);
-      getWins(uuid);
+      getPlayes(uuid);
     }
     return -1;
   }
@@ -211,7 +211,7 @@ public class StatsManager {
   public static Integer getPoints(UUID uuid) {
     if (playerExists(uuid)) {
       try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "'");
+        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
         if (rs.next()) {
           return rs.getInt("points");
         }
@@ -220,7 +220,7 @@ public class StatsManager {
       }
     } else {
       createPlayer(uuid);
-      getWins(uuid);
+      getPoints(uuid);
     }
     return -1;
   }

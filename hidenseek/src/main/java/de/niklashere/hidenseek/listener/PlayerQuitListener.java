@@ -2,7 +2,7 @@ package de.niklashere.hidenseek.listener;
 
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
-import de.niklashere.hidenseek.gamestates.Rolemanager;
+import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.StatsManager;
 
@@ -38,6 +38,6 @@ public class PlayerQuitListener implements Listener {
       StatsManager.addPlayes(p.getUniqueId(), 1);
     }
 
-    Rolemanager.removeRole(p);
+    RoleManager.playerList.remove(RoleManager.playerList.get(RoleManager.getPlayer(p)));
   }
 }

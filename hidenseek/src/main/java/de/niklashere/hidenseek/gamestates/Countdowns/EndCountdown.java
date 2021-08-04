@@ -21,7 +21,7 @@ public class EndCountdown {
   /**
    * Countdown length configured in config file.
    */
-  private static int time = Fileaccess.getInt("End", Fileaccess.getConfig()) + 1;
+  private static int time = Fileaccess.getInt("Countdown.End", Fileaccess.getConfig()) + 1;
 
   /**
    * Method to start the End countdown.

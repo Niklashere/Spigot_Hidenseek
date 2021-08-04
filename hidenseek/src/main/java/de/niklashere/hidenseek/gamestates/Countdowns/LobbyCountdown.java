@@ -3,7 +3,6 @@ package de.niklashere.hidenseek.gamestates.countdowns;
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
-import de.niklashere.hidenseek.gamestates.Rolemanager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
@@ -24,7 +23,7 @@ public class LobbyCountdown {
   /**
    * Countdown length configured in config file.
    */
-  private static int time = Fileaccess.getInt("Lobby", Fileaccess.getConfig()) + 1;
+  private static int time = Fileaccess.getInt("Countdown.Lobby", Fileaccess.getConfig()) + 1;
 
   /**
    * Method to start the Lobby Countdown.
@@ -45,7 +44,7 @@ public class LobbyCountdown {
 
       @Override
       public void run() {
-        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("min-players",
+        if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.min",
             Fileaccess.getConfig())) {
           time--;
           for (Player all : Bukkit.getOnlinePlayers()) {
@@ -58,7 +57,6 @@ public class LobbyCountdown {
                       LanguageManager.getMessage(Variablelist.chat_secondPlural, all)));
 
             } else if (time == 1) {
-              Rolemanager.addHider(all);
               all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownLobby, all)
                   .replaceAll("%t", time + "").replaceAll("%s",
                       LanguageManager.getMessage(Variablelist.chat_secondSingular, all)));
@@ -74,7 +72,7 @@ public class LobbyCountdown {
             cancel();
           }
         } else {
-          time = Fileaccess.getInt("Lobby", Fileaccess.getConfig()) + 1;
+          time = Fileaccess.getInt("Countdown.Lobby", Fileaccess.getConfig()) + 1;
         }
       }
     }.runTaskTimer(App.instance, 0L, 20);
