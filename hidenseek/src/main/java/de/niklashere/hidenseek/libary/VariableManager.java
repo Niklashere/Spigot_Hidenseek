@@ -18,7 +18,23 @@ public class VariableManager {
    * @return message
    */
   public static String message(String string) {
+    // Prefixes
+    string = string.replaceAll("%pc%", Fileaccess.getString("prefix.chat", Fileaccess.getConfig()));
+    string = string.replaceAll("%pii%",
+        Fileaccess.getString("prefix.inv-item", Fileaccess.getConfig()));
+    string = string.replaceAll("%pin%",
+        Fileaccess.getString("prefix.inv-names", Fileaccess.getConfig()));
+    string = string.replaceAll("%pi%", Fileaccess.getString("prefix.item", Fileaccess.getConfig()));
+
+    // Colors:
+    string = string.replaceAll("%cp%",
+        Fileaccess.getString("colors.primary", Fileaccess.getConfig()));
+    string = string.replaceAll("%cs%",
+        Fileaccess.getString("colors.secondary", Fileaccess.getConfig()));
+    string = string.replaceAll("%cw%",
+        Fileaccess.getString("colors.warning", Fileaccess.getConfig()));
     string = string.replaceAll("&", "§");
+
     return string;
   }
 
@@ -30,13 +46,13 @@ public class VariableManager {
    * @return message
    */
   public static String message(String string, Player p) {
-    string = string.replaceAll("%p", p.getName());
+    string = string.replaceAll("%pp%", p.getName());
     if (p != null) {
-      string = string.replaceAll("%sc", StatsManager.getCought(p.getUniqueId()) + "");
-      string = string.replaceAll("%sf", StatsManager.getFound(p.getUniqueId()) + "");
-      string = string.replaceAll("%sw", StatsManager.getWins(p.getUniqueId()) + "");
-      string = string.replaceAll("%spl", StatsManager.getPlayes(p.getUniqueId()) + "");
-      string = string.replaceAll("%spo", StatsManager.getPoints(p.getUniqueId()) + "");
+      string = string.replaceAll("%sc%", StatsManager.getCought(p.getUniqueId()) + "");
+      string = string.replaceAll("%sf%", StatsManager.getFound(p.getUniqueId()) + "");
+      string = string.replaceAll("%sw%", StatsManager.getWins(p.getUniqueId()) + "");
+      string = string.replaceAll("%spl%", StatsManager.getPlayes(p.getUniqueId()) + "");
+      string = string.replaceAll("%spo%", StatsManager.getPoints(p.getUniqueId()) + "");
     }
     string = message(string);
     return string;
@@ -52,7 +68,7 @@ public class VariableManager {
    */
   public static String message(String string, Player p, Player k) {
     if (k != null) {
-      string = string.replaceAll("%k", k.getName());
+      string = string.replaceAll("%pk%", k.getName());
     }
     string = message(string, p);
     return string;
@@ -68,12 +84,12 @@ public class VariableManager {
    */
   public static String message(String string, Player p, OfflinePlayer k) {
     if (k != null) {
-      string = string.replaceAll("%k", k.getName());
-      string = string.replaceAll("%sc", StatsManager.getCought(k.getUniqueId()) + "");
-      string = string.replaceAll("%sf", StatsManager.getFound(k.getUniqueId()) + "");
-      string = string.replaceAll("%sw", StatsManager.getWins(k.getUniqueId()) + "");
-      string = string.replaceAll("%spl", StatsManager.getPlayes(k.getUniqueId()) + "");
-      string = string.replaceAll("%spo", StatsManager.getPoints(k.getUniqueId()) + "");
+      string = string.replaceAll("%pk%", k.getName());
+      string = string.replaceAll("%sc%", StatsManager.getCought(k.getUniqueId()) + "");
+      string = string.replaceAll("%sf%", StatsManager.getFound(k.getUniqueId()) + "");
+      string = string.replaceAll("%sw%", StatsManager.getWins(k.getUniqueId()) + "");
+      string = string.replaceAll("%spl%", StatsManager.getPlayes(k.getUniqueId()) + "");
+      string = string.replaceAll("%spo%", StatsManager.getPoints(k.getUniqueId()) + "");
     }
     string = message(string, p);
     return string;

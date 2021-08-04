@@ -100,12 +100,12 @@ public class WarmupCountdown {
             if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5 || time == 3
                 || time == 2) {
               all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownWarmup, all)
-                  .replaceAll("%t", time + "").replaceAll("%s",
+                  .replaceAll("%t%", time + "").replaceAll("%s%",
                       LanguageManager.getMessage(Variablelist.chat_secondPlural, all)));
 
             } else if (time == 1) {
               all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownWarmup, all)
-                  .replaceAll("%t", time + "").replaceAll("%s",
+                  .replaceAll("%t%", time + "").replaceAll("%s%",
                       LanguageManager.getMessage(Variablelist.chat_secondSingular, all)));
 
             }

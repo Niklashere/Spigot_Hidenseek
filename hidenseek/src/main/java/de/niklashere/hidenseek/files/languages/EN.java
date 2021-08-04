@@ -16,78 +16,106 @@ public class EN {
 
   /**
    * Creates a config and adds all Strings, if their arn't already added.
+
+   * Prefixes:
+   * %pc%: chat prefix
+   * %pi%: item prefix
+   * %pii%: inv-item prefix
+   * %pin%: inv-name
+
+   * Colors:
+   * &: §
+   * %cp%: primary chat color
+   * %cs%: secondary chat color
+   * %cw%: warning color
+
+   * Players:
+   * %pp%: player
+   * %pk%: killer
+
+   * Stats:
+   * %sc%: coughts
+   * %sf%: founds
+   * %sw%: wins
+   * %spl%: plays
+   * %spo%: points
+
+   * Countdown:
+   * %t%: time
+   * %s%: second
+   * 
    */
   public static void loadMessages() {
 
     // Chatmessages
-    addMessage(Variablelist.chat_joinMessage, "%p has joined the server.");
-    addMessage(Variablelist.chat_quitMessage, "%p has left the server.");
-    addMessage(Variablelist.chat_stopServer, "Server is shuting down");
-    addMessage(Variablelist.chat_countdownLobby, "The game starts in %t %s.");
-    addMessage(Variablelist.chat_countdownWarmup, "The game starts in %t %s.");
-    addMessage(Variablelist.chat_countdownIngame, "The game ends in %t %s.");
-    addMessage(Variablelist.chat_countdownEnd, "Server reboots in %t %s.");
+    addMessage(Variablelist.chat_joinMessage, "%pc%%cs%%pp%%cp% has joined the server.");
+    addMessage(Variablelist.chat_quitMessage, "%pc%%cs%%pp%%cp% has left the server.");
+    addMessage(Variablelist.chat_stopServer, "%pc%Server is shuting down");
+    addMessage(Variablelist.chat_countdownLobby, "%pc%The game starts in %cs%%t% %s%%cp%.");
+    addMessage(Variablelist.chat_countdownWarmup, "%pc%The game starts in %cs%%t% %s%%cp%.");
+    addMessage(Variablelist.chat_countdownIngame, "%pc%The game ends in %cs%%t% %s%%cp%.");
+    addMessage(Variablelist.chat_countdownEnd, "%pc%Server reboots in %cs%%t% %s%%cp%.");
     addMessage(Variablelist.chat_secondSingular, "second");
     addMessage(Variablelist.chat_secondPlural, "seconds");
-    addMessage(Variablelist.chat_missingPermission, "You don't have enough permission.");
-    addMessage(Variablelist.chat_saveError, "Saving the changes failed.");
-    addMessage(Variablelist.chat_found, "%p was found by %k");
-    addMessage(Variablelist.chat_stunned, "%p was stunned by %k");
+    addMessage(Variablelist.chat_missingPermission, "%pc%You don't have enough permission.");
+    addMessage(Variablelist.chat_saveError, "%pc%Saving the changes failed.");
+    addMessage(Variablelist.chat_found, "%pc%%cs%%pp%%cp% was found by %cs%%pk%%cp%.");
+    addMessage(Variablelist.chat_stunned, "%pc%%cs%%pp%%cp% was stunned by %cs%%pk%%cp%.");
 
     // Commands
 
     // Stats Command
-    addMessage(Variablelist.command_stats_m1, "=====================");
-    addMessage(Variablelist.command_stats_m2, "was cought: %sc");
-    addMessage(Variablelist.command_stats_m3, "has found: %sf");
-    addMessage(Variablelist.command_stats_m4, "wins: %sw");
-    addMessage(Variablelist.command_stats_m5, "plays: %spl");
-    addMessage(Variablelist.command_stats_m6, "points: %spo");
-    addMessage(Variablelist.command_stats_m7, "=====================");
-    addMessage(Variablelist.command_stats_usage, "/stats <player>");
+    addMessage(Variablelist.command_stats_m1, "%pc%%cs%=====================");
+    addMessage(Variablelist.command_stats_m2, "%pc%was cought: %cs%%sc%");
+    addMessage(Variablelist.command_stats_m3, "%pc%has found: %cs%%sf%");
+    addMessage(Variablelist.command_stats_m4, "%pc%wins: %cs%%sw%");
+    addMessage(Variablelist.command_stats_m5, "%pc%plays: %cs%%spl%");
+    addMessage(Variablelist.command_stats_m6, "%pc%points: %cs%%spo%");
+    addMessage(Variablelist.command_stats_m7, "%pc%%cs%=====================");
+    addMessage(Variablelist.command_stats_usage, "%pc%%cw%/stats <player>");
 
     // Inventory
 
     // Setup Inventory
-    addMessage(Variablelist.inv_setup_name, "Setup inventory");
-    addMessage(Variablelist.inv_setup_spawnpointLobby, "set Lobby Spawnpoint");
-    addMessage(Variablelist.inv_setup_spawnpointSeeker, "set Seeker Spawnpoint");
-    addMessage(Variablelist.inv_setup_spawnpointHider, "set Hider Spawnpoint");
-    addMessage(Variablelist.inv_setup_minPlayers, "min. Players to start Game: ");
-    addMessage(Variablelist.inv_setup_maxPlayers, "max. Players: ");
-    addMessage(Variablelist.inv_setup_maxSeeker, "max. Seekers: ");
-    addMessage(Variablelist.inv_setup_inGameTime, "Gametime: ");
+    addMessage(Variablelist.inv_setup_name, "%pin%Setup inventory");
+    addMessage(Variablelist.inv_setup_spawnpointLobby, "%pii%set Lobby Spawnpoint");
+    addMessage(Variablelist.inv_setup_spawnpointSeeker, "%pii%set Seeker Spawnpoint");
+    addMessage(Variablelist.inv_setup_spawnpointHider, "%pii%set Hider Spawnpoint");
+    addMessage(Variablelist.inv_setup_minPlayers, "%pii%min. Players to start Game: ");
+    addMessage(Variablelist.inv_setup_maxPlayers, "%pii%max. Players: ");
+    addMessage(Variablelist.inv_setup_maxSeeker, "%pii%max. Seekers: ");
+    addMessage(Variablelist.inv_setup_inGameTime, "%pii%Gametime: ");
     addMessage(Variablelist.inv_setup_instruction1, "Leftclick: + 1 / Rightclick: -1");
     addMessage(Variablelist.inv_setup_instruction2,
         "Shift + Leftclick: + 10 / Rightclick + Shift: -10");
 
     // Hint Inventory
-    addMessage(Variablelist.inv_hint_name, "Hint inventory");
-    addMessage(Variablelist.inv_hint_Firework, "Firework");
-    addMessage(Variablelist.inv_hint_Meow, "Meow");
-    addMessage(Variablelist.inv_hint_Explosion, "Explosion");
+    addMessage(Variablelist.inv_hint_name, "%pin%Hint inventory");
+    addMessage(Variablelist.inv_hint_Firework, "%pii%Firework");
+    addMessage(Variablelist.inv_hint_Meow, "%pii%Meow");
+    addMessage(Variablelist.inv_hint_Explosion, "%pii%Explosion");
 
     // Role Inventory
-    addMessage(Variablelist.inv_role_name, "choose Role");
-    addMessage(Variablelist.inv_role_hider, "hider");
-    addMessage(Variablelist.inv_role_seeker, "seeker");
+    addMessage(Variablelist.inv_role_name, "%pin%choose Role");
+    addMessage(Variablelist.inv_role_hider, "%pii%hider");
+    addMessage(Variablelist.inv_role_seeker, "%pii%seeker");
 
     // Mapvoting Inventory
-    addMessage(Variablelist.inv_mapvoting_Name, "Mapvoting");
+    addMessage(Variablelist.inv_mapvoting_name, "%pin%Mapvoting");
 
     // Items
 
     // Lobbyitems
-    addMessage(Variablelist.items_lobby_chest, "Mapvoting");
-    addMessage(Variablelist.items_lobby_redBanner, "Choose role");
+    addMessage(Variablelist.items_lobby_chest, "%pii%Mapvoting");
+    addMessage(Variablelist.items_lobby_redBanner, "%pii%Choose role");
 
     // Seekeritems
-    addMessage(Variablelist.items_seeker_sword, "Sword");
-    addMessage(Variablelist.items_seeker_bow, "Bow");
+    addMessage(Variablelist.items_seeker_sword, "%pii%Sword");
+    addMessage(Variablelist.items_seeker_bow, "%pii%Bow");
 
     // Hideritems
-    addMessage(Variablelist.items_hider_stun, "Stunner");
-    addMessage(Variablelist.items_hider_hint, "Hints");
+    addMessage(Variablelist.items_hider_stun, "%pii%Stunner");
+    addMessage(Variablelist.items_hider_hint, "%pii%Hints");
 
   }
 

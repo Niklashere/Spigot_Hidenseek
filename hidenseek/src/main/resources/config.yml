@@ -20,6 +20,15 @@ points:
   cought: 5
   win: 10
   play: 5
+colors:
+  primary: "&7"
+  secondary: "&e"
+  warning: "&c"
+prefix:
+  chat: "&eHide'n'Seek &8&l> %cp%"
+  item: "&7> &a"
+  inv-item: "&7>> &b"
+  inv-names: "&b> &7"
 items:
   stun-duration: 10
 spawnpoint-lobby:

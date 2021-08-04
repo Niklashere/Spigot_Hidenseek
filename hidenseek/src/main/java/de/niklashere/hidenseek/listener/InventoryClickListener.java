@@ -7,6 +7,7 @@ import de.niklashere.hidenseek.inventorys.MapvotingInventory;
 import de.niklashere.hidenseek.inventorys.SetupInventory;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
 import java.io.File;
@@ -203,18 +204,21 @@ public class InventoryClickListener implements Listener {
       }
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle()
-            .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_mapvoting_Name, p))) {
+            .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_mapvoting_name, p))) {
+      String prefix = VariableManager
+          .message(Fileaccess.getString("prefix.inv-item", Fileaccess.getConfig()));
+
       ArrayList<File> maps = VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
       if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(maps.get(0).getName().replace(".yml", ""))) {
+          .equalsIgnoreCase(prefix + maps.get(0).getName().replace(".yml", ""))) {
         VoteManager.addVote(maps.get(0), p);
         MapvotingInventory.openInventory(p);
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(maps.get(1).getName().replace(".yml", ""))) {
+          .equalsIgnoreCase(prefix + maps.get(1).getName().replace(".yml", ""))) {
         VoteManager.addVote(maps.get(1), p);
         MapvotingInventory.openInventory(p);
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase("map." + maps.get(2).getName().replace(".yml", ""))) {
+          .equalsIgnoreCase(prefix + maps.get(2).getName().replace(".yml", ""))) {
         VoteManager.addVote(maps.get(2), p);
         MapvotingInventory.openInventory(p);
       }

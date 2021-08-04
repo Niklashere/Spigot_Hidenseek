@@ -72,7 +72,7 @@ public class Variablelist {
 
   // Mapvoting Inventory
   private static String mapvoting = inventory + "mapvoting.";
-  public static String inv_mapvoting_Name = mapvoting + "seeker";
+  public static String inv_mapvoting_name = mapvoting + "seeker";
 
   // Items
   private static String items = "items.";
