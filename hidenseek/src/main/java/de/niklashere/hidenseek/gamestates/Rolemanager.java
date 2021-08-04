@@ -19,7 +19,7 @@ import org.bukkit.entity.Player;
  * @author Niklashere
  * @since 04.08.2021
  */
-public class RoleManager {
+public class RoleManager1 {
 
   public static ArrayList<PlayerData> playerList = new ArrayList<PlayerData>();
 

@@ -17,17 +17,35 @@ public class DE {
   /**
    * Creates a config and adds all Strings, if their arn't already added.
    * -
-   * Prefixes: %pc%: chat prefix %pi%: item prefix %pii%: inv-item prefix %pin%:
-   * inv-name
+   * Prefixes:
+   * %pc%: chat prefix
+   * %pi%: item prefix
+   * %pii%: inv-item prefix
+   * %pin%: inv-name
    * -
-   * Colors: &: § %cp%: primary chat color %cs%: secondary chat color %cw%:
-   * warning color
+   * Colors:
+   * &: §
+   * %cp%: primary chat color
+   * %cs%: secondary chat color
+   * %cw%: warning color
    * -
-   * Players: %pp%: player %pk%: killer
+   * Players:
+   * %pp%: player
+   * %pk%: killer
    * -
-   * Stats: %sc%: coughts %sf%: founds %sw%: wins %spl%: plays %spo%: points
+   * Stats:
+   * %sc%: coughts
+   * %sf%: founds
+   * %sw%: wins
+   * %spl%: plays
+   * %spo%: points
    * -
-   * Countdown: %t%: time %s%: second
+   * Hints:
+   * %hp%: points for hint
+   * -
+   * Countdown:
+   * %t%: time
+   * %s%: second
    */
   public static void loadMessages() {
 
@@ -46,6 +64,9 @@ public class DE {
     addMessage(Variablelist.chat_saveError, "%pc%Speichern der Änderungen sind fehlgeschlagen.");
     addMessage(Variablelist.chat_found, "%pc%%cs%%pp%%cp% wurde von %cs%%pk%%cp% gefunden.");
     addMessage(Variablelist.chat_stunned, "%pc%%cs%%pp%%cp% wurde von %cs%%pk%%cp% gelähmt.");
+    addMessage(Variablelist.chat_point, "%pc%Du hast %cs%%hp% Punkte%cp% für diesen Tipp.");
+    addMessage(Variablelist.chat_wait, "%pc%%cw%Du hast noch %cs%%t% %s%%cw% zu warten.");
+    addMessage(Variablelist.chat_wait_ended, "%pc%%cw%Du kannst %cs%%name%%cp% wieder benutzen.");
 
     // Commands
 

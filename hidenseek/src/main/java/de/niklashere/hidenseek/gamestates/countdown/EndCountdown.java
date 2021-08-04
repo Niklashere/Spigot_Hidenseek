@@ -1,4 +1,4 @@
-package de.niklashere.hidenseek.gamestates.countdowns;
+package de.niklashere.hidenseek.gamestates.countdown;
 
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;

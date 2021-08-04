@@ -1,6 +1,6 @@
 package de.niklashere.hidenseek;
 
-import de.niklashere.hidenseek.gamestates.countdowns.LobbyCountdown;
+import de.niklashere.hidenseek.gamestates.countdown.LobbyCountdown;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.MysqlManager;
 import de.niklashere.hidenseek.libary.VoteManager;

@@ -20,6 +20,10 @@ points:
   cought: 5
   win: 10
   play: 5
+  hint:
+    firework: 10
+    meow: 5
+    explosion: 5
 language:
   default-file: en.yml
 colors:
@@ -33,6 +37,9 @@ prefix:
   inv-names: "&b> &7"
 items:
   stun-duration: 10
+  firework-duration: 30
+  meow-duration: 5
+  explosion-duration: 15
 spawnpoint-lobby:
   X: -99.33487143047729
   Y: 69.0

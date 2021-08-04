@@ -1,8 +1,9 @@
-package de.niklashere.hidenseek.gamestates.countdowns;
+package de.niklashere.hidenseek.gamestates.countdown;
 
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
+import de.niklashere.hidenseek.gamestates.PlayerData;
 import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
@@ -14,39 +15,75 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 /**
- * Countdown functionality during the game phase.
+ * Countdown functionality during the warump phase.
  *
  * @author Niklashere
  * @since 31-07-2021
  */
-public class IngameCountdown {
+public class WarmupCountdown {
   /**
    * Countdown length configured in config file.
    */
-  private static int time = Fileaccess.getInt("Countdown.Ingame", Fileaccess.getConfig()) + 1;
+  private static int time = Fileaccess.getInt("Countdown.Warmup", Fileaccess.getConfig()) + 1;
 
   /**
-   * Method to start the Ingame countdown.
+   * Method to start the Warmup countdown.
    */
-  public static void startIngameCD() {
-    startCountdown();
-    Gamestate.setState(Gamestate.Ingame);
+  public static void startWarmupCD() {
+
+    for (Player all : Bukkit.getOnlinePlayers()) {
+      PlayerData playerData = new PlayerData(all);
+      if (!RoleManager.playerList.contains(playerData)) {
+        playerData.setHider(true);
+        RoleManager.playerList.add(playerData);
+
+      }
+
+    }
+
     int i = 0;
+    int seeker = 0;
     while (RoleManager.playerList.size() - 1 >= i) {
-
-      Player all = RoleManager.playerList.get(i).getPlayer();
-
       if (RoleManager.playerList.get(i).isSeeker()) {
-        all.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
-        InventoryManager.seekerItems(all);
+        seeker = seeker + 1;
+      }
+      i++;
+    }
+
+    i = 0;
+    while (Fileaccess.getInt("Players.seeker", Fileaccess.getConfig()) - 1 >= seeker) {
+      if (RoleManager.playerList.get(i).isHider()) {
+        RoleManager.playerList.get(i).setHider(false);
+        RoleManager.playerList.get(i).setSeeker(true);
+        seeker = seeker + 1;
       }
 
       i++;
     }
+
+    i = 0;
+    while (RoleManager.playerList.size() - 1 >= i) {
+
+      Player all = RoleManager.playerList.get(i).getPlayer();
+
+      InventoryManager.clearInv(all);
+      if (RoleManager.playerList.get(i).isHider()) {
+        all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
+        InventoryManager.hiderItems(all);
+      } else if (RoleManager.playerList.get(i).isSpectator()) {
+        all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
+        InventoryManager.spectatorItems(all);
+
+      }
+
+      i++;
+    }
+    startCountdown();
+    Gamestate.setState(Gamestate.WarmUp);
   }
 
   /**
-   * Start Ingamecountdown.
+   * Start Warmupcountdown.
    */
   private static void startCountdown() {
     new BukkitRunnable() {
@@ -62,21 +99,20 @@ public class IngameCountdown {
             int i = time % 60;
             if (i == 0 || time == 30 || time == 15 || time == 10 || time == 5 || time == 3
                 || time == 2) {
-              all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownIngame, all)
+              all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownWarmup, all)
                   .replaceAll("%t%", time + "").replaceAll("%s%",
                       LanguageManager.getMessage(Variablelist.chat_secondPlural, all)));
 
             } else if (time == 1) {
-              all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownIngame, all)
+              all.sendMessage(LanguageManager.getMessage(Variablelist.chat_countdownWarmup, all)
                   .replaceAll("%t%", time + "").replaceAll("%s%",
                       LanguageManager.getMessage(Variablelist.chat_secondSingular, all)));
+
             }
           }
           if (time == 1) {
-            RoleManager.endGame("hider");
-            EndCountdown.startEndCD();
+            IngameCountdown.startIngameCD();
             cancel();
-
           }
         } else {
           if (RoleManager.getHiders().size() < 1) {

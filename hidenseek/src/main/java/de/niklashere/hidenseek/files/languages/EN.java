@@ -17,17 +17,35 @@ public class EN {
   /**
    * Creates a config and adds all Strings, if their arn't already added.
    * -
-   * Prefixes: %pc%: chat prefix %pi%: item prefix %pii%: inv-item prefix %pin%:
-   * inv-name
+   * Prefixes:
+   * %pc%: chat prefix
+   * %pi%: item prefix
+   * %pii%: inv-item prefix
+   * %pin%: inv-name
    * -
-   * Colors: &: § %cp%: primary chat color %cs%: secondary chat color %cw%:
-   * warning color
+   * Colors:
+   * &: §
+   * %cp%: primary chat color
+   * %cs%: secondary chat color
+   * %cw%: warning color
    * -
-   * Players: %pp%: player %pk%: killer
+   * Players:
+   * %pp%: player
+   * %pk%: killer
    * -
-   * Stats: %sc%: coughts %sf%: founds %sw%: wins %spl%: plays %spo%: points
+   * Stats:
+   * %sc%: coughts
+   * %sf%: founds
+   * %sw%: wins
+   * %spl%: plays
+   * %spo%: points
    * -
-   * Countdown: %t%: time %s%: second
+   * Hints:
+   * %hp%: points for hint
+   * -
+   * Countdown:
+   * %t%: time
+   * %s%: second
    */
   public static void loadMessages() {
 
@@ -46,6 +64,9 @@ public class EN {
     addMessage(Variablelist.chat_saveError, "%pc%Saving the changes failed.");
     addMessage(Variablelist.chat_found, "%pc%%cs%%pp%%cp% was found by %cs%%pk%%cp%.");
     addMessage(Variablelist.chat_stunned, "%pc%%cs%%pp%%cp% was stunned by %cs%%pk%%cp%.");
+    addMessage(Variablelist.chat_point, "%pc%You recived %cs%%hp% Points %cp%for giving a hint.");
+    addMessage(Variablelist.chat_wait, "%pc%%cw%You have to wait %cs%%t% %s%%cw%.");
+    addMessage(Variablelist.chat_wait_ended, "%pc%%cw%You can use %cs%%name%%cp% again.");
 
     // Commands
 

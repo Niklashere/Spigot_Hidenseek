@@ -27,7 +27,9 @@ public class Variablelist {
   public static String chat_saveError = chat + "save-error";
   public static String chat_found = chat + "found";
   public static String chat_stunned = chat + "stunned";
-  
+  public static String chat_point = chat + "points";
+  public static String chat_wait = chat + "wait";
+  public static String chat_wait_ended = chat + "wait_ended";
 
   // Commands
   private static String command = "commands.";
