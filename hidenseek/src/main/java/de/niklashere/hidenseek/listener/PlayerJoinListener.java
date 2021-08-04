@@ -9,8 +9,6 @@ import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
-import java.io.File;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,8 +33,6 @@ public class PlayerJoinListener implements Listener {
     Player p = e.getPlayer();
     InventoryManager.clearInv(p);
     e.setJoinMessage(null);
-    File[] file = Fileaccess.listOfFiles.get("languages");
-    LanguageManager.addLanguage(p, file[0]);
     for (Player all : Bukkit.getOnlinePlayers()) {
       all.sendMessage(LanguageManager.getMessage(Variablelist.chat_joinMessage, all, p, null));
     }

@@ -1,5 +1,7 @@
 package de.niklashere.hidenseek.libary;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,9 +47,11 @@ public class MysqlManager {
 
       update("CREATE TABLE IF NOT EXISTS Stats(UUID varchar(64),"
           + " cought int, found int, wins int, plays int, points int)");
-      System.out.println("Connection to MySQL successfull.");
+      update("CREATE TABLE IF NOT EXISTS Languages(UUID varchar(64)," + " language varchar(16))");
+      System.out.println(LanguageManager.getMessage(Variablelist.console_mysql_connected));
     } catch (SQLException e) {
-      System.out.println("MySQL Error: " + e.getMessage());
+      System.out
+          .println(LanguageManager.getMessage(Variablelist.console_mysql_error) + e.getMessage());
     }
   }
 
@@ -58,10 +62,11 @@ public class MysqlManager {
     try {
       if (con != null) {
         con.close();
-        System.out.println("Connection to MySQL successfull closed.");
+        System.out.println(LanguageManager.getMessage(Variablelist.console_mysql_closed));
       }
     } catch (SQLException e) {
-      System.out.println("Error while closing MySQL connection: " + e.getMessage());
+      System.out
+          .println(LanguageManager.getMessage(Variablelist.console_mysql_error) + e.getMessage());
     }
   }
 

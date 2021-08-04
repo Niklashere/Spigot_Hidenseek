@@ -16,34 +16,18 @@ public class DE {
 
   /**
    * Creates a config and adds all Strings, if their arn't already added.
-
-   * Prefixes:
-   * %pc%: chat prefix
-   * %pi%: item prefix
-   * %pii%: inv-item prefix
-   * %pin%: inv-name
-
-   * Colors:
-   * &: §
-   * %cp%: primary chat color
-   * %cs%: secondary chat color
-   * %cw%: warning color
-
-   * Players:
-   * %pp%: player
-   * %pk%: killer
-
-   * Stats:
-   * %sc%: coughts
-   * %sf%: founds
-   * %sw%: wins
-   * %spl%: plays
-   * %spo%: points
-
-   * Countdown:
-   * %t%: time
-   * %s%: second
-   * 
+   * -
+   * Prefixes: %pc%: chat prefix %pi%: item prefix %pii%: inv-item prefix %pin%:
+   * inv-name
+   * -
+   * Colors: &: § %cp%: primary chat color %cs%: secondary chat color %cw%:
+   * warning color
+   * -
+   * Players: %pp%: player %pk%: killer
+   * -
+   * Stats: %sc%: coughts %sf%: founds %sw%: wins %spl%: plays %spo%: points
+   * -
+   * Countdown: %t%: time %s%: second
    */
   public static void loadMessages() {
 
@@ -74,10 +58,16 @@ public class DE {
     addMessage(Variablelist.command_stats_m7, "%pc%%cs%=====================");
     addMessage(Variablelist.command_stats_usage, "%pc%%cw%/stats <player>");
 
+    // Language Command
+    addMessage(Variablelist.command_lang_languages,
+        "%pc%Zu foldenden Sprachen kann gewechselt werden: ");
+    addMessage(Variablelist.command_lang_switch, "%pc%Folgende Sprache wurde ausgewählt: ");
+    addMessage(Variablelist.command_lang_usage, "%pc%/language <language-code>");
+
     // Inventory
 
     // Setup Inventory
-    addMessage(Variablelist.inv_setup_name, "%pin%SSetup Inventar");
+    addMessage(Variablelist.inv_setup_name, "%pin%Setup Inventar");
     addMessage(Variablelist.inv_setup_spawnpointLobby, "%pii%setzte Lobby Spawnpoint");
     addMessage(Variablelist.inv_setup_spawnpointSeeker, "%pii%setzte Sucher Spawnpoint");
     addMessage(Variablelist.inv_setup_spawnpointHider, "%pii%setzte Verstecker Spawnpoint");
@@ -90,18 +80,18 @@ public class DE {
         "Shift + Linksklick: + 10 / Rechtsklick + Shift: -10");
 
     // Hint Inventory
-    addMessage(Variablelist.inv_hint_name, "%pin%STipp geben");
+    addMessage(Variablelist.inv_hint_name, "%pin%Tipp geben");
     addMessage(Variablelist.inv_hint_Firework, "%pii%Feuerwerk");
     addMessage(Variablelist.inv_hint_Meow, "%pii%Meow");
     addMessage(Variablelist.inv_hint_Explosion, "%pii%Explosion");
 
     // Role Inventory
-    addMessage(Variablelist.inv_role_name, "%pin%SRolle wählen");
+    addMessage(Variablelist.inv_role_name, "%pin%Rolle wählen");
     addMessage(Variablelist.inv_role_hider, "%pii%Verstecker");
     addMessage(Variablelist.inv_role_seeker, "%pii%Sucher");
 
     // Mapvoting Inventory
-    addMessage(Variablelist.inv_mapvoting_name, "%pin%SMapvoting");
+    addMessage(Variablelist.inv_mapvoting_name, "%pin%Mapvoting");
 
     // Items
 
@@ -116,6 +106,13 @@ public class DE {
     // Hideritems
     addMessage(Variablelist.items_hider_stun, "%pii%Stunner");
     addMessage(Variablelist.items_hider_hint, "%pii%Tipps");
+
+    // Console Output
+    addMessage(Variablelist.console_languages, "Erfolgreich folgende Sprachen geladen: ");
+    addMessage(Variablelist.console_save_error, "Änderungen konnten nicht gespeichert werden");
+    addMessage(Variablelist.console_mysql_connected, "MySQL Verbindung erfolgreich hergestellt.");
+    addMessage(Variablelist.console_mysql_closed, "MySQL Verbindung erfolgreich geschlossen.");
+    addMessage(Variablelist.console_mysql_error, "MySQL Error: ");
 
   }
 

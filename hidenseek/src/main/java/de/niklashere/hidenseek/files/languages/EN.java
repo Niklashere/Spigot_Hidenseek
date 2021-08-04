@@ -16,34 +16,18 @@ public class EN {
 
   /**
    * Creates a config and adds all Strings, if their arn't already added.
-
-   * Prefixes:
-   * %pc%: chat prefix
-   * %pi%: item prefix
-   * %pii%: inv-item prefix
-   * %pin%: inv-name
-
-   * Colors:
-   * &: §
-   * %cp%: primary chat color
-   * %cs%: secondary chat color
-   * %cw%: warning color
-
-   * Players:
-   * %pp%: player
-   * %pk%: killer
-
-   * Stats:
-   * %sc%: coughts
-   * %sf%: founds
-   * %sw%: wins
-   * %spl%: plays
-   * %spo%: points
-
-   * Countdown:
-   * %t%: time
-   * %s%: second
-   * 
+   * -
+   * Prefixes: %pc%: chat prefix %pi%: item prefix %pii%: inv-item prefix %pin%:
+   * inv-name
+   * -
+   * Colors: &: § %cp%: primary chat color %cs%: secondary chat color %cw%:
+   * warning color
+   * -
+   * Players: %pp%: player %pk%: killer
+   * -
+   * Stats: %sc%: coughts %sf%: founds %sw%: wins %spl%: plays %spo%: points
+   * -
+   * Countdown: %t%: time %s%: second
    */
   public static void loadMessages() {
 
@@ -73,6 +57,12 @@ public class EN {
     addMessage(Variablelist.command_stats_m6, "%pc%points: %cs%%spo%");
     addMessage(Variablelist.command_stats_m7, "%pc%%cs%=====================");
     addMessage(Variablelist.command_stats_usage, "%pc%%cw%/stats <player>");
+
+    // Language Command
+    addMessage(Variablelist.command_lang_languages,
+        "%pc%The following languages can be selected: ");
+    addMessage(Variablelist.command_lang_switch, "%pc%You switched your language to: ");
+    addMessage(Variablelist.command_lang_usage, "%pc%/language <language-code>");
 
     // Inventory
 
@@ -117,6 +107,12 @@ public class EN {
     addMessage(Variablelist.items_hider_stun, "%pii%Stunner");
     addMessage(Variablelist.items_hider_hint, "%pii%Hints");
 
+    // Console Output
+    addMessage(Variablelist.console_languages, "Successfully loaded languages: ");
+    addMessage(Variablelist.console_save_error, "Changes couldn't be saved");
+    addMessage(Variablelist.console_mysql_connected, "Connection to MySQL successfull.");
+    addMessage(Variablelist.console_mysql_closed, "Connection to MySQL successfull closed.");
+    addMessage(Variablelist.console_mysql_error, "MySQL Error: ");
   }
 
   /**

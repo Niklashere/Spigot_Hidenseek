@@ -46,8 +46,8 @@ public class VariableManager {
    * @return message
    */
   public static String message(String string, Player p) {
-    string = string.replaceAll("%pp%", p.getName());
     if (p != null) {
+      string = string.replaceAll("%pp%", p.getName());
       string = string.replaceAll("%sc%", StatsManager.getCought(p.getUniqueId()) + "");
       string = string.replaceAll("%sf%", StatsManager.getFound(p.getUniqueId()) + "");
       string = string.replaceAll("%sw%", StatsManager.getWins(p.getUniqueId()) + "");

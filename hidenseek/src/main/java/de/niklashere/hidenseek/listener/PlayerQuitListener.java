@@ -38,6 +38,8 @@ public class PlayerQuitListener implements Listener {
       StatsManager.addPlayes(p.getUniqueId(), 1);
     }
 
-    RoleManager.playerList.remove(RoleManager.playerList.get(RoleManager.getPlayer(p)));
+    if (RoleManager.playerList.size() != 0) {
+      RoleManager.playerList.remove(RoleManager.playerList.get(RoleManager.getPlayer(p)));
+    }
   }
 }

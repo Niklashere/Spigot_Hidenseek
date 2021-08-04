@@ -20,6 +20,8 @@ points:
   cought: 5
   win: 10
   play: 5
+language:
+  default-file: en.yml
 colors:
   primary: "&7"
   secondary: "&e"

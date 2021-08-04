@@ -1,8 +1,12 @@
 package de.niklashere.hidenseek;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.libary.Fileaccess;
+import de.niklashere.hidenseek.libary.LanguageManager;
 
+import java.io.File;
 import java.time.Year;
+import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -45,19 +49,19 @@ public class Layouts {
    */
   public static void getLanguage() {
     System.out.println(" ");
-    System.out.println(" Successfully loaded languages: ");
+    System.out.println(LanguageManager.getMessage(Variablelist.console_languages));
 
     int i = 0;
     String languages = " ";
 
-    while (Fileaccess.getStringList("supported-languages", Fileaccess.getConfig()).size()
-        - 1 >= i) {
+    ArrayList<File> lang = Fileaccess.fileListToArrayList(Fileaccess.listOfFiles.get("languages"));
+
+    while (lang.size() - 1 >= i) {
       if (i >= 1) {
-        languages = languages + ", "
-            + Fileaccess.getStringList("supported-languages", Fileaccess.getConfig()).get(i);
+        languages = languages + ", " + lang.get(i).getName().replace(".yml", "");
 
       } else {
-        languages = Fileaccess.getStringList("supported-languages", Fileaccess.getConfig()).get(i);
+        languages = lang.get(i).getName().replace(".yml", "");
 
       }
       i++;

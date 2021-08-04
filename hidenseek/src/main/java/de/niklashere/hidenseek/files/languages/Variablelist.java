@@ -41,16 +41,22 @@ public class Variablelist {
   public static String command_stats_m7 = stats + "m7";
   public static String command_stats_usage = stats + "usage";
 
+  // Languages Commands
+  private static String lang = command + "language.";
+  public static String command_lang_languages = lang + "languages";
+  public static String command_lang_switch = lang + "switch";
+  public static String command_lang_usage = lang + "usage";
+
   // Inventory
   private static String inventory = "inventory.";
 
   // Setup Inventory
   private static String setup = inventory + "setup.";
-  public static String inv_setup_name = setup + "m7";
-  public static String inv_setup_spawnpointLobby = setup + "m7";
-  public static String inv_setup_spawnpointSeeker = setup + "m7";
-  public static String inv_setup_spawnpointHider = setup + "m7";
-  public static String inv_setup_minPlayers = setup + "m7";
+  public static String inv_setup_name = setup + "name";
+  public static String inv_setup_spawnpointLobby = setup + "lobby";
+  public static String inv_setup_spawnpointSeeker = setup + "seeker";
+  public static String inv_setup_spawnpointHider = setup + "hider";
+  public static String inv_setup_minPlayers = setup + "min-players";
   public static String inv_setup_maxPlayers = setup + "max-players";
   public static String inv_setup_maxSeeker = setup + "max-seeker";
   public static String inv_setup_inGameTime = setup + "ingametime";
@@ -91,5 +97,14 @@ public class Variablelist {
   private static String hider = items + "hider.";
   public static String items_hider_stun = hider + "stun";
   public static String items_hider_hint = hider + "hint";
+
+  // Console Output
+  private static String console = "console.";
+  public static String console_languages = console + "languages";
+  public static String console_save_error = console + "save_error";
+  public static String console_mysql_connected = console + "mysql_connected";
+  public static String console_mysql_closed = console + "mysql_closed";
+  public static String console_mysql_error = console + "mysql_error";
+
 
 }

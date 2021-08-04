@@ -1,5 +1,7 @@
 package de.niklashere.hidenseek.libary;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -174,7 +176,7 @@ public class Fileaccess {
     try {
       conf.save(file);
     } catch (Exception e) {
-      System.out.println("save-error");
+      System.out.println(LanguageManager.getMessage(Variablelist.console_save_error));
     }
   }
 
@@ -191,7 +193,7 @@ public class Fileaccess {
     try {
       conf.save(file);
     } catch (Exception e) {
-      System.out.println("save-error");
+      System.out.println(LanguageManager.getMessage(Variablelist.console_save_error));
     }
   }
 
@@ -208,7 +210,7 @@ public class Fileaccess {
     try {
       conf.save(file);
     } catch (Exception e) {
-      System.out.println("save-error");
+      System.out.println(LanguageManager.getMessage(Variablelist.console_save_error));
     }
   }
 }

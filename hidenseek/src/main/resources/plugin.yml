@@ -8,3 +8,4 @@ description: WIP Hide'n'seek Plugin.
 commands:
   setup:
   stats:
+  language:
