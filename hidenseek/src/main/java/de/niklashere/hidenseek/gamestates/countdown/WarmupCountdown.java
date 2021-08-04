@@ -7,11 +7,14 @@ import de.niklashere.hidenseek.gamestates.PlayerData;
 import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
+import de.niklashere.hidenseek.libary.GhostMaker;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 /**
@@ -68,9 +71,14 @@ public class WarmupCountdown {
 
       InventoryManager.clearInv(all);
       if (RoleManager.playerList.get(i).isHider()) {
+        GhostMaker.addGhost(all, all.getName());
+        all.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
         all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
         InventoryManager.hiderItems(all);
       } else if (RoleManager.playerList.get(i).isSpectator()) {
+        GhostMaker.addGhost(all, "spectator");
+        all.addPotionEffect(
+            new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1, false, false));
         all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
         InventoryManager.spectatorItems(all);
 

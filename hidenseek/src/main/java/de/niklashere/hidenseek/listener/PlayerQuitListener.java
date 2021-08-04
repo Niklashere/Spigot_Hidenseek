@@ -4,6 +4,7 @@ import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.PropManager;
 import de.niklashere.hidenseek.libary.StatsManager;
 
 import org.bukkit.Bukkit;
@@ -29,6 +30,9 @@ public class PlayerQuitListener implements Listener {
   public void onPlayerQuit(PlayerQuitEvent e) {
     Player p = e.getPlayer();
     e.setQuitMessage(null);
+
+    PropManager props = PlayerJoinListener.props.get(p);
+    props.deleteBallon();
 
     for (Player all : Bukkit.getOnlinePlayers()) {
       LanguageManager.getMessage(Variablelist.chat_quitMessage, all, p, null);
