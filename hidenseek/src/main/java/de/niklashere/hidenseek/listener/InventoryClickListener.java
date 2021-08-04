@@ -209,7 +209,8 @@ public class InventoryClickListener implements Listener {
             @Override
             public void run() {
               if (timer.get(p.getName() + "firework") == 0) {
-                p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p));
+                p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p)
+                    .replace("%name", LanguageManager.getMessage(Variablelist.inv_hint_Firework)));
                 cancel();
               }
               timer.put(p.getName() + "firework", timer.get(p.getName() + "firework") - 1);
@@ -249,7 +250,8 @@ public class InventoryClickListener implements Listener {
             @Override
             public void run() {
               if (timer.get(p.getName() + "meow") == 0) {
-                p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p));
+                p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p)
+                    .replace("%name", LanguageManager.getMessage(Variablelist.inv_hint_Meow)));
                 cancel();
               }
               timer.put(p.getName() + "meow", timer.get(p.getName() + "meow") - 1);
@@ -291,7 +293,8 @@ public class InventoryClickListener implements Listener {
           @Override
           public void run() {
             if (timer.get(p.getName() + "explosion") == 0) {
-              p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p));
+              p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p)
+                  .replace("%name", LanguageManager.getMessage(Variablelist.inv_hint_Explosion)));
               cancel();
             }
             timer.put(p.getName() + "explosion", timer.get(p.getName() + "explosion") - 1);

@@ -66,12 +66,12 @@ public class DE {
     addMessage(Variablelist.chat_stunned, "%pc%%cs%%pp%%cp% wurde von %cs%%pk%%cp% gelähmt.");
     addMessage(Variablelist.chat_point, "%pc%Du hast %cs%%hp% Punkte%cp% für diesen Tipp.");
     addMessage(Variablelist.chat_wait, "%pc%%cw%Du hast noch %cs%%t% %s%%cw% zu warten.");
-    addMessage(Variablelist.chat_wait_ended, "%pc%%cw%Du kannst %cs%%name%%cp% wieder benutzen.");
-    addMessage(Variablelist.chat_mapvoting, "%pc%%cw%Du hast für die Map %cs%%name%%cp% gevoted.");
-    addMessage(Variablelist.chat_role, "%pc%%cw%Du bist der Rolle %cs%%name%%cp% beigetreten.");
+    addMessage(Variablelist.chat_wait_ended, "%pc%Du kannst %cs%%name%%cp% wieder benutzen.");
+    addMessage(Variablelist.chat_mapvoting, "%pc%Du hast für die Map %cs%%name%%cp% gevoted.");
+    addMessage(Variablelist.chat_role, "%pc%Du bist der Rolle %cs%%name%%cp% beigetreten.");
     addMessage(Variablelist.chat_role_full, "%pc%%cw%Die Rolle %cs%%name%%cw% ist voll.");
     addMessage(Variablelist.chat_location, 
-        "%pc%%cw%Du hast die Location %cs%%name%%cp% gespeichert.");
+        "%pc%Du hast die Location %cs%%name%%cp% gespeichert.");
     addMessage(Variablelist.chat_hider, "Verstecker");
     addMessage(Variablelist.chat_hider, "Sucher");
     addMessage(Variablelist.chat_hider, "Spectator");
