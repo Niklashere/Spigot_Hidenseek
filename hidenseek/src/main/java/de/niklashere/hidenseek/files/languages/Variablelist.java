@@ -30,6 +30,13 @@ public class Variablelist {
   public static String chat_point = chat + "points";
   public static String chat_wait = chat + "wait";
   public static String chat_wait_ended = chat + "wait_ended";
+  public static String chat_mapvoting = chat + "mapvoting";
+  public static String chat_role = chat + "role";
+  public static String chat_role_full = chat + "role-full";
+  public static String chat_location = chat + "location";
+  public static String chat_hider = chat + "hider";
+  public static String chat_seeker = chat + "seeker";
+  public static String chat_spectator = chat + "spectator";
 
   // Commands
   private static String command = "commands.";

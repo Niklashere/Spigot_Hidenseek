@@ -67,6 +67,13 @@ public class EN {
     addMessage(Variablelist.chat_point, "%pc%You recived %cs%%hp% Points %cp%for giving a hint.");
     addMessage(Variablelist.chat_wait, "%pc%%cw%You have to wait %cs%%t% %s%%cw%.");
     addMessage(Variablelist.chat_wait_ended, "%pc%%cw%You can use %cs%%name%%cp% again.");
+    addMessage(Variablelist.chat_mapvoting, "%pc%%cw%You voted for the map %cs%%name%%cp%.");
+    addMessage(Variablelist.chat_role, "%pc%%cw%You joined the role %cs%%name%%cp%.");
+    addMessage(Variablelist.chat_role_full, "%pc%%cw%The role %cs%%name%%cw% is full.");
+    addMessage(Variablelist.chat_location, "%pc%%cw%You saved the location %cs%%name%%cp%.");
+    addMessage(Variablelist.chat_hider, "Hider");
+    addMessage(Variablelist.chat_hider, "Seeker");
+    addMessage(Variablelist.chat_hider, "Spectator");
 
     // Commands
 

@@ -55,18 +55,24 @@ public class InventoryClickListener implements Listener {
       if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(
           LanguageManager.getMessage(Variablelist.inv_setup_spawnpointLobby, p))) {
         Fileaccess.setLocation("spawnpoint-lobby", Fileaccess.getConfig(), p);
+        p.sendMessage(
+            LanguageManager.getMessage(Variablelist.chat_location, p).replace("%name%", "Lobby"));
 
       } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(
           LanguageManager.getMessage(Variablelist.inv_setup_spawnpointSeeker, p))) {
         File file = new File("plugins/hidenseek/maps", p.getWorld().getName() + ".yml");
         Fileaccess.setString("world", file, p.getWorld().getName());
         Fileaccess.setLocation("spawnpoint-seeker", file, p);
+        p.sendMessage(LanguageManager.getMessage(Variablelist.chat_location, p).replace("%name%",
+            "Spawnpoint Seeker"));
 
       } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(
           LanguageManager.getMessage(Variablelist.inv_setup_spawnpointHider, p))) {
         File file = new File("plugins/hidenseek/maps", p.getWorld().getName() + ".yml");
         Fileaccess.setString("world", file, p.getWorld().getName());
         Fileaccess.setLocation("spawnpoint-hider", file, p);
+        p.sendMessage(LanguageManager.getMessage(Variablelist.chat_location, p).replace("%name%",
+            "Spawnpoint Hider"));
 
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_setup_minPlayers, p)
@@ -224,8 +230,7 @@ public class InventoryClickListener implements Listener {
         }
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_hint_Meow, p))) {
-        if (timer.get(p.getName() + "meow") == null
-            || timer.get(p.getName() + "meow") == 0) {
+        if (timer.get(p.getName() + "meow") == null || timer.get(p.getName() + "meow") == 0) {
           timer.put(p.getName() + "meow",
               Fileaccess.getInt("items.meow-duration", Fileaccess.getConfig()));
           for (Player all : Bukkit.getOnlinePlayers()) {
@@ -316,14 +321,22 @@ public class InventoryClickListener implements Listener {
           .equalsIgnoreCase(prefix + maps.get(0).getName().replace(".yml", ""))) {
         VoteManager.addVote(maps.get(0), p);
         MapvotingInventory.openInventory(p);
+        p.sendMessage(LanguageManager.getMessage(Variablelist.chat_mapvoting, p).replace("%name%",
+            maps.get(0).getName().replace(".yml", "")));
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(prefix + maps.get(1).getName().replace(".yml", ""))) {
         VoteManager.addVote(maps.get(1), p);
         MapvotingInventory.openInventory(p);
+        p.sendMessage(LanguageManager.getMessage(Variablelist.chat_mapvoting, p).replace("%name%",
+            maps.get(1).getName().replace(".yml", "")));
+
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(prefix + maps.get(2).getName().replace(".yml", ""))) {
         VoteManager.addVote(maps.get(2), p);
         MapvotingInventory.openInventory(p);
+        p.sendMessage(LanguageManager.getMessage(Variablelist.chat_mapvoting, p).replace("%name%",
+            maps.get(2).getName().replace(".yml", "")));
+
       }
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle()
@@ -348,6 +361,12 @@ public class InventoryClickListener implements Listener {
             RoleManager.playerList.get(RoleManager.getPlayer(p)).setSeeker(true);
 
           }
+          p.sendMessage(LanguageManager.getMessage(Variablelist.chat_role, p).replace("%name%",
+              LanguageManager.getMessage(Variablelist.chat_seeker, p).toString()));
+        } else {
+          p.sendMessage(LanguageManager.getMessage(Variablelist.chat_role_full, p).replace("%name%",
+              LanguageManager.getMessage(Variablelist.chat_seeker, p).toString()));
+
         }
       }
     }
