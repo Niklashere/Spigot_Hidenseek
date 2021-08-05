@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek;
 
+import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.countdown.LobbyCountdown;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.MysqlManager;
@@ -44,6 +45,7 @@ public class App extends JavaPlugin {
     registerManager.registerCommands();
     LobbyCountdown.startLobbyCD();
     MysqlManager.connect();
+    Gamestate.setState(Gamestate.Lobby);
 
   }
 

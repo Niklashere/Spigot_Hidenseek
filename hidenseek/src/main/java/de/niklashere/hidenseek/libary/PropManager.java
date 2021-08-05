@@ -1,16 +1,15 @@
 package de.niklashere.hidenseek.libary;
 
 import de.niklashere.hidenseek.App;
-import de.niklashere.hidenseek.listener.PlayerJoinListener;
 
 import java.util.HashMap;
 
-import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Silverfish;
-import org.bukkit.entity.Wolf;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -24,6 +23,7 @@ import org.bukkit.util.Vector;
  */
 public class PropManager {
   public static HashMap<Player, PropManager> propsList = new HashMap<>();
+  public static HashMap<Player, Location> blockList = new HashMap<>();
 
   private Player player;
   private Silverfish blockmount;
@@ -71,6 +71,7 @@ public class PropManager {
           new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 20, false, false));
       blockmount = s;
       follow(p);
+      mounted = true;
     } else {
       deleteProp();
       setProp(mat);
@@ -78,11 +79,12 @@ public class PropManager {
   }
 
   /**
-   * Delete the prop incase its no longer needed. 
+   * Delete the prop incase its no longer needed.
    */
   public void deleteProp() {
     System.out.println(2 + blockmount.getType().toString());
     blockmount.remove();
+    mounted = false;
     // this.blockmount = null;
     // this.mounted = false;
   }
@@ -142,6 +144,22 @@ public class PropManager {
         }
       }
     }.runTaskTimer(App.instance, 0, 1);
+  }
 
+  public void setBlock(Material mat) {
+    Player p = this.player;
+    Block b = p.getLocation().getBlock();
+    b.setType(mat);
+    blockList.put(p, p.getLocation());
+  }
+
+  public void removeBlock() {
+    Player p = this.player;
+    if (blockList.get(p) != null) {
+      PropManager props = propsList.get(p);
+      blockList.get(p).getBlock().setType(Material.AIR);
+      blockList.remove(p);
+      props.setProp(Material.STONE);
+    }
   }
 }
