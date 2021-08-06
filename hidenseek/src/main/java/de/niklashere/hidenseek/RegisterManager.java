@@ -65,7 +65,7 @@ public class RegisterManager {
     pm.registerEvents(new PlayerInteractListener(), plugin);
     pm.registerEvents(new PlayerJoinListener(), plugin);
     pm.registerEvents(new PlayerLoginListener(), plugin);
-  //  pm.registerEvents(new PlayerMoveListener(), plugin);
+    pm.registerEvents(new PlayerMoveListener(), plugin);
     pm.registerEvents(new PlayerQuitListener(), plugin);
     pm.registerEvents(new PlayerRespawnListener(), plugin);
     pm.registerEvents(new ServerListPingListener(), plugin);

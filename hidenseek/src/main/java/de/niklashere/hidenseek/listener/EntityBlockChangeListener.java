@@ -13,7 +13,7 @@ import org.bukkit.event.entity.EntityChangeBlockEvent;
 public class EntityBlockChangeListener implements Listener {
 
     @EventHandler
-    public void onSilverFishBurrow(EntityChangeBlockEvent e){
+    public void onEntityBlockChange(EntityChangeBlockEvent e){
         e.setCancelled(true);
         
     }  

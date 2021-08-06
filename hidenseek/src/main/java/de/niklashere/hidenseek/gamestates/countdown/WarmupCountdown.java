@@ -79,7 +79,10 @@ public class WarmupCountdown {
         InventoryManager.hiderItems(all);
         PropManager props = new PropManager(all);
         PropManager.propsList.put(all, props);
+
         props.setProp(Material.STONE);
+        PropManager.propsList.put(all, props);
+
       } else if (RoleManager.playerList.get(i).isSpectator()) {
         GhostMaker.addGhost(all, "spectator");
         all.addPotionEffect(

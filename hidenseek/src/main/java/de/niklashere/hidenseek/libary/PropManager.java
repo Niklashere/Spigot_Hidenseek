@@ -46,7 +46,7 @@ public class PropManager {
    * @return is mounted
    */
   public boolean isMounted() {
-    return mounted;
+    return this.mounted;
   }
 
   /**
@@ -70,11 +70,11 @@ public class PropManager {
       s.setInvisible(true);
       s.addPotionEffect(
           new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 20, false, false));
-      blockmount = s;
-      follow(p);
+      this.blockmount = s;
+      this.follow(p);
     } else {
-      deleteProp();
-      setProp(mat);
+      this.deleteProp();
+      this.setProp(mat);
     }
   }
 
@@ -82,17 +82,18 @@ public class PropManager {
    * Delete the prop incase its no longer needed. 
    */
   public void deleteProp() {
-    System.out.println(2 + blockmount.getType().toString());
-    blockmount.remove();
-    // this.blockmount = null;
-    // this.mounted = false;
+    System.out.println(2 + this.blockmount.getType().toString());
+    this.blockmount.remove();
+    this.blockmount = null;
+    this.mounted = false;
+    propsList.remove(this.player);
   }
 
   /**
    * Prop stops following and disappears.
    */
   public void stopfollow() {
-    timer = false;
+    this.timer = false;
   }
 
   /**
@@ -101,7 +102,7 @@ public class PropManager {
    * @return silverfish
    */
   public Silverfish getProp() {
-    return blockmount;
+    return this.blockmount;
   }
 
   /**
@@ -110,14 +111,14 @@ public class PropManager {
    * @param p Player who should get followed.
    */
   public void follow(Player p) {
-    timer = true;
-    PropManager props = propsList.get(p);
-    Silverfish w = props.getProp();
-
+    this.timer = true;
     new BukkitRunnable() {
 
       @Override
       public void run() {
+        PropManager props = propsList.get(p);
+        Silverfish w = props.getProp();
+    
         if (w.getLocation().distance(p.getLocation()) >= 2) {
           w.teleport(p);
           w.setVelocity(new Vector(p.getLocation().getX() - w.getLocation().getX(),
@@ -161,7 +162,6 @@ public class PropManager {
     Player p = this.player;
     if (blockList.get(p) != null) {
       System.out.println(6);
-      PropManager props = propsList.get(p);
       Block b = blockList.get(p).getBlock();
       b.setType(Material.AIR);
 
@@ -172,7 +172,8 @@ public class PropManager {
   System.out.println(7);
 
       blockList.remove(p);
-      props.setProp(Material.STONE);
     }
+    this.setProp(Material.STONE);
+
   }
 }
