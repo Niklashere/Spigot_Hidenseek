@@ -14,6 +14,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+/**
+ * Listener for the PlayerMoveEvent.
+ *
+ * @author Niklashere
+ * @since 04.08.2021
+ */
 public class PlayerMoveListener implements Listener {
 
   private static HashMap<Player, Integer> timer = new HashMap<>();
@@ -29,15 +35,16 @@ public class PlayerMoveListener implements Listener {
           new BukkitRunnable() {
             @Override
             public void run() {
+              System.out.println(timer.get(p) + "  "
+              + Fileaccess.getInt("props.wait", Fileaccess.getConfig()));
               int t = 1 - (timer.get(p) / (Fileaccess.getInt("props.wait", Fileaccess.getConfig())*4));
-              System.out.println(t + "  " + timer.get(p) + "  "
-                  + Fileaccess.getInt("props.wait", Fileaccess.getConfig()));
+              System.out.println(t);
               // p.setExp(t);
 
               if (timer.get(p) <= 0) {
                 timer.put(p, 0);
                 prop.stopfollow();
-                prop.setBlock(Material.STONE);
+            //    prop.setBlock(Material.STONE);
                 cancel();
               }
               timer.put(p, timer.get(p) - 1);
@@ -46,6 +53,7 @@ public class PlayerMoveListener implements Listener {
           }.runTaskTimer(App.instance, 0, 5);
         }
       } else {
+        System.out.println("PM 2");
         timer.put(p, 0);
         prop.removeBlock();
       }

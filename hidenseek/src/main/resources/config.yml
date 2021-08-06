@@ -24,8 +24,8 @@ points:
     firework: 10
     meow: 5
     explosion: 5
-  props:
-    wait: 5
+props:
+  wait: 5
 language:
   default-file: en.yml
 colors:

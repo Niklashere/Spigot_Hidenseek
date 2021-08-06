@@ -4,6 +4,7 @@ import de.niklashere.hidenseek.App;
 
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -71,7 +72,6 @@ public class PropManager {
           new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 20, false, false));
       blockmount = s;
       follow(p);
-      mounted = true;
     } else {
       deleteProp();
       setProp(mat);
@@ -79,12 +79,11 @@ public class PropManager {
   }
 
   /**
-   * Delete the prop incase its no longer needed.
+   * Delete the prop incase its no longer needed. 
    */
   public void deleteProp() {
     System.out.println(2 + blockmount.getType().toString());
     blockmount.remove();
-    mounted = false;
     // this.blockmount = null;
     // this.mounted = false;
   }
@@ -144,20 +143,34 @@ public class PropManager {
         }
       }
     }.runTaskTimer(App.instance, 0, 1);
+
   }
 
   public void setBlock(Material mat) {
     Player p = this.player;
     Block b = p.getLocation().getBlock();
-    b.setType(mat);
+  //  b.setType(mat);
+  System.out.println(5);
+    for (Player all : Bukkit.getOnlinePlayers()) {
+   //   all.sendBlockChange(p.getLocation(), b.getBlockData());
+    }
     blockList.put(p, p.getLocation());
   }
 
   public void removeBlock() {
     Player p = this.player;
     if (blockList.get(p) != null) {
+      System.out.println(6);
       PropManager props = propsList.get(p);
-      blockList.get(p).getBlock().setType(Material.AIR);
+      Block b = blockList.get(p).getBlock();
+      b.setType(Material.AIR);
+
+   //   blockList.get(p).getBlock().setType(Material.AIR);
+   for (Player all : Bukkit.getOnlinePlayers()) {
+ //   all.sendBlockChange(b.getLocation(), b.getBlockData());
+  }
+  System.out.println(7);
+
       blockList.remove(p);
       props.setProp(Material.STONE);
     }

@@ -8,6 +8,7 @@ import de.niklashere.hidenseek.files.languages.EN;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.listener.BlockBreakListener;
 import de.niklashere.hidenseek.listener.BlockPlaceListener;
+import de.niklashere.hidenseek.listener.EntityBlockChangeListener;
 import de.niklashere.hidenseek.listener.EntityDamageByEntityListener;
 import de.niklashere.hidenseek.listener.EntityDamageListener;
 import de.niklashere.hidenseek.listener.EntityShootBowListener;
@@ -53,6 +54,7 @@ public class RegisterManager {
     pm.registerEvents(new BlockBreakListener(), plugin);
     pm.registerEvents(new BlockPlaceListener(), plugin);
     pm.registerEvents(new EntityDamageByEntityListener(), plugin);
+    pm.registerEvents(new EntityBlockChangeListener(), plugin);
     pm.registerEvents(new EntityDamageListener(), plugin);
     pm.registerEvents(new EntityShootBowListener(), plugin);
     pm.registerEvents(new FoodLevelChangeListener(), plugin);
@@ -63,7 +65,7 @@ public class RegisterManager {
     pm.registerEvents(new PlayerInteractListener(), plugin);
     pm.registerEvents(new PlayerJoinListener(), plugin);
     pm.registerEvents(new PlayerLoginListener(), plugin);
-    pm.registerEvents(new PlayerMoveListener(), plugin);
+  //  pm.registerEvents(new PlayerMoveListener(), plugin);
     pm.registerEvents(new PlayerQuitListener(), plugin);
     pm.registerEvents(new PlayerRespawnListener(), plugin);
     pm.registerEvents(new ServerListPingListener(), plugin);
