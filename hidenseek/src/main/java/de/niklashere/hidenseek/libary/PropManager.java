@@ -7,7 +7,7 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Silverfish;
@@ -24,7 +24,8 @@ import org.bukkit.util.Vector;
  */
 public class PropManager {
   public static HashMap<Player, PropManager> propsList = new HashMap<>();
-  public static HashMap<Player, Location> blockList = new HashMap<>();
+  private static HashMap<Player, Location> blockList = new HashMap<>();
+  private static HashMap<Player, ArmorStand> armorStandList = new HashMap<>();
 
   private Player player;
   private Silverfish blockmount;
@@ -59,8 +60,7 @@ public class PropManager {
     if (!mounted) {
       Silverfish s = p.getWorld().spawn(p.getLocation().add(0, 0, 0), Silverfish.class);
       System.out.println(1 + p.getName());
-      FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0), mat,
-          (byte) 1);
+      FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0), mat.createBlockData());
       b.setDropItem(false);
       s.addPassenger(b);
       s.setRemoveWhenFarAway(false);
@@ -130,8 +130,9 @@ public class PropManager {
               p.getLocation().getY() - w.getLocation().getY(),
               p.getLocation().getZ() - (w.getLocation().getZ())));
         }
-        if (w.getPassenger() == null) {
+        if (w.getPassengers() == null) {
           System.out.println(4);
+
           props.setProp(Material.STONE);
           cancel();
 
@@ -147,33 +148,46 @@ public class PropManager {
 
   }
 
-  public void setBlock(Material mat) {
-    Player p = this.player;
-    Block b = p.getLocation().getBlock();
-  //  b.setType(mat);
+  public static void setBlock(Player p, Material mat) {
+    
+
   System.out.println(5);
     for (Player all : Bukkit.getOnlinePlayers()) {
-   //   all.sendBlockChange(p.getLocation(), b.getBlockData());
+      if (all != p) {
+        all.sendBlockChange(p.getLocation(), mat.createBlockData());
+
+      } else if (armorStandList.get(p) == null) {
+        System.out.println(p.getLocation().getBlock().getLocation().toString());
+        ArmorStand s = p.getWorld().spawn(p.getLocation().getBlock().getLocation().add(0.5, -0.8, 0.5), ArmorStand.class);
+        System.out.println(1 + p.getName());
+        FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0), mat.createBlockData());
+        b.setDropItem(false);
+        s.setGravity(false);
+        s.setSmall(true);
+        s.addPassenger(b);
+        s.setRemoveWhenFarAway(false);
+        s.setCanPickupItems(false);
+        s.setSilent(true);
+        s.setInvisible(true);
+        armorStandList.put(p, s);    
+        
+      
+      }
     }
     blockList.put(p, p.getLocation());
   }
 
-  public void removeBlock() {
-    Player p = this.player;
+  public static void removeBlock(Player p) {
+    armorStandList.get(p).remove();
+    armorStandList.remove(p);
     if (blockList.get(p) != null) {
       System.out.println(6);
-      Block b = blockList.get(p).getBlock();
-      b.setType(Material.AIR);
-
-   //   blockList.get(p).getBlock().setType(Material.AIR);
    for (Player all : Bukkit.getOnlinePlayers()) {
- //   all.sendBlockChange(b.getLocation(), b.getBlockData());
+    all.sendBlockChange(blockList.get(p), Material.AIR.createBlockData());
   }
   System.out.println(7);
 
       blockList.remove(p);
     }
-    this.setProp(Material.STONE);
-
   }
 }

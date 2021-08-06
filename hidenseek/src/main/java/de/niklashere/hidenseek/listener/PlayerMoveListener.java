@@ -30,11 +30,14 @@ public class PlayerMoveListener implements Listener {
     Player p = e.getPlayer();
     if ((Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame)) && RoleManager.playerList.get(RoleManager.getPlayer(p)).isHider()) {
       if (e.getFrom().getX() == e.getTo().getX() && e.getFrom().getZ() == e.getTo().getZ()) {
-        if (p.getLocation().getBlock().getType() == Material.AIR && (timer.get(p) == null || timer.get(p) <= -1)) {
+        if (p.getLocation().getBlock().getType() == Material.AIR && (timer.get(p) == null || timer.get(p) <= -2)) {
           timer.put(p, Fileaccess.getInt("props.wait", Fileaccess.getConfig())*20);
           new BukkitRunnable() {
             @Override
             public void run() {
+              PropManager prop = PropManager.propsList.get(p);
+
+              if (timer.get(p) >= 1) {
               System.out.println(timer.get(p) + "  "
               + Fileaccess.getInt("props.wait", Fileaccess.getConfig()));
               float t = 1 - ((float) timer.get(p) / (float) (Fileaccess.getInt("props.wait", Fileaccess.getConfig())*20));
@@ -42,22 +45,22 @@ public class PlayerMoveListener implements Listener {
               if (t >= 0 && 1 >= t) {
                p.setExp(t);
               }
-              
+              timer.put(p, timer.get(p) - 1);
 
-              if (timer.get(p) == 0) {
+
+            } else if (timer.get(p) == 0) {
                 System.out.println("PM 1");
-                PropManager prop = PropManager.propsList.get(p);
-                timer.put(p, Integer.MAX_VALUE);
                 prop.stopfollow();
-            //    prop.setBlock(Material.STONE);
-                cancel();
-              }
+                PropManager.setBlock(p, Material.STONE);
+                timer.put(p, timer.get(p) - 1);
 
-              if (timer.get(p) <= -1) {
+              } else if (timer.get(p) == -1) {
+                PropManager.setBlock(p, Material.STONE);
+              
+            } else if (timer.get(p) <= -2) {
                 System.out.println("PM 2");
                 cancel();
               }
-              timer.put(p, timer.get(p) - 1);
 
             }
           }.runTaskTimer(App.instance, 0, 1);
@@ -66,7 +69,7 @@ public class PlayerMoveListener implements Listener {
         PropManager prop = PropManager.propsList.get(p);
         System.out.println(prop);
         System.out.println("PM 3");
-        timer.put(p, -1);
+        timer.put(p, -2);
         p.setExp(0);
 
         if (prop == null) {
@@ -74,8 +77,8 @@ public class PlayerMoveListener implements Listener {
 
         PropManager props = new PropManager(p);
         PropManager.propsList.put(p, props);
+        PropManager.removeBlock(p);
         props.setProp(Material.STONE);
-    //    prop.removeBlock();
         }
       }
     }
