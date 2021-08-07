@@ -26,7 +26,8 @@ import org.bukkit.util.Vector;
  */
 public class PropManager {
   public static HashMap<Player, PropManager> propsList = new HashMap<>();
-  private static HashMap<Player, Location> blockList = new HashMap<>();
+  public static HashMap<Player, Material> choosedBlock = new HashMap<>();
+  public static HashMap<Player, Location> blockList = new HashMap<>();
   private static HashMap<Player, ArmorStand> armorStandList = new HashMap<>();
 
   private Player player;
@@ -61,7 +62,7 @@ public class PropManager {
     Player p = this.player;
     if (!mounted) {
       Silverfish s = p.getWorld().spawn(p.getLocation().add(0, 0, 0), Silverfish.class);
-      System.out.println(1 + p.getName());
+   //   System.out.println(1 + p.getName());
       FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0), mat.createBlockData());
       b.setDropItem(false);
       s.addPassenger(b);
@@ -84,7 +85,7 @@ public class PropManager {
    * Delete the prop incase its no longer needed. 
    */
   public void deleteProp() {
-    System.out.println(2 + this.blockmount.getType().toString());
+    //  System.out.println(2 + this.blockmount.getType().toString());
     this.blockmount.remove();
     this.blockmount = null;
     this.mounted = false;
@@ -132,10 +133,10 @@ public class PropManager {
               p.getLocation().getY() - w.getLocation().getY(),
               p.getLocation().getZ() - (w.getLocation().getZ())));
         }
-        if (w.getPassengers() == null) {
-          System.out.println(4);
+        if (w.getPassenger() == null) {
+          //  System.out.println(4);
 
-          props.setProp(Material.STONE);
+          props.setProp(PropManager.choosedBlock.get(p));
           cancel();
 
         }
@@ -153,13 +154,13 @@ public class PropManager {
   public static void setBlock(Player p, Material mat) {
     
 
-  System.out.println(5);
+ // System.out.println(5);
     for (Player all : Bukkit.getOnlinePlayers()) {
       if (all != p) {
         all.sendBlockChange(p.getLocation(), mat.createBlockData());
 
       } else if (armorStandList.get(p) == null) {
-        System.out.println(p.getLocation().getBlock().getLocation().toString());
+        //     System.out.println(p.getLocation().getBlock().getLocation().toString());
         ArmorStand s = p.getWorld().spawn(p.getLocation().getBlock().getLocation().add(0.5, 0.2, 0.5), ArmorStand.class);
         System.out.println(1 + p.getName());
         FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0), mat.createBlockData());
@@ -191,7 +192,7 @@ public class PropManager {
    for (Player all : Bukkit.getOnlinePlayers()) {
     all.sendBlockChange(blockList.get(p), Material.AIR.createBlockData());
   }
-  System.out.println(7);
+//  System.out.println(7);
 
       blockList.remove(p);
     }

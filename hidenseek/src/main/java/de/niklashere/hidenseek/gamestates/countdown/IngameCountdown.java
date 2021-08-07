@@ -6,6 +6,7 @@ import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
+import de.niklashere.hidenseek.libary.GhostMaker;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
@@ -37,6 +38,7 @@ public class IngameCountdown {
       Player all = RoleManager.playerList.get(i).getPlayer();
 
       if (RoleManager.playerList.get(i).isSeeker()) {
+        GhostMaker.addGhost(all, all.getName());
         all.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
         InventoryManager.seekerItems(all);
       }

@@ -80,7 +80,8 @@ public class WarmupCountdown {
         PropManager props = new PropManager(all);
         PropManager.propsList.put(all, props);
 
-        props.setProp(Material.STONE);
+        PropManager.choosedBlock.put(all, Material.STONE);
+        props.setProp(PropManager.choosedBlock.get(all));
         PropManager.propsList.put(all, props);
 
       } else if (RoleManager.playerList.get(i).isSpectator()) {

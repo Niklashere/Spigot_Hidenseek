@@ -60,7 +60,7 @@ public class EntityDamageByEntityListener implements Listener {
    * @param p player who was damaged
    * @param k player who damaged p
    */
-  private static void damage(Player p, Player k) {
+  public static void damage(Player p, Player k) {
     if (Gamestate.isState(Gamestate.Ingame)) {
       if (RoleManager.playerList.get(RoleManager.getPlayer(k)).isSeeker()
           && !RoleManager.playerList.get(RoleManager.getPlayer(p)).isSeeker()) {

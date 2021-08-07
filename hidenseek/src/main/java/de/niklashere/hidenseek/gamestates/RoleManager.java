@@ -106,7 +106,10 @@ public class RoleManager {
     playerList.get(getPlayer(p)).setHider(false);
     playerList.get(getPlayer(p)).setSeeker(true);
     PropManager props = PropManager.propsList.get(p);
-    props.stopfollow();
+    if (props != null) {
+      props.stopfollow();
+    }
+    PropManager.removeBlock(p);
     InventoryManager.clearInv(p);
     InventoryManager.seekerItems(p);
     for (Player all : Bukkit.getOnlinePlayers()) {
