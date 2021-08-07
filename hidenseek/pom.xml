@@ -4,14 +4,14 @@
 
     <artifactId>hidenseek</artifactId>
     <groupId>de.niklashere.hidenseek</groupId>
-    <version>0.5.1</version>
+    <version>0.5.6</version>
 
 
     <!-- Repositories -->
     <repositories>
         <repository>
             <id>spigot-repo</id>
-        <url>file:///${project.parent.basedir}/spigot-1.17.1.jar</url>
+            <url>file:///Users/nzabel/Downloads/spigot-1.17.1.jar</url>
         </repository>
     </repositories>
 
@@ -20,12 +20,12 @@
         <!--Spigot API-->
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
+            <artifactId>spigot</artifactId>
             <version>1.17.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <resources>
             <resource>
@@ -39,26 +39,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>16</release> 
+                    <release>16</release>
                     <source>1.16</source>
                     <target>1.16</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <configuration>
-                    <tasks>
-                        <copy file="target/hidenseek-1.0-SNAPSHOT.jar" todir="/Users/Aditya/Desktop/spigot/plugins"/>
-                    </tasks>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -4,9 +4,11 @@ import de.niklashere.hidenseek.App;
 
 import java.util.HashMap;
 
+import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
@@ -158,7 +160,7 @@ public class PropManager {
 
       } else if (armorStandList.get(p) == null) {
         System.out.println(p.getLocation().getBlock().getLocation().toString());
-        ArmorStand s = p.getWorld().spawn(p.getLocation().getBlock().getLocation().add(0.5, -0.8, 0.5), ArmorStand.class);
+        ArmorStand s = p.getWorld().spawn(p.getLocation().getBlock().getLocation().add(0.5, 0.2, 0.5), ArmorStand.class);
         System.out.println(1 + p.getName());
         FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0), mat.createBlockData());
         b.setDropItem(false);
@@ -169,13 +171,17 @@ public class PropManager {
         s.setCanPickupItems(false);
         s.setSilent(true);
         s.setInvisible(true);
-        armorStandList.put(p, s);    
-        
-      
+        armorStandList.put(p, s);
+        PacketPlayOutEntityDestroy pack = new PacketPlayOutEntityDestroy(s.getEntityId());
+        for (Player a : Bukkit.getOnlinePlayers()) {
+
+          ((CraftPlayer) a).getHandle().b.sendPacket(pack);
+        }
       }
     }
     blockList.put(p, p.getLocation());
   }
+
 
   public static void removeBlock(Player p) {
     armorStandList.get(p).remove();

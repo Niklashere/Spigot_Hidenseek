@@ -10,4 +10,6 @@ hidenseek/.project
 hidenseek/target
 hidenseek/.apt_generated
 spigot*.jar
+.idea
+.vscode
 hidenseek/.settings/org.eclipse.m2e.core.prefs
