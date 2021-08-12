@@ -12,9 +12,9 @@ import org.bukkit.event.entity.EntityChangeBlockEvent;
  */
 public class EntityBlockChangeListener implements Listener {
 
-    @EventHandler
-    public void onEntityBlockChange(EntityChangeBlockEvent e){
-        e.setCancelled(true);
-        
-    }  
+  @EventHandler
+  public void onEntityBlockChange(EntityChangeBlockEvent e) {
+    e.setCancelled(true);
+
+  }
 }

@@ -1,7 +1,6 @@
 package de.niklashere.hidenseek.listener;
 
 import de.niklashere.hidenseek.files.languages.Variablelist;
-import de.niklashere.hidenseek.gamestates.RoleManager;
 import de.niklashere.hidenseek.inventorys.HintInventory;
 import de.niklashere.hidenseek.inventorys.MapvotingInventory;
 import de.niklashere.hidenseek.inventorys.RoleInventory;
@@ -35,13 +34,15 @@ public class PlayerInteractListener implements Listener {
     Player p = e.getPlayer();
     if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
       System.out.println(1);
-      for (Player all :Bukkit.getOnlinePlayers()){
+      for (Player all : Bukkit.getOnlinePlayers()) {
         if (PropManager.blockList.get(all) != null) {
-        System.out.println(e.getClickedBlock().getLocation().getBlock().getLocation() + "  " + PropManager.blockList.get(all).getBlock().getLocation());
-        if (e.getClickedBlock().getLocation().getBlock().getLocation().equals(PropManager.blockList.get(all).getBlock().getLocation())) {
-          System.out.println(3);
-          EntityDamageByEntityListener.damage(all, p);
-        }
+          System.out.println(e.getClickedBlock().getLocation().getBlock().getLocation() + "  "
+              + PropManager.blockList.get(all).getBlock().getLocation());
+          if (e.getClickedBlock().getLocation().getBlock().getLocation()
+              .equals(PropManager.blockList.get(all).getBlock().getLocation())) {
+            System.out.println(3);
+            EntityDamageByEntityListener.damage(all, p);
+          }
         }
       }
     }
@@ -68,6 +69,7 @@ public class PlayerInteractListener implements Listener {
 
     }
   }
+
   @EventHandler
   public void onBLockDamage(BlockDamageEvent e) {
     System.out.println(e.getBlock().getType());
