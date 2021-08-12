@@ -62,8 +62,8 @@ public class PropManager {
     Player p = this.player;
     if (!mounted) {
       Silverfish s = p.getWorld().spawn(p.getLocation().add(0, 0, 0), Silverfish.class);
-   //   System.out.println(1 + p.getName());
-      FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0), mat.createBlockData());
+      FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0),
+          mat.createBlockData());
       b.setDropItem(false);
       s.addPassenger(b);
       s.setRemoveWhenFarAway(false);
@@ -82,10 +82,9 @@ public class PropManager {
   }
 
   /**
-   * Delete the prop incase its no longer needed. 
+   * Delete the prop incase its no longer needed.
    */
   public void deleteProp() {
-    //  System.out.println(2 + this.blockmount.getType().toString());
     this.blockmount.remove();
     this.blockmount = null;
     this.mounted = false;
@@ -121,7 +120,7 @@ public class PropManager {
       public void run() {
         PropManager props = propsList.get(p);
         Silverfish w = props.getProp();
-    
+
         if (w.getLocation().distance(p.getLocation()) >= 2) {
           w.teleport(p);
           w.setVelocity(new Vector(p.getLocation().getX() - w.getLocation().getX(),
@@ -134,7 +133,6 @@ public class PropManager {
               p.getLocation().getZ() - (w.getLocation().getZ())));
         }
         if (w.getPassenger() == null) {
-          //  System.out.println(4);
 
           props.setProp(PropManager.choosedBlock.get(p));
           cancel();
@@ -152,18 +150,17 @@ public class PropManager {
   }
 
   public static void setBlock(Player p, Material mat) {
-    
 
- // System.out.println(5);
     for (Player all : Bukkit.getOnlinePlayers()) {
       if (all != p) {
         all.sendBlockChange(p.getLocation(), mat.createBlockData());
 
       } else if (armorStandList.get(p) == null) {
-        //     System.out.println(p.getLocation().getBlock().getLocation().toString());
-        ArmorStand s = p.getWorld().spawn(p.getLocation().getBlock().getLocation().add(0.5, 0.2, 0.5), ArmorStand.class);
+        ArmorStand s = p.getWorld()
+            .spawn(p.getLocation().getBlock().getLocation().add(0.5, 0.2, 0.5), ArmorStand.class);
         System.out.println(1 + p.getName());
-        FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0), mat.createBlockData());
+        FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0),
+            mat.createBlockData());
         b.setDropItem(false);
         s.setGravity(false);
         s.setSmall(true);
@@ -183,16 +180,14 @@ public class PropManager {
     blockList.put(p, p.getLocation());
   }
 
-
   public static void removeBlock(Player p) {
     armorStandList.get(p).remove();
     armorStandList.remove(p);
     if (blockList.get(p) != null) {
       System.out.println(6);
-   for (Player all : Bukkit.getOnlinePlayers()) {
-    all.sendBlockChange(blockList.get(p), Material.AIR.createBlockData());
-  }
-//  System.out.println(7);
+      for (Player all : Bukkit.getOnlinePlayers()) {
+        all.sendBlockChange(blockList.get(p), Material.AIR.createBlockData());
+      }
 
       blockList.remove(p);
     }

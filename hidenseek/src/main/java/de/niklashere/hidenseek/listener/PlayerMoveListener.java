@@ -25,46 +25,46 @@ public class PlayerMoveListener implements Listener {
 
   private static HashMap<Player, Integer> timer = new HashMap<>();
 
+  /**
+   * Called when the event occurs.
+   * 
+   * @param e event
+   */
   @EventHandler
   public void onPlayerMove(PlayerMoveEvent e) {
     Player p = e.getPlayer();
-    if ((Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame)) && RoleManager.playerList.get(RoleManager.getPlayer(p)).isHider()) {
+    if ((Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Ingame))
+        && RoleManager.playerList.get(RoleManager.getPlayer(p)).isHider()) {
       if (e.getFrom().getX() == e.getTo().getX() && e.getFrom().getZ() == e.getTo().getZ()) {
-        if (p.getLocation().getBlock().getType() == Material.AIR && (timer.get(p) == null || timer.get(p) <= -2)) {
-          timer.put(p, Fileaccess.getInt("props.wait", Fileaccess.getConfig())*20);
+        if (p.getLocation().getBlock().getType() == Material.AIR
+            && (timer.get(p) == null || timer.get(p) <= -2)) {
+          timer.put(p, Fileaccess.getInt("props.wait", Fileaccess.getConfig()) * 20);
           new BukkitRunnable() {
             @Override
             public void run() {
               PropManager prop = PropManager.propsList.get(p);
 
               if (!RoleManager.playerList.get(RoleManager.getPlayer(p)).isHider()) {
-                //    System.out.println(prop);
-                //    System.out.println("PM 3");
                 timer.put(p, -2);
                 p.setExp(0);
               }
               if (timer.get(p) >= 1) {
-                //     System.out.println(timer.get(p) + "  "
-                //      + Fileaccess.getInt("props.wait", Fileaccess.getConfig()));
-              float t = 1 - ((float) timer.get(p) / (float) (Fileaccess.getInt("props.wait", Fileaccess.getConfig())*20));
-                //       System.out.println("a " + t);
-              if (t >= 0 && 1 >= t) {
-               p.setExp(t);
-              }
-              timer.put(p, timer.get(p) - 1);
+                float t = 1 - ((float) timer.get(p)
+                    / (float) (Fileaccess.getInt("props.wait", Fileaccess.getConfig()) * 20));
+                if (t >= 0 && 1 >= t) {
+                  p.setExp(t);
+                }
+                timer.put(p, timer.get(p) - 1);
 
-
-            } else if (timer.get(p) == 0) {
-                //   System.out.println("PM 1");
+              } else if (timer.get(p) == 0) {
                 prop.stopfollow();
                 PropManager.setBlock(p, PropManager.choosedBlock.get(p));
                 timer.put(p, timer.get(p) - 1);
 
               } else if (timer.get(p) == -1) {
                 PropManager.setBlock(p, PropManager.choosedBlock.get(p));
-              
-            } else if (timer.get(p) <= -2) {
-                //        System.out.println("PM 2");
+
+              } else if (timer.get(p) <= -2) {
                 cancel();
               }
 
@@ -73,18 +73,14 @@ public class PlayerMoveListener implements Listener {
         }
       } else {
         PropManager prop = PropManager.propsList.get(p);
-    //    System.out.println(prop);
-    //    System.out.println("PM 3");
         timer.put(p, -2);
         p.setExp(0);
 
         if (prop == null) {
-    //      System.out.println("PM 4");
-
-        PropManager props = new PropManager(p);
-        PropManager.propsList.put(p, props);
-        PropManager.removeBlock(p);
-        props.setProp(PropManager.choosedBlock.get(p));
+          PropManager props = new PropManager(p);
+          PropManager.propsList.put(p, props);
+          PropManager.removeBlock(p);
+          props.setProp(PropManager.choosedBlock.get(p));
         }
       }
     }
