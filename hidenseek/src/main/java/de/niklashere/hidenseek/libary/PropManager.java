@@ -149,6 +149,12 @@ public class PropManager {
 
   }
 
+  /**
+   * Set a solid block at the location of p with the mat.
+   * 
+   * @param p The player which location should be used
+   * @param mat Material of the block
+   */
   public static void setBlock(Player p, Material mat) {
 
     for (Player all : Bukkit.getOnlinePlayers()) {
@@ -180,6 +186,11 @@ public class PropManager {
     blockList.put(p, p.getLocation());
   }
 
+  /**
+   * Remove the block set with the setBlock Method.
+   * 
+   * @param p The player whose block should get removed
+   */
   public static void removeBlock(Player p) {
     armorStandList.get(p).remove();
     armorStandList.remove(p);
