@@ -11,7 +11,7 @@
     <repositories>
         <repository>
             <id>spigot-repo</id>
-            <url>file:///Users/nzabel/Documents/Git/Spigot_Hidenseek/spigot-1.17.1.jar</url>
+            <url>https://download.getbukkit.org/spigot/spigot-1.17.1.jar</url>
         </repository>
     </repositories>
 
