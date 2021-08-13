@@ -19,7 +19,7 @@ Additonal functionality
 - [x] Points
 - [ ] Leaderboard
 - [x] Stats
-- [ ] Prop hunt
+- [x] Prop hunt
 - [x] MySQL Support
 - [ ] ...
 
