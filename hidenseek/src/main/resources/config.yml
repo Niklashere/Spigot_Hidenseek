@@ -1,0 +1,51 @@
+Countdown:
+  Lobby: 20
+  Full: 20
+  Warmup: 20
+  Ingame: 120
+  End: 20
+  skip-lobby: 30
+Players:
+  max: 10
+  min: 1
+  seeker: 1
+  skip-lobby: 8
+MySQL:
+  host: 127.0.0.1:3306
+  database: hidenseek
+  user: hidenseek
+  password: password
+points:
+  found: 10
+  cought: 5
+  win: 10
+  play: 5
+  hint:
+    firework: 10
+    meow: 5
+    explosion: 5
+props:
+  wait: 5
+language:
+  default-file: en.yml
+colors:
+  primary: "&7"
+  secondary: "&e"
+  warning: "&c"
+prefix:
+  chat: "&eHide'n'Seek &8&l> %cp%"
+  item: "&7> &a"
+  inv-item: "&7>> &b"
+  inv-names: "&b> &7"
+items:
+  stun-duration: 10
+  firework-duration: 30
+  meow-duration: 5
+  explosion-duration: 15
+spawnpoint-lobby:
+  X: -99.33487143047729
+  Y: 69.0
+  Z: 100.53326965213392
+  Yaw: -83.85
+  Pitch: 54.34994
+  World: world

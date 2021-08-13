@@ -8,18 +8,19 @@ Opensource hide'n'seek plugin for Spigot Minecraft Servers.
 ## Features
 
 Basic Functions
-- [ ] Gamestates
-- [ ] Roles
+- [x] Gamestates
+- [x] Roles
 
 Additonal functionality
-- [ ] Language support
-- [ ] Map voting
-- [ ] Choose roles
-- [ ] Hints
-- [ ] Points
-- [ ] Leaderboard/Stats
-- [ ] Prop hunt
-- [ ] MySQL Support
+- [x] Language support
+- [x] Map voting
+- [x] Choose roles
+- [x] Hints
+- [x] Points
+- [ ] Leaderboard
+- [x] Stats
+- [x] Prop hunt
+- [x] MySQL Support
 - [ ] ...
 
 ## 🚀 Getting Started
