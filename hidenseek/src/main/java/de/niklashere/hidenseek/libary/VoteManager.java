@@ -28,7 +28,11 @@ public class VoteManager {
   public static ArrayList<File> rdmMap(File[] file, int maxMaps) {
     ArrayList<File> files = Fileaccess.fileListToArrayList(file);
     for (int i = maps.size() + 1; i <= maxMaps; i++) {
-      int rdm = new Random().nextInt(files.size() - 1);
+      int rdm = 0;
+      if (files.size() >= 1) {
+        rdm = new Random().nextInt(files.size());
+      }
+      System.out.println(i + "  " + files.size() + "  " + rdm);
       maps.add(files.get(rdm));
       files.remove(rdm);
     }

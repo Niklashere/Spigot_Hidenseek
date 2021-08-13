@@ -13,7 +13,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 /**
@@ -33,14 +32,10 @@ public class PlayerInteractListener implements Listener {
   public void onInteract(PlayerInteractEvent e) {
     Player p = e.getPlayer();
     if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
-      System.out.println(1);
       for (Player all : Bukkit.getOnlinePlayers()) {
         if (PropManager.blockList.get(all) != null) {
-          System.out.println(e.getClickedBlock().getLocation().getBlock().getLocation() + "  "
-              + PropManager.blockList.get(all).getBlock().getLocation());
           if (e.getClickedBlock().getLocation().getBlock().getLocation()
               .equals(PropManager.blockList.get(all).getBlock().getLocation())) {
-            System.out.println(3);
             EntityDamageByEntityListener.damage(all, p);
           }
         }
@@ -69,10 +64,4 @@ public class PlayerInteractListener implements Listener {
 
     }
   }
-
-  @EventHandler
-  public void onBLockDamage(BlockDamageEvent e) {
-    System.out.println(e.getBlock().getType());
-  }
-
 }

@@ -140,7 +140,6 @@ public class PropManager {
         }
 
         if (!timer) {
-          System.out.println(3);
           props.deleteProp();
           cancel();
         }
@@ -152,7 +151,7 @@ public class PropManager {
   /**
    * Set a solid block at the location of p with the mat.
    * 
-   * @param p The player which location should be used
+   * @param p   The player which location should be used
    * @param mat Material of the block
    */
   public static void setBlock(Player p, Material mat) {
@@ -164,7 +163,6 @@ public class PropManager {
       } else if (armorStandList.get(p) == null) {
         ArmorStand s = p.getWorld()
             .spawn(p.getLocation().getBlock().getLocation().add(0.5, 0.2, 0.5), ArmorStand.class);
-        System.out.println(1 + p.getName());
         FallingBlock b = s.getWorld().spawnFallingBlock(s.getLocation().add(0, 0.2, 0),
             mat.createBlockData());
         b.setDropItem(false);
@@ -192,10 +190,11 @@ public class PropManager {
    * @param p The player whose block should get removed
    */
   public static void removeBlock(Player p) {
-    armorStandList.get(p).remove();
-    armorStandList.remove(p);
+    if (armorStandList.get(p) != null) {
+      armorStandList.get(p).remove();
+      armorStandList.remove(p);
+    }
     if (blockList.get(p) != null) {
-      System.out.println(6);
       for (Player all : Bukkit.getOnlinePlayers()) {
         all.sendBlockChange(blockList.get(p), Material.AIR.createBlockData());
       }

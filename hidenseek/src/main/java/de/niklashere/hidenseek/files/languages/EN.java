@@ -72,8 +72,8 @@ public class EN {
     addMessage(Variablelist.chat_role_full, "%pc%%cw%The role %cs%%name%%cw% is full.");
     addMessage(Variablelist.chat_location, "%pc%You saved the location %cs%%name%%cp%.");
     addMessage(Variablelist.chat_hider, "Hider");
-    addMessage(Variablelist.chat_hider, "Seeker");
-    addMessage(Variablelist.chat_hider, "Spectator");
+    addMessage(Variablelist.chat_seeker, "Seeker");
+    addMessage(Variablelist.chat_spectator, "Spectator");
 
     // Commands
 

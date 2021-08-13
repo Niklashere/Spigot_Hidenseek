@@ -23,7 +23,6 @@ public enum Gamestate {
    * @param gamestate gamestate to which to switch
    */
   public static void setState(final Gamestate gamestate) {
-    System.out.println(gamestate);
     Gamestate.state = gamestate;
   }
 

@@ -73,8 +73,8 @@ public class DE {
     addMessage(Variablelist.chat_location, 
         "%pc%Du hast die Location %cs%%name%%cp% gespeichert.");
     addMessage(Variablelist.chat_hider, "Verstecker");
-    addMessage(Variablelist.chat_hider, "Sucher");
-    addMessage(Variablelist.chat_hider, "Spectator");
+    addMessage(Variablelist.chat_seeker, "Sucher");
+    addMessage(Variablelist.chat_spectator, "Spectator");
     
     // Commands
 

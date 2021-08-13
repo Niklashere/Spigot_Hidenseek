@@ -49,8 +49,3 @@ spawnpoint-lobby:
   Yaw: -83.85
   Pitch: 54.34994
   World: world
-supported-maps:
-  - Lobby
-  - Map-1
-  - Map-2
-  - Map-3

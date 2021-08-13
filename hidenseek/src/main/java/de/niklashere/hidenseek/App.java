@@ -1,13 +1,15 @@
 package de.niklashere.hidenseek;
 
+import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.countdown.LobbyCountdown;
 import de.niklashere.hidenseek.libary.Fileaccess;
+import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.MysqlManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
-import java.util.List;
-
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -28,14 +30,19 @@ public class App extends JavaPlugin {
   public void onEnable() {
     instance = this;
     this.saveDefaultConfig();
-
-    List<String> maps = Fileaccess.getStringList("supported-maps", Fileaccess.getConfig());
-    int a = 0;
-    while (maps.size() - 1 >= a) {
-      saveResource("maps/" + maps.get(a) + ".yml", true);
-      a++;
-    }
     Fileaccess.loadFolder("maps");
+    if (Fileaccess.fileListToArrayList(Fileaccess.listOfFiles.get("maps")).size() <= 2) {
+      saveResource("maps/" + "Map-1.yml", false);
+      saveResource("maps/" + "Map-2.yml", false);
+      saveResource("maps/" + "Map-3.yml", false);
+      Fileaccess.loadFolder("maps");
+    }
+    for (int i = 0; Fileaccess.fileListToArrayList(Fileaccess.listOfFiles.get("maps")).size()
+        - 1 >= i; i++) {
+      System.out.println(
+          Fileaccess.fileListToArrayList(Fileaccess.listOfFiles.get("maps")).get(i).toString());
+    }
+
     VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
     this.registerManager = RegisterManager.init(this);
     registerManager.loadLanguages();
@@ -54,6 +61,9 @@ public class App extends JavaPlugin {
    */
   @Override
   public void onDisable() {
+    for (Player all : Bukkit.getOnlinePlayers()) {
+      all.kickPlayer(LanguageManager.getMessage(Variablelist.chat_stopServer, all));
+    }
     MysqlManager.close();
     Layouts.getBanner();
     Layouts.getBye();

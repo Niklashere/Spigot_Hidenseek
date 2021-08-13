@@ -1,6 +1,9 @@
 package de.niklashere.hidenseek.commands;
 
 import de.niklashere.hidenseek.files.languages.Variablelist;
+import de.niklashere.hidenseek.gamestates.Gamestate;
+import de.niklashere.hidenseek.gamestates.RoleManager;
+import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 
@@ -46,6 +49,23 @@ public class LanguageCommand implements CommandExecutor {
       if (lang.contains(file)) {
         LanguageManager.setLanguage(p, file);
         p.sendMessage(LanguageManager.getMessage(Variablelist.command_lang_switch, p));
+        InventoryManager.clearInv(p);
+        if (Gamestate.isState(Gamestate.Lobby) || Gamestate.isState(Gamestate.End)) {
+          InventoryManager.lobbyItems(p);
+        } else if (Gamestate.isState(Gamestate.WarmUp) || Gamestate.isState(Gamestate.Lobby)) {
+          if (RoleManager.playerList.get(RoleManager.getPlayer(p)).isHider()) {
+            InventoryManager.hiderItems(p);
+          } else if (RoleManager.playerList.get(RoleManager.getPlayer(p)).isSeeker()) {
+            if (Gamestate.isState(Gamestate.Ingame)) {
+              InventoryManager.seekerItems(p);
+            } else {
+              InventoryManager.lobbyItems(p);
+            }
+          } else if (RoleManager.playerList.get(RoleManager.getPlayer(p)).isSpectator()) {
+            InventoryManager.spectatorItems(p);
+            ;
+          }
+        }
       } else {
         p.sendMessage(LanguageManager.getMessage(Variablelist.command_lang_languages, p)
             + args[0].toLowerCase());

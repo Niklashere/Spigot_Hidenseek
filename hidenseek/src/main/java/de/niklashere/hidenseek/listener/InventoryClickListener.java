@@ -189,7 +189,7 @@ public class InventoryClickListener implements Listener {
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_hint_Firework, p))) {
 
         if (timer.get(p.getName() + "firework") == null
-            || timer.get(p.getName() + "firework") == 0) {
+            || timer.get(p.getName() + "firework") <= 0) {
           timer.put(p.getName() + "firework",
               Fileaccess.getInt("items.firework-duration", Fileaccess.getConfig()));
           FireworkEffect effect = FireworkEffect.builder().withColor(Color.GREEN)
@@ -209,8 +209,8 @@ public class InventoryClickListener implements Listener {
             @Override
             public void run() {
               if (timer.get(p.getName() + "firework") == 0) {
-                p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p)
-                    .replace("%name", LanguageManager.getMessage(Variablelist.inv_hint_Firework)));
+                p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p).replace(
+                    "%name%", LanguageManager.getMessage(Variablelist.inv_hint_Firework, p)));
                 cancel();
               }
               timer.put(p.getName() + "firework", timer.get(p.getName() + "firework") - 1);
@@ -221,17 +221,17 @@ public class InventoryClickListener implements Listener {
           if (timer.get(p.getName() + "firework") == 1) {
             p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait, p)
                 .replace("%t%", timer.get(p.getName() + "firework") + "")
-                .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondSingular)));
+                .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondSingular, p)));
           } else {
             p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait, p)
                 .replace("%t%", timer.get(p.getName() + "firework") + "")
-                .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondPlural)));
+                .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondPlural, p)));
 
           }
         }
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_hint_Meow, p))) {
-        if (timer.get(p.getName() + "meow") == null || timer.get(p.getName() + "meow") == 0) {
+        if (timer.get(p.getName() + "meow") == null || timer.get(p.getName() + "meow") <= 0) {
           timer.put(p.getName() + "meow",
               Fileaccess.getInt("items.meow-duration", Fileaccess.getConfig()));
           for (Player all : Bukkit.getOnlinePlayers()) {
@@ -251,7 +251,7 @@ public class InventoryClickListener implements Listener {
             public void run() {
               if (timer.get(p.getName() + "meow") == 0) {
                 p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p)
-                    .replace("%name", LanguageManager.getMessage(Variablelist.inv_hint_Meow)));
+                    .replace("%name%", LanguageManager.getMessage(Variablelist.inv_hint_Meow, p)));
                 cancel();
               }
               timer.put(p.getName() + "meow", timer.get(p.getName() + "meow") - 1);
@@ -262,11 +262,11 @@ public class InventoryClickListener implements Listener {
           if (timer.get(p.getName() + "meow") == 1) {
             p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait, p)
                 .replace("%t%", timer.get(p.getName() + "meow") + "")
-                .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondSingular)));
+                .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondSingular, p)));
           } else {
             p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait, p)
                 .replace("%t%", timer.get(p.getName() + "meow") + "")
-                .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondPlural)));
+                .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondPlural, p)));
 
           }
         }
@@ -274,7 +274,7 @@ public class InventoryClickListener implements Listener {
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_hint_Explosion, p))) {
         if (timer.get(p.getName() + "explosion") == null
-            || timer.get(p.getName() + "explosion") == 0) {
+            || timer.get(p.getName() + "explosion") <= 0) {
           timer.put(p.getName() + "explosion",
               Fileaccess.getInt("items.explosion-duration", Fileaccess.getConfig()));
           for (Player all : Bukkit.getOnlinePlayers()) {
@@ -293,8 +293,8 @@ public class InventoryClickListener implements Listener {
           @Override
           public void run() {
             if (timer.get(p.getName() + "explosion") == 0) {
-              p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p)
-                  .replace("%name", LanguageManager.getMessage(Variablelist.inv_hint_Explosion)));
+              p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait_ended, p).replace(
+                  "%name%", LanguageManager.getMessage(Variablelist.inv_hint_Explosion, p)));
               cancel();
             }
             timer.put(p.getName() + "explosion", timer.get(p.getName() + "explosion") - 1);
@@ -305,11 +305,11 @@ public class InventoryClickListener implements Listener {
         if (timer.get(p.getName() + "explosion") == 1) {
           p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait, p)
               .replace("%t%", timer.get(p.getName() + "explosion") + "")
-              .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondSingular)));
+              .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondSingular, p)));
         } else {
           p.sendMessage(LanguageManager.getMessage(Variablelist.chat_wait, p)
               .replace("%t%", timer.get(p.getName() + "explosion") + "")
-              .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondPlural)));
+              .replace("%s%", LanguageManager.getMessage(Variablelist.chat_secondPlural, p)));
 
         }
       }
@@ -353,7 +353,7 @@ public class InventoryClickListener implements Listener {
       if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_seeker, p))) {
         if (RoleManager.getSeekers()
-            .size() <= Fileaccess.getInt("max-seeker", Fileaccess.getConfig()) - 1) {
+            .size() <= Fileaccess.getInt("max-seeker", Fileaccess.getConfig())) {
           if (RoleManager.playerList.get(RoleManager.getPlayer(p)) == null) {
             PlayerData playerData = new PlayerData(p);
             playerData.setHider(true);
