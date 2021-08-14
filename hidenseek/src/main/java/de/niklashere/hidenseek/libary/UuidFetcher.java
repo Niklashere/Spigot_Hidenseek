@@ -39,7 +39,9 @@ public final class UuidFetcher {
             uuid.append('-');
           }
         }
-        return UUID.fromString(uuid.toString());
+        UUID id = UUID.fromString(uuid.toString());
+        player.put(playername, id);
+        return id;
       } catch (Exception exception) {
         return null;
       }

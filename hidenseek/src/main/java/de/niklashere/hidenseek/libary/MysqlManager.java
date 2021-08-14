@@ -96,8 +96,7 @@ public class MysqlManager {
    */
   public static ResultSet query(String qry) {
     ResultSet rs = null;
-    try {
-      Statement st = con.createStatement();
+    try (Statement st = con.createStatement()) {
       rs = st.executeQuery(qry);
     } catch (SQLException e) {
       connect();
