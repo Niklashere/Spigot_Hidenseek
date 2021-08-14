@@ -37,11 +37,6 @@ public class App extends JavaPlugin {
       saveResource("maps/" + "Map-3.yml", false);
       Fileaccess.loadFolder("maps");
     }
-    for (int i = 0; Fileaccess.fileListToArrayList(Fileaccess.listOfFiles.get("maps")).size()
-        - 1 >= i; i++) {
-      System.out.println(
-          Fileaccess.fileListToArrayList(Fileaccess.listOfFiles.get("maps")).get(i).toString());
-    }
 
     VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
     this.registerManager = RegisterManager.init(this);

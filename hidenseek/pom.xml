@@ -6,18 +6,14 @@
     <groupId>de.niklashere.hidenseek</groupId>
     <version>0.6.0</version>
 
-
-    <!-- Repositories -->
     <repositories>
         <repository>
-            <id>spigot-repo</id>
-            <url>https://download.getbukkit.org/spigot/spigot-1.17.1.jar</url>
+            <id>dre-repo</id>
+            <url>https://erethon.de/repo/</url>
         </repository>
     </repositories>
 
-    <!-- Dependencies -->
     <dependencies>
-        <!--Spigot API-->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>

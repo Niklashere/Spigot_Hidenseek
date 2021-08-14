@@ -32,7 +32,6 @@ public class VoteManager {
       if (files.size() >= 1) {
         rdm = new Random().nextInt(files.size());
       }
-      System.out.println(i + "  " + files.size() + "  " + rdm);
       maps.add(files.get(rdm));
       files.remove(rdm);
     }
