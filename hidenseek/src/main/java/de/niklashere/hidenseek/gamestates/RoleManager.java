@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek.gamestates;
 
+import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
@@ -119,6 +120,10 @@ public class RoleManager {
     p.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
     StatsManager.addCought(p.getUniqueId(), 1);
     StatsManager.addFound(k.getUniqueId(), 1);
+    for (Player all : Bukkit.getOnlinePlayers()) {
+      all.showPlayer(App.instance, p);
+    }
+
   }
 
   /**

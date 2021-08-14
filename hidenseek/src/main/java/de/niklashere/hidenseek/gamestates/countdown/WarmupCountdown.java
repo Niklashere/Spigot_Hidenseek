@@ -95,6 +95,15 @@ public class WarmupCountdown {
 
       i++;
     }
+
+    for (Player p : Bukkit.getOnlinePlayers()) {
+      if (RoleManager.playerList.get(RoleManager.getPlayer(p)).isSeeker()
+          || RoleManager.playerList.get(RoleManager.getPlayer(p)).isSpectator()) {
+        for (Player all : Bukkit.getOnlinePlayers()) {
+          all.hidePlayer(App.instance, p);
+        }
+      }
+    }
     startCountdown();
     Gamestate.setState(Gamestate.WarmUp);
   }

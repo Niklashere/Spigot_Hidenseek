@@ -1,5 +1,6 @@
 package de.niklashere.hidenseek.listener;
 
+import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.PlayerData;
@@ -52,6 +53,12 @@ public class PlayerJoinListener implements Listener {
           new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1, false, false));
       p.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
       InventoryManager.spectatorItems(p);
+      if (RoleManager.playerList.get(RoleManager.getPlayer(p)).isSeeker()
+          || RoleManager.playerList.get(RoleManager.getPlayer(p)).isSpectator()) {
+        for (Player all : Bukkit.getOnlinePlayers()) {
+          all.hidePlayer(App.instance, p);
+        }
+      }
 
     } else {
       p.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig()));
