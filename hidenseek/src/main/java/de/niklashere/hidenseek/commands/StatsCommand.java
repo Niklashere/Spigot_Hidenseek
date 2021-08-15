@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek.commands;
 
 import de.niklashere.hidenseek.files.languages.Variablelist;
+import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.UuidFetcher;
 
@@ -24,24 +25,20 @@ public class StatsCommand implements CommandExecutor {
       final String[] args) {
     Player p = (Player) sender;
     if (args.length == 0) {
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m1, p));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m2, p));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m3, p));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m4, p));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m5, p));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m6, p));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m7, p));
+      for (int i = 0; Fileaccess
+          .getStringList(Variablelist.command_stats, LanguageManager.getLanguage(p)).size()
+          - 1 >= i; i++) {
+        p.sendMessage(LanguageManager.getMessageFromList(Variablelist.command_stats, p, i));
 
+      }
     } else if (args.length == 1) {
       OfflinePlayer k = Bukkit.getOfflinePlayer(UuidFetcher.getUuid(args[0]));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m1, p, k));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m2, p, k));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m3, p, k));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m4, p, k));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m5, p, k));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m6, p, k));
-      p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_m7, p, k));
+      for (int i = 0; Fileaccess
+          .getStringList(Variablelist.command_stats, LanguageManager.getLanguage(p)).size()
+          - 1 >= i; i++) {
+        p.sendMessage(LanguageManager.getMessageFromList(Variablelist.command_stats, p, k, i));
 
+      }
     } else {
       p.sendMessage(LanguageManager.getMessage(Variablelist.command_stats_usage, p));
     }

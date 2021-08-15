@@ -65,6 +65,33 @@ public class LanguageManager {
   }
 
   /**
+   * Get a message from from a stringlist within the language file for this
+   * player.
+   * 
+   * @param string String under which this message is saved
+   * @param p      Player which language should be used
+   * @param i      Stringlist position
+   * @return message from lanuage file
+   */
+  public static String getMessageFromList(String string, Player p, int i) {
+    return VariableManager.message(Fileaccess.getStringList(string, getLanguage(p)).get(i), p);
+  }
+
+  /**
+   * Get a message from from a stringlist within the language file for this
+   * player.
+   * 
+   * @param string String under which this message is saved
+   * @param p      Player which language should be used
+   * @param k      Second player for %k
+   * @param i      Stringlist position
+   * @return message from lanuage file
+   */
+  public static String getMessageFromList(String string, Player p, OfflinePlayer k, int i) {
+    return VariableManager.message(Fileaccess.getStringList(string, getLanguage(p)).get(i), p, k);
+  }
+
+  /**
    * Get the language file for this player.
    * 
    * @param p Player
