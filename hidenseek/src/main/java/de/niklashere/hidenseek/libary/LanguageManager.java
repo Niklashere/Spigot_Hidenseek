@@ -76,12 +76,11 @@ public class LanguageManager {
     if (language.get(p) == null) {
       if (playerExists(p.getUniqueId())) {
         try {
-          ResultSet rs = MysqlManager
-              .query("SELECT * FROM Languages WHERE UUID= '" + p.getUniqueId() + "';");
-          if (rs.next()) {
-            return new File("plugins/hidenseek/languages", rs.getString("language"));
-          }
-        } catch (SQLException ex) {
+          String lang = MysqlManager.queryString(
+              "SELECT * FROM Languages WHERE UUID= '" + p.getUniqueId() + "';", "language");
+          return new File("plugins/hidenseek/languages", lang);
+
+        } catch (Exception ex) {
           return new File("plugins/hidenseek/languages",
               Fileaccess.getString("language.default-file", Fileaccess.getConfig()));
         }
@@ -122,19 +121,8 @@ public class LanguageManager {
    * @return exist in table
    */
   public static boolean playerExists(UUID uuid) {
-    try {
-      ResultSet rs = MysqlManager.query("SELECT * FROM Languages WHERE UUID= '" + uuid + "';");
-
-      if (rs.next()) {
-        return rs.getString("UUID") != null;
-      }
-      rs.close();
-      return false;
-    } catch (java.sql.SQLException e) {
-      e.printStackTrace();
-    }
-
-    return false;
+    return MysqlManager.queryString("SELECT * FROM Languages WHERE UUID= '" + uuid + "';",
+        "UUID") != null;
   }
 
   /**

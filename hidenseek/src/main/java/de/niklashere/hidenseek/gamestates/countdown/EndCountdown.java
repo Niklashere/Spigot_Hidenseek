@@ -27,10 +27,13 @@ public class EndCountdown {
    * Method to start the End countdown.
    */
   public static void startEndCD() {
-    for (Player all : Bukkit.getOnlinePlayers()) {
-      all.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig()));
-      InventoryManager.clearInv(all);
-      InventoryManager.lobbyItems(all);
+    for (Player p : Bukkit.getOnlinePlayers()) {
+      p.teleport(Fileaccess.getLocation("spawnpoint-lobby", Fileaccess.getConfig()));
+      InventoryManager.clearInv(p);
+      InventoryManager.lobbyItems(p);
+      for (Player all : Bukkit.getOnlinePlayers()) {
+        all.showPlayer(App.instance, p);
+      }
     }
     startCountdown();
     Gamestate.setState(Gamestate.End);

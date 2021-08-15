@@ -199,6 +199,12 @@ public class PropManager {
         all.sendBlockChange(blockList.get(p), Material.AIR.createBlockData());
       }
 
+      for (Player all : Bukkit.getOnlinePlayers()) {
+        if (all != p) {
+          all.showPlayer(App.instance, p);
+        }
+      }
+
       blockList.remove(p);
     }
   }

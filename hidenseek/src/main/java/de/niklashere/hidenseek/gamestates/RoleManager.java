@@ -119,6 +119,7 @@ public class RoleManager {
     p.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
     StatsManager.addCought(p.getUniqueId(), 1);
     StatsManager.addFound(k.getUniqueId(), 1);
+
   }
 
   /**

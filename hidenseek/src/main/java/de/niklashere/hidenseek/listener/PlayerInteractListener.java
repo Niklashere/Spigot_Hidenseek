@@ -34,8 +34,9 @@ public class PlayerInteractListener implements Listener {
     if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
       for (Player all : Bukkit.getOnlinePlayers()) {
         if (PropManager.blockList.get(all) != null) {
-          if (e.getClickedBlock().getLocation().getBlock().getLocation()
-              .equals(PropManager.blockList.get(all).getBlock().getLocation())) {
+          if (e.getClickedBlock() != null && e.getClickedBlock().getLocation() != null
+              && e.getClickedBlock().getLocation().getBlock().getLocation()
+                  .equals(PropManager.blockList.get(all).getBlock().getLocation())) {
             EntityDamageByEntityListener.damage(all, p);
           }
         }

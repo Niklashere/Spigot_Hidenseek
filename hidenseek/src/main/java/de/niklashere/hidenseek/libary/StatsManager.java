@@ -19,19 +19,8 @@ public class StatsManager {
    * @return is in the databse
    */
   public static boolean playerExists(UUID uuid) {
-    try {
-      ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
-
-      if (rs.next()) {
-        return rs.getString("UUID") != null;
-      }
-      rs.close();
-      return false;
-    } catch (java.sql.SQLException e) {
-      e.printStackTrace();
-    }
-
-    return false;
+    return MysqlManager.queryString("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
+    "UUID") != null;
   }
 
   /**
@@ -53,20 +42,8 @@ public class StatsManager {
    * @return wins
    */
   public static Integer getWins(UUID uuid) {
-    if (playerExists(uuid)) {
-      try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
-        if (rs.next()) {
-          return rs.getInt("wins");
-        }
-      } catch (SQLException ex) {
-        return -1;
-      }
-    } else {
-      createPlayer(uuid);
-      getWins(uuid);
-    }
-    return -1;
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
+    "wins");
   }
 
   /**
@@ -76,20 +53,8 @@ public class StatsManager {
    * @return coughts
    */
   public static Integer getCought(UUID uuid) {
-    if (playerExists(uuid)) {
-      try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
-        if (rs.next()) {
-          return rs.getInt("cought");
-        }
-      } catch (SQLException ex) {
-        return -1;
-      }
-    } else {
-      createPlayer(uuid);
-      getCought(uuid);
-    }
-    return -1;
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
+    "cought");
   }
 
   /**
@@ -99,20 +64,8 @@ public class StatsManager {
    * @return founds
    */
   public static Integer getFound(UUID uuid) {
-    if (playerExists(uuid)) {
-      try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
-        if (rs.next()) {
-          return rs.getInt("found");
-        }
-      } catch (SQLException ex) {
-        return -1;
-      }
-    } else {
-      createPlayer(uuid);
-      getFound(uuid);
-    }
-    return -1;
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
+    "found");
   }
 
   /**
@@ -154,20 +107,8 @@ public class StatsManager {
    * @return played games
    */
   public static Integer getPlayes(UUID uuid) {
-    if (playerExists(uuid)) {
-      try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
-        if (rs.next()) {
-          return rs.getInt("plays");
-        }
-      } catch (SQLException ex) {
-        return -1;
-      }
-    } else {
-      createPlayer(uuid);
-      getPlayes(uuid);
-    }
-    return -1;
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
+    "plays");
   }
 
   /**
@@ -209,20 +150,8 @@ public class StatsManager {
    * @return points
    */
   public static Integer getPoints(UUID uuid) {
-    if (playerExists(uuid)) {
-      try {
-        ResultSet rs = MysqlManager.query("SELECT * FROM Stats WHERE UUID= '" + uuid + "';");
-        if (rs.next()) {
-          return rs.getInt("points");
-        }
-      } catch (SQLException ex) {
-        return -1;
-      }
-    } else {
-      createPlayer(uuid);
-      getPoints(uuid);
-    }
-    return -1;
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
+    "points");
   }
 
   /**

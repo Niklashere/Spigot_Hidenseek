@@ -95,6 +95,7 @@ public class WarmupCountdown {
 
       i++;
     }
+
     startCountdown();
     Gamestate.setState(Gamestate.WarmUp);
   }
