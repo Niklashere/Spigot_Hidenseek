@@ -66,11 +66,23 @@ public class LobbyCountdown {
                   .replaceAll("%t%", time + "").replaceAll("%s%",
                       LanguageManager.getMessage(Variablelist.chat_secondSingular, all)));
             }
-            if (time == 5) {
-              Bukkit.createWorld(
-                  WorldCreator.name(Fileaccess.getString("world", VoteManager.getResults())));
+          }
+          if (time == 5) {
+            Bukkit.createWorld(
+                WorldCreator.name(Fileaccess.getString("world", VoteManager.getResults())));
+            for (Player all : Bukkit.getOnlinePlayers()) {
 
+              for (int i = 0; Fileaccess
+                  .getStringList(Variablelist.chat_mapvoting_won, LanguageManager.getLanguage(all))
+                  .size() - 1 >= i; i++) {
+                all.sendMessage(LanguageManager
+                    .getMessageFromList(Variablelist.chat_mapvoting_won, all, i)
+                    .replace("%name%", Fileaccess.getString("world", VoteManager.getResults()))
+                    .replace("%author%", Fileaccess.getString("author", VoteManager.getResults())));
+
+              }
             }
+
           }
           if (time == 1) {
             WarmupCountdown.startWarmupCD();

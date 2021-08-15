@@ -213,4 +213,21 @@ public class Fileaccess {
       System.out.println(LanguageManager.getMessage(Variablelist.console_save_error));
     }
   }
+
+  /**
+   * Save String in a file.
+   * 
+   * @param string     String under which to save
+   * @param file       file to access
+   * @param stringlist stringlist to save
+   */
+  public static void setStringList(String string, File file, String[] stringlist) {
+    FileConfiguration conf = YamlConfiguration.loadConfiguration(file);
+    conf.set(string, stringlist);
+    try {
+      conf.save(file);
+    } catch (Exception e) {
+      System.out.println(LanguageManager.getMessage(Variablelist.console_save_error));
+    }
+  }
 }

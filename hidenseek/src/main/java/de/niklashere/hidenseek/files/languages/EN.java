@@ -68,6 +68,12 @@ public class EN {
     addMessage(Variablelist.chat_wait, "%pc%%cw%You have to wait %cs%%t% %s%%cw%.");
     addMessage(Variablelist.chat_wait_ended, "%pc%You can use %cs%%name%%cp% again.");
     addMessage(Variablelist.chat_mapvoting, "%pc%You voted for the map %cs%%name%%cp%.");
+
+    String[] won = { "%pc%%cs%=====================",
+        "%pc%The map %cs%%name%%cp% won the map voting.",
+        "%pc%This map was build by %cs%%author%%cp%.", "%pc%%cs%=====================" };
+    addMessageList(Variablelist.chat_mapvoting_won, won);
+
     addMessage(Variablelist.chat_role, "%pc%You joined the role %cs%%name%%cp%.");
     addMessage(Variablelist.chat_role_full, "%pc%%cw%The role %cs%%name%%cw% is full.");
     addMessage(Variablelist.chat_location, "%pc%You saved the location %cs%%name%%cp%.");
@@ -78,13 +84,10 @@ public class EN {
     // Commands
 
     // Stats Command
-    addMessage(Variablelist.command_stats_m1, "%pc%%cs%=====================");
-    addMessage(Variablelist.command_stats_m2, "%pc%was cought: %cs%%sc%");
-    addMessage(Variablelist.command_stats_m3, "%pc%has found: %cs%%sf%");
-    addMessage(Variablelist.command_stats_m4, "%pc%wins: %cs%%sw%");
-    addMessage(Variablelist.command_stats_m5, "%pc%plays: %cs%%spl%");
-    addMessage(Variablelist.command_stats_m6, "%pc%points: %cs%%spo%");
-    addMessage(Variablelist.command_stats_m7, "%pc%%cs%=====================");
+    String[] stats = { "%pc%%cs%=====================", "%pc%was cought: %cs%%sc%",
+        "%pc%has found: %cs%%sf%", "%pc%wins: %cs%%sw%", "%pc%plays: %cs%%spl%",
+        "%pc%points: %cs%%spo%", "%pc%%cs%=====================" };
+    addMessageList(Variablelist.command_stats, stats);
     addMessage(Variablelist.command_stats_usage, "%pc%%cw%/stats <player>");
 
     // Language Command
@@ -154,6 +157,14 @@ public class EN {
     File file = new File("plugins/hidenseek/languages", language + ".yml");
     if (Fileaccess.getString(string, file) == null) {
       Fileaccess.setString(string, file, message);
+    }
+  }
+
+  private static void addMessageList(String string, String[] message) {
+    File file = new File("plugins/hidenseek/languages", language + ".yml");
+    if (Fileaccess.getStringList(string, file) == null
+        || Fileaccess.getStringList(string, file).size() == 0) {
+      Fileaccess.setStringList(string, file, message);
     }
   }
 }

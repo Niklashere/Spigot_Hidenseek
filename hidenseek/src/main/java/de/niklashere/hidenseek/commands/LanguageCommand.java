@@ -48,7 +48,8 @@ public class LanguageCommand implements CommandExecutor {
       File file = new File("plugins/hidenseek/languages", args[0].toLowerCase() + ".yml");
       if (lang.contains(file)) {
         LanguageManager.setLanguage(p, file);
-        p.sendMessage(LanguageManager.getMessage(Variablelist.command_lang_switch, p));
+        p.sendMessage(LanguageManager.getMessage(Variablelist.command_lang_switch, p)
+            + file.getName().replace(".yml", ""));
         InventoryManager.clearInv(p);
         if (Gamestate.isState(Gamestate.Lobby) || Gamestate.isState(Gamestate.End)) {
           InventoryManager.lobbyItems(p);

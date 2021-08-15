@@ -1,8 +1,6 @@
 package de.niklashere.hidenseek.libary;
 
 import java.io.File;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -64,6 +62,33 @@ public class LanguageManager {
    */
   public static String getMessage(String string, Player p, OfflinePlayer k) {
     return VariableManager.message(Fileaccess.getString(string, getLanguage(p)), p, k);
+  }
+
+  /**
+   * Get a message from from a stringlist within the language file for this
+   * player.
+   * 
+   * @param string String under which this message is saved
+   * @param p      Player which language should be used
+   * @param i      Stringlist position
+   * @return message from lanuage file
+   */
+  public static String getMessageFromList(String string, Player p, int i) {
+    return VariableManager.message(Fileaccess.getStringList(string, getLanguage(p)).get(i), p);
+  }
+
+  /**
+   * Get a message from from a stringlist within the language file for this
+   * player.
+   * 
+   * @param string String under which this message is saved
+   * @param p      Player which language should be used
+   * @param k      Second player for %k
+   * @param i      Stringlist position
+   * @return message from lanuage file
+   */
+  public static String getMessageFromList(String string, Player p, OfflinePlayer k, int i) {
+    return VariableManager.message(Fileaccess.getStringList(string, getLanguage(p)).get(i), p, k);
   }
 
   /**
