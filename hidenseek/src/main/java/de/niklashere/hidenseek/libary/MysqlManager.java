@@ -89,20 +89,40 @@ public class MysqlManager {
   }
 
   /**
-   * Executes the given SQL statement, which returns a single ResultSet object.
+   * Executes the given SQL statement, which returns the requested string.
    * 
    * @param qry query to execute
+   * @param string name of column
    * @return result
    */
-  public static ResultSet query(String qry) {
-    ResultSet rs = null;
-    try {
-      Statement st = con.createStatement();
-      rs = st.executeQuery(qry);
+  public static String queryString(String qry, String string) {
+    try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(qry)) {
+      if (rs.next()) {
+        return rs.getString(string);
+      }
     } catch (SQLException e) {
       connect();
       System.err.println(e);
     }
-    return rs;
+    return null;
+  }
+
+  /**
+   * Executes the given SQL statement, which returns the requested Integer.
+   * 
+   * @param qry query to execute
+   * @param string name of column
+   * @return result
+   */
+  public static Integer queryInt(String qry, String string) {
+    try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(qry)) {
+      if (rs.next()) {
+        return rs.getInt(string);
+      }
+    } catch (SQLException e) {
+      connect();
+      System.err.println(e);
+    }
+    return null;
   }
 }
