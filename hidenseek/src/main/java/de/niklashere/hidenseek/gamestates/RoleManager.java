@@ -1,6 +1,5 @@
 package de.niklashere.hidenseek.gamestates;
 
-import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
