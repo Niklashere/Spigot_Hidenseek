@@ -8,6 +8,7 @@ import de.niklashere.hidenseek.libary.PropManager;
 
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -59,7 +60,18 @@ public class PlayerMoveListener implements Listener {
               } else if (timer.get(p) == 0) {
                 prop.stopfollow();
                 PropManager.setBlock(p, PropManager.choosedBlock.get(p));
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                  if (RoleManager.playerList.get(RoleManager.getPlayer(p)).isHider()) {
+                    for (Player all : Bukkit.getOnlinePlayers()) {
+                      if (all != p) {
+                        all.hidePlayer(App.instance, p);
+                      }
+                    }
+                  }
+                }
+                
                 timer.put(p, timer.get(p) - 1);
+                
 
               } else if (timer.get(p) == -1) {
                 PropManager.setBlock(p, PropManager.choosedBlock.get(p));
