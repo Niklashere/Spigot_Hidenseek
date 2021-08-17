@@ -1,15 +1,16 @@
 world: world
+author: author
 spawnpoint-seeker:
-  X: -93.75801768672811
+  X: -93.5
   Y: 67.0
-  Z: 110.04841099234135
-  Yaw: 58.650177
-  Pitch: 17.74985
+  Z: 110.5
+  Yaw: 58.5
+  Pitch: 17.5
   World: world
 spawnpoint-hider:
-  X: -107.61226519569223
+  X: -107.5
   Y: 65.0
-  Z: 114.25708273845869
-  Yaw: 53.250458
-  Pitch: 18.349848
+  Z: 114.5
+  Yaw: 53.5
+  Pitch: 18.5
   World: world

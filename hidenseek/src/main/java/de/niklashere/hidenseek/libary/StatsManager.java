@@ -1,7 +1,5 @@
 package de.niklashere.hidenseek.libary;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.UUID;
 
 /**

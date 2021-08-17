@@ -47,10 +47,10 @@ public class LobbyCountdown {
         if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.min",
             Fileaccess.getConfig())) {
           time--;
-          if (time >= Fileaccess.getInt("countdown.skip-lobby", Fileaccess.getConfig()) + 2
-              && Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.skip-lobby",
+          if (time >= Fileaccess.getInt("countdown.Full", Fileaccess.getConfig()) + 2
+              && Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.Full",
                   Fileaccess.getConfig())) {
-            time = Fileaccess.getInt("countdown.skip-lobby", Fileaccess.getConfig()) + 1;
+            time = Fileaccess.getInt("countdown.Full", Fileaccess.getConfig()) + 1;
           }
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);

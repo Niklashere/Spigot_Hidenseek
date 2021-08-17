@@ -74,6 +74,7 @@ public class EN {
     addMessage(Variablelist.chat_hider, "Hider");
     addMessage(Variablelist.chat_seeker, "Seeker");
     addMessage(Variablelist.chat_spectator, "Spectator");
+    addMessage(Variablelist.chat_choosedprop, "%pc%You choosed %cs%%name%%cp% as your prop.");
 
     // Commands
 
@@ -122,11 +123,15 @@ public class EN {
     // Mapvoting Inventory
     addMessage(Variablelist.inv_mapvoting_name, "%pin%Mapvoting");
 
+    // Chooseprop Inventory
+    addMessage(Variablelist.inv_chooseprop_name, "%pin%Choose prop");
+
     // Items
 
     // Lobbyitems
     addMessage(Variablelist.items_lobby_chest, "%pii%Mapvoting");
     addMessage(Variablelist.items_lobby_redBanner, "%pii%Choose role");
+    addMessage(Variablelist.items_lobby_slimeball, "%pii%Choose prop");
 
     // Seekeritems
     addMessage(Variablelist.items_seeker_sword, "%pii%Sword");

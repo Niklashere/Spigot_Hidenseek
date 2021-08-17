@@ -122,12 +122,19 @@ public class DE {
 
     // Mapvoting Inventory
     addMessage(Variablelist.inv_mapvoting_name, "%pin%Mapvoting");
+    
+    // Chooseprop Inventory
+    addMessage(Variablelist.inv_chooseprop_name, "%pin%Wähle Prop");
+    addMessage(Variablelist.chat_choosedprop, 
+        "%pc%Du hast %cs%%name%%cp% als dein Prop ausgewählt.");
+
 
     // Items
 
     // Lobbyitems
     addMessage(Variablelist.items_lobby_chest, "%pii%Karte wählen");
     addMessage(Variablelist.items_lobby_redBanner, "%pii%Rolle wählen");
+    addMessage(Variablelist.items_lobby_slimeball, "%pii%Wähle Prop");
 
     // Seekeritems
     addMessage(Variablelist.items_seeker_sword, "%pii%Schwert");
