@@ -31,6 +31,7 @@ public class Variablelist {
   public static String chat_wait = chat + "wait";
   public static String chat_wait_ended = chat + "wait_ended";
   public static String chat_mapvoting = chat + "mapvoting";
+  public static String chat_mapvoting_won = chat + "mapvoting-won";
   public static String chat_role = chat + "role";
   public static String chat_role_full = chat + "role-full";
   public static String chat_location = chat + "location";
@@ -44,13 +45,7 @@ public class Variablelist {
 
   // Stats Command
   private static String stats = command + "stats.";
-  public static String command_stats_m1 = stats + "m1";
-  public static String command_stats_m2 = stats + "m2";
-  public static String command_stats_m3 = stats + "m3";
-  public static String command_stats_m4 = stats + "m4";
-  public static String command_stats_m5 = stats + "m5";
-  public static String command_stats_m6 = stats + "m6";
-  public static String command_stats_m7 = stats + "m7";
+  public static String command_stats = stats + "command";
   public static String command_stats_usage = stats + "usage";
 
   // Languages Commands

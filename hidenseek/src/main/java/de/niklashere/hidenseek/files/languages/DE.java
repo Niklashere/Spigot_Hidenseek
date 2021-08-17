@@ -68,24 +68,26 @@ public class DE {
     addMessage(Variablelist.chat_wait, "%pc%%cw%Du hast noch %cs%%t% %s%%cw% zu warten.");
     addMessage(Variablelist.chat_wait_ended, "%pc%Du kannst %cs%%name%%cp% wieder benutzen.");
     addMessage(Variablelist.chat_mapvoting, "%pc%Du hast für die Map %cs%%name%%cp% gevoted.");
+
+    String[] won = { "%pc%%cs%=====================",
+        "%pc%Die Karte %cs%%name%%cp% hat das Mapvoting gewonnen.",
+        "%pc%Die Karte wurde von %cs%%author%%cp% gebaut.", "%pc%%cs%=====================" };
+    addMessageList(Variablelist.chat_mapvoting_won, won);
+
     addMessage(Variablelist.chat_role, "%pc%Du bist der Rolle %cs%%name%%cp% beigetreten.");
     addMessage(Variablelist.chat_role_full, "%pc%%cw%Die Rolle %cs%%name%%cw% ist voll.");
-    addMessage(Variablelist.chat_location, 
-        "%pc%Du hast die Location %cs%%name%%cp% gespeichert.");
+    addMessage(Variablelist.chat_location, "%pc%Du hast die Location %cs%%name%%cp% gespeichert.");
     addMessage(Variablelist.chat_hider, "Verstecker");
     addMessage(Variablelist.chat_seeker, "Sucher");
     addMessage(Variablelist.chat_spectator, "Spectator");
-    
+
     // Commands
 
     // Stats Command
-    addMessage(Variablelist.command_stats_m1, "%pc%%cs%=====================");
-    addMessage(Variablelist.command_stats_m2, "%pc%wurde Gefangen: %cs%%sc%");
-    addMessage(Variablelist.command_stats_m3, "%pc%hat Gefunden: %cs%%sf%");
-    addMessage(Variablelist.command_stats_m4, "%pc%Gewonnen: %cs%%sw%");
-    addMessage(Variablelist.command_stats_m5, "%pc%Spiele: %cs%%spl%");
-    addMessage(Variablelist.command_stats_m6, "%pc%Punkte: %cs%%spo%");
-    addMessage(Variablelist.command_stats_m7, "%pc%%cs%=====================");
+    String[] stats = { "%pc%%cs%=====================", "%pc%wurde Gefangen: %cs%%sc%",
+        "%pc%hat Gefunden: %cs%%sf%", "%pc%Gewonnen: %cs%%sw%", "%pc%Spiele: %cs%%spl%",
+        "%pc%Punkte: %cs%%spo%", "%pc%%cs%=====================" };
+    addMessageList(Variablelist.command_stats, stats);
     addMessage(Variablelist.command_stats_usage, "%pc%%cw%/stats <player>");
 
     // Language Command
@@ -163,6 +165,15 @@ public class DE {
     File file = new File("plugins/hidenseek/languages", language + ".yml");
     if (Fileaccess.getString(string, file) == null) {
       Fileaccess.setString(string, file, message);
+    }
+  }
+
+  private static void addMessageList(String string, String[] message) {
+    File file = new File("plugins/hidenseek/languages", language + ".yml");
+    if (Fileaccess.getStringList(string, file) == null
+        || Fileaccess.getStringList(string, file).size() == 0) {
+      Fileaccess.setStringList(string, file, message);
+
     }
   }
 }

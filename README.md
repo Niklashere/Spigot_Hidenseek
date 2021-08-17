@@ -10,28 +10,38 @@ Opensource hide'n'seek plugin for Spigot Minecraft Servers.
 
 ## Features
 
-Basic Functions
+The following features are planed for the release version 1.0*
 - [x] Gamestates
 - [x] Roles
-
-Additonal functionality
 - [x] Language support
 - [x] Map voting
 - [x] Choose roles
+- [x] Spectating
 - [x] Hints
 - [x] Points
 - [ ] Leaderboard
 - [x] Stats
 - [x] Prop hunt
 - [x] MySQL Support
+- [ ] "classic" hide'n'seek and prophunt
+- [ ] /forcemap
+- [ ] Coin System/Vault
+- [ ] execute commands at specific states of the game
+- [ ] Achievements
+- [ ] Scoreboard
+- [ ] Tablist
+- [ ] User Prefixes
+- [ ] Chat Layout
+- [ ] SQLite
 - [ ] ...
 
+\* This project is in the alpha phase. Features can still change.
 ## 🚀 Getting Started
 
-todo
+For now: Follow the instruction to get started on the [wiki](https://github.com/Niklashere/Spigot_Hidenseek/wiki/Getting-started).
 
 ## 🌐 Languages
-**⚠️ Following Section is at this moment not supported.**
+**⚠️ Following Section is at this moment not fully supported.**
 
 Users can switch their language easily via the command /lang or /hide lang and the two digit language code. For example /lang de.
 In the config file, you can switch the default language for all users.
@@ -41,13 +51,7 @@ To add your own language, put the language file in the language subfolder.
 - 🇬🇧 **English**
 - 🇩🇪 **German**
 
-If you have some spare Minutes, please submit your language file via a pull request or a pm.
-
+For more, follow the link to the [wiki](https://github.com/Niklashere/Spigot_Hidenseek/wiki/Translation).
 ## Contributing
 
-todo
-
-## Support
-
-todo
-
+For now: find more information in the [CONTRIBUTING.md](https://github.com/Niklashere/Spigot_Hidenseek/blob/main/CONTRIBUTING.md)

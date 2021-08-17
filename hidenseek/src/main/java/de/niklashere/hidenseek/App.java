@@ -31,7 +31,8 @@ public class App extends JavaPlugin {
     instance = this;
     this.saveDefaultConfig();
     Fileaccess.loadFolder("maps");
-    if (Fileaccess.fileListToArrayList(Fileaccess.listOfFiles.get("maps")).size() <= 2) {
+    if (Fileaccess.listOfFiles.get("maps") == null
+        || Fileaccess.listOfFiles.get("maps").length <= 2) {
       saveResource("maps/" + "Map-1.yml", false);
       saveResource("maps/" + "Map-2.yml", false);
       saveResource("maps/" + "Map-3.yml", false);
