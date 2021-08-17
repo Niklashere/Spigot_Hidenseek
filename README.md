@@ -26,7 +26,7 @@ The following features are planed for the release version 1.0*
 - [ ] "classic" hide'n'seek and prophunt
 - [ ] /forcemap
 - [ ] Coin System/Vault
-- [ ] execute commands at spicific states of the game
+- [ ] execute commands at specific states of the game
 - [ ] Achievements
 - [ ] Scoreboard
 - [ ] Tablist
