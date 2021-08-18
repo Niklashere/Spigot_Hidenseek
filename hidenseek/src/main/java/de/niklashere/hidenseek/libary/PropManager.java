@@ -37,7 +37,7 @@ public class PropManager {
 
   /**
    * Constructor to create player props.
-   * 
+   *
    * @param p player for wich a prop should be created
    */
   public PropManager(Player p) {
@@ -46,7 +46,7 @@ public class PropManager {
 
   /**
    * Query whether prop is mounted.
-   * 
+   *
    * @return is mounted
    */
   public boolean isMounted() {
@@ -55,7 +55,7 @@ public class PropManager {
 
   /**
    * Create a prop.
-   * 
+   *
    * @param mat Material of this prop
    */
   public void setProp(Material mat) {
@@ -100,7 +100,7 @@ public class PropManager {
 
   /**
    * Get the prop.
-   * 
+   *
    * @return silverfish
    */
   public Silverfish getProp() {
@@ -109,7 +109,7 @@ public class PropManager {
 
   /**
    * Props will follow p.
-   * 
+   *
    * @param p Player who should get followed.
    */
   public void follow(Player p) {
@@ -150,7 +150,7 @@ public class PropManager {
 
   /**
    * Set a solid block at the location of p with the mat.
-   * 
+   *
    * @param p   The player which location should be used
    * @param mat Material of the block
    */
@@ -186,7 +186,7 @@ public class PropManager {
 
   /**
    * Remove the block set with the setBlock Method.
-   * 
+   *
    * @param p The player whose block should get removed
    */
   public static void removeBlock(Player p) {

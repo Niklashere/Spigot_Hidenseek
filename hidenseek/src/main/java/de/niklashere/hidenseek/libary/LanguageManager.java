@@ -19,7 +19,7 @@ public class LanguageManager {
 
   /**
    * Get a message from the default language file.
-   * 
+   *
    * @param string String under which this message is saved
    * @return message from lanuage file
    */
@@ -30,7 +30,7 @@ public class LanguageManager {
 
   /**
    * Get a message from the language file for this player.
-   * 
+   *
    * @param string String under which this message is saved
    * @param p      Player which language should be used
    * @return message from lanuage file
@@ -41,7 +41,7 @@ public class LanguageManager {
 
   /**
    * Get a message from the language file for this player.
-   * 
+   *
    * @param string String under which this message is saved
    * @param p1     Player which language should be used
    * @param p2     Player wich should be used for the variablemanager
@@ -54,7 +54,7 @@ public class LanguageManager {
 
   /**
    * Get a message from the language file for this player.
-   * 
+   *
    * @param string String under which this message is saved
    * @param p      Player which language should be used
    * @param k      Second player for %k
@@ -67,7 +67,7 @@ public class LanguageManager {
   /**
    * Get a message from from a stringlist within the language file for this
    * player.
-   * 
+   *
    * @param string String under which this message is saved
    * @param p      Player which language should be used
    * @param i      Stringlist position
@@ -80,7 +80,7 @@ public class LanguageManager {
   /**
    * Get a message from from a stringlist within the language file for this
    * player.
-   * 
+   *
    * @param string String under which this message is saved
    * @param p      Player which language should be used
    * @param k      Second player for %k
@@ -93,7 +93,7 @@ public class LanguageManager {
 
   /**
    * Get the language file for this player.
-   * 
+   *
    * @param p Player
    * @return language file
    */
@@ -122,7 +122,7 @@ public class LanguageManager {
 
   /**
    * Saves the language used by the player.
-   * 
+   *
    * @param p    Player
    * @param file language file
    */
@@ -141,7 +141,7 @@ public class LanguageManager {
 
   /**
    * Check if already entry for the UUID in the table exists.
-   * 
+   *
    * @param uuid uuid of player, who should be checked
    * @return exist in table
    */
@@ -152,7 +152,7 @@ public class LanguageManager {
 
   /**
    * Creates a player in case their arn't already one created.
-   * 
+   *
    * @param uuid uuid of the player, who's entry should be created
    */
   public static void createPlayer(UUID uuid) {

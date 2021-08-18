@@ -4,7 +4,6 @@ Countdown:
   Warmup: 20
   Ingame: 120
   End: 20
-  skip-lobby: 30
 Players:
   max: 10
   min: 1
@@ -43,9 +42,9 @@ items:
   meow-duration: 5
   explosion-duration: 15
 spawnpoint-lobby:
-  X: -99.33487143047729
+  X: -99.5
   Y: 69.0
-  Z: 100.53326965213392
-  Yaw: -83.85
-  Pitch: 54.34994
+  Z: 100.5
+  Yaw: -83.5
+  Pitch: 54.5
   World: world

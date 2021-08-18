@@ -2,7 +2,7 @@ package de.niklashere.hidenseek.files.languages;
 
 /**
  * Class that defines all strings for the language files.
- * 
+ *
  * @author Niklashere
  * @since 03.08.2021
  */
@@ -38,6 +38,7 @@ public class Variablelist {
   public static String chat_hider = chat + "hider";
   public static String chat_seeker = chat + "seeker";
   public static String chat_spectator = chat + "spectator";
+  public static String chat_choosedprop = chat + "choosedprop";
 
   // Commands
   private static String command = "commands.";
@@ -86,6 +87,11 @@ public class Variablelist {
   private static String mapvoting = inventory + "mapvoting.";
   public static String inv_mapvoting_name = mapvoting + "seeker";
 
+  // Chooseprop Inventory
+  private static String chooseprop = inventory + "chooseprop.";
+  public static String inv_chooseprop_name = chooseprop + "name";
+
+
   // Items
   private static String items = "items.";
 
@@ -93,6 +99,7 @@ public class Variablelist {
   private static String lobby = items + "lobby.";
   public static String items_lobby_chest = lobby + "chest";
   public static String items_lobby_redBanner = lobby + "red_banner";
+  public static String items_lobby_slimeball = lobby + "slimeball";
 
   // Seekeritems
   private static String seeker = items + "seeker.";

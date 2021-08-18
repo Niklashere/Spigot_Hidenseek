@@ -8,6 +8,7 @@ import de.niklashere.hidenseek.inventorys.MapvotingInventory;
 import de.niklashere.hidenseek.inventorys.SetupInventory;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.PropManager;
 import de.niklashere.hidenseek.libary.StatsManager;
 import de.niklashere.hidenseek.libary.VariableManager;
 import de.niklashere.hidenseek.libary.VoteManager;
@@ -42,7 +43,7 @@ public class InventoryClickListener implements Listener {
 
   /**
    * Called when the event occurs.
-   * 
+   *
    * @param e event
    */
   @EventHandler
@@ -352,8 +353,8 @@ public class InventoryClickListener implements Listener {
 
       if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_seeker, p))) {
-        if (RoleManager.getSeekers()
-            .size() <= Fileaccess.getInt("max-seeker", Fileaccess.getConfig())) {
+        if (RoleManager.getSeekers().size() <= Fileaccess.getInt("max-seeker",
+            Fileaccess.getConfig())) {
           if (RoleManager.playerList.get(RoleManager.getPlayer(p)) == null) {
             PlayerData playerData = new PlayerData(p);
             playerData.setHider(true);
@@ -371,6 +372,17 @@ public class InventoryClickListener implements Listener {
               LanguageManager.getMessage(Variablelist.chat_seeker, p).toString()));
 
         }
+      }
+    } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
+        && p.getOpenInventory().getTitle()
+            .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_chooseprop_name, p))) {
+      if (e.getCurrentItem().getItemMeta().getDisplayName()
+          .startsWith(VariableManager
+          .message(Fileaccess.getString("prefix.inv-item", Fileaccess.getConfig())))) {
+        PropManager.choosedBlock.put(p, e.getCurrentItem().getType());
+        p.sendMessage(LanguageManager.getMessage(Variablelist.chat_choosedprop, p).replace("%name%",
+            e.getCurrentItem().getType().name().replace("_", " ")));
+
       }
     }
   }

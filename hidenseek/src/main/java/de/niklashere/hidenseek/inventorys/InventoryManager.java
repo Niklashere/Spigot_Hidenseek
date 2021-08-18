@@ -46,6 +46,10 @@ public class InventoryManager {
           new ItemBuilder(Material.RED_BANNER)
               .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p))
               .build());
+      p.getInventory().setItem(3,
+          new ItemBuilder(Material.SLIME_BALL)
+              .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_slimeball, p))
+              .build());
 
     }
 

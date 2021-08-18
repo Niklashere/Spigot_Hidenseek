@@ -27,7 +27,7 @@ public class RoleManager {
 
   /**
    * Get the position in the arraylist from player p.
-   * 
+   *
    * @param p player
    * @return position
    */
@@ -44,7 +44,7 @@ public class RoleManager {
 
   /**
    * Get a list of all seekers.
-   * 
+   *
    * @return Arraylist of seekers
    */
   public static ArrayList<PlayerData> getSeekers() {
@@ -61,7 +61,7 @@ public class RoleManager {
 
   /**
    * Get a list of all hiders.
-   * 
+   *
    * @return Arraylist of hiders
    */
   public static ArrayList<PlayerData> getHiders() {
@@ -78,7 +78,7 @@ public class RoleManager {
 
   /**
    * Get a list of all spectators.
-   * 
+   *
    * @return Arraylist of spectators
    */
   public static ArrayList<PlayerData> getSpectators() {
@@ -124,7 +124,7 @@ public class RoleManager {
 
   /**
    * Give points to the teams.
-   * 
+   *
    * @param winnerTeam team who has won
    */
   public static void endGame(String winnerTeam) {

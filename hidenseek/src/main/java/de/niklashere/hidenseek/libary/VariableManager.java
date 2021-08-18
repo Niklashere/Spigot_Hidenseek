@@ -13,7 +13,7 @@ public class VariableManager {
 
   /**
    * Replaces all variables with a suitable element.
-   * 
+   *
    * @param string message
    * @return message
    */
@@ -40,7 +40,7 @@ public class VariableManager {
 
   /**
    * Replaces all variables with a suitable element.
-   * 
+   *
    * @param string message
    * @param p      player
    * @return message
@@ -60,7 +60,7 @@ public class VariableManager {
 
   /**
    * Replaces all variables with a suitable element.
-   * 
+   *
    * @param string message
    * @param p      player
    * @param k      killer: player who killed p
@@ -76,7 +76,7 @@ public class VariableManager {
 
   /**
    * Replaces all variables with a suitable element.
-   * 
+   *
    * @param string message
    * @param p      player
    * @param k      offlineplayer

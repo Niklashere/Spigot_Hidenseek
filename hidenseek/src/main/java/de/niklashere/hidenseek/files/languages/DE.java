@@ -69,9 +69,9 @@ public class DE {
     addMessage(Variablelist.chat_wait_ended, "%pc%Du kannst %cs%%name%%cp% wieder benutzen.");
     addMessage(Variablelist.chat_mapvoting, "%pc%Du hast für die Map %cs%%name%%cp% gevoted.");
 
-    String[] won = { "%pc%%cs%=====================",
+    String[] won = {"%pc%%cs%=====================",
         "%pc%Die Karte %cs%%name%%cp% hat das Mapvoting gewonnen.",
-        "%pc%Die Karte wurde von %cs%%author%%cp% gebaut.", "%pc%%cs%=====================" };
+        "%pc%Die Karte wurde von %cs%%author%%cp% gebaut.", "%pc%%cs%====================="};
     addMessageList(Variablelist.chat_mapvoting_won, won);
 
     addMessage(Variablelist.chat_role, "%pc%Du bist der Rolle %cs%%name%%cp% beigetreten.");
@@ -84,9 +84,9 @@ public class DE {
     // Commands
 
     // Stats Command
-    String[] stats = { "%pc%%cs%=====================", "%pc%wurde Gefangen: %cs%%sc%",
+    String[] stats = {"%pc%%cs%=====================", "%pc%wurde Gefangen: %cs%%sc%",
         "%pc%hat Gefunden: %cs%%sf%", "%pc%Gewonnen: %cs%%sw%", "%pc%Spiele: %cs%%spl%",
-        "%pc%Punkte: %cs%%spo%", "%pc%%cs%=====================" };
+        "%pc%Punkte: %cs%%spo%", "%pc%%cs%====================="};
     addMessageList(Variablelist.command_stats, stats);
     addMessage(Variablelist.command_stats_usage, "%pc%%cw%/stats <player>");
 
@@ -125,11 +125,18 @@ public class DE {
     // Mapvoting Inventory
     addMessage(Variablelist.inv_mapvoting_name, "%pin%Mapvoting");
 
+    // Chooseprop Inventory
+    addMessage(Variablelist.inv_chooseprop_name, "%pin%Wähle Prop");
+    addMessage(Variablelist.chat_choosedprop,
+        "%pc%Du hast %cs%%name%%cp% als dein Prop ausgewählt.");
+
+
     // Items
 
     // Lobbyitems
     addMessage(Variablelist.items_lobby_chest, "%pii%Karte wählen");
     addMessage(Variablelist.items_lobby_redBanner, "%pii%Rolle wählen");
+    addMessage(Variablelist.items_lobby_slimeball, "%pii%Wähle Prop");
 
     // Seekeritems
     addMessage(Variablelist.items_seeker_sword, "%pii%Schwert");
@@ -150,7 +157,7 @@ public class DE {
 
   /**
    * Adds a message to a config, if not already exist.
-   * 
+   *
    * @param string  String under wich the message should be saved
    * @param message The content that should be saved behind string
    */
@@ -161,6 +168,12 @@ public class DE {
     }
   }
 
+  /**
+   * Adds a list of messages to a config, if not already exist.
+   *
+   * @param string  List of strings under wich the message should be saved
+   * @param message The content that should be saved behind string
+   */
   private static void addMessageList(String string, String[] message) {
     File file = new File("plugins/hidenseek/languages", language + ".yml");
     if (Fileaccess.getStringList(string, file) == null
