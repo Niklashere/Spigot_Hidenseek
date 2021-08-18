@@ -31,9 +31,9 @@ public class RoleInventory {
       x++;
     }
 
-    inv.setItem(11, new ItemBuilder(Material.GRASS)
+    inv.setItem(11, new ItemBuilder(Material.RED_BANNER)
         .setDisplayName(LanguageManager.getMessage(Variablelist.inv_role_hider, p)).build());
-    inv.setItem(15, new ItemBuilder(Material.DIRT)
+    inv.setItem(15, new ItemBuilder(Material.GREEN_BANNER)
         .setDisplayName(LanguageManager.getMessage(Variablelist.inv_role_seeker, p)).build());
 
     p.openInventory(inv);
