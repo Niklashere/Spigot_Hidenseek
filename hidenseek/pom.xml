@@ -4,7 +4,7 @@
 
     <artifactId>hidenseek</artifactId>
     <groupId>de.niklashere.hidenseek</groupId>
-    <version>1.0.3-alpha</version>
+    <version>1.0.4-alpha</version>
 
     <repositories>
         <repository>

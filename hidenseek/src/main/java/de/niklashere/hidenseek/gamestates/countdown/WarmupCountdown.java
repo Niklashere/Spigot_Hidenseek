@@ -39,8 +39,15 @@ public class WarmupCountdown {
     for (Player all : Bukkit.getOnlinePlayers()) {
       PlayerData playerData = new PlayerData(all);
       if (!RoleManager.playerList.contains(playerData)) {
-        playerData.setHider(true);
-        RoleManager.playerList.add(playerData);
+        if (RoleManager.getSeekers().size() >= Fileaccess.getInt("Players.seeker",
+            Fileaccess.getConfig())) {
+          playerData.setHider(true);
+          RoleManager.playerList.add(playerData);
+        } else {
+          playerData.setSeeker(true);
+          RoleManager.playerList.add(playerData);
+
+        }
 
       }
 

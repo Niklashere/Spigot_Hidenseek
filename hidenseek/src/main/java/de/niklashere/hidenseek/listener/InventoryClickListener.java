@@ -345,11 +345,6 @@ public class InventoryClickListener implements Listener {
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle()
             .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_name, p))) {
-      // if (e.getCurrentItem().getItemMeta().getDisplayName()
-      // .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_hider,
-      // p))) {
-
-      // }
 
       if (e.getCurrentItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_seeker, p))) {
@@ -372,12 +367,26 @@ public class InventoryClickListener implements Listener {
               LanguageManager.getMessage(Variablelist.chat_seeker, p).toString()));
 
         }
+      } else if (e.getCurrentItem().getItemMeta().getDisplayName()
+          .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_hider, p))) {
+        if (RoleManager.playerList.get(RoleManager.getPlayer(p)) == null) {
+          PlayerData playerData = new PlayerData(p);
+          playerData.setHider(true);
+          RoleManager.playerList.add(playerData);
+
+        } else {
+          RoleManager.playerList.get(RoleManager.getPlayer(p)).setHider(true);
+          RoleManager.playerList.get(RoleManager.getPlayer(p)).setSeeker(false);
+
+        }
+        p.sendMessage(LanguageManager.getMessage(Variablelist.chat_role, p).replace("%name%",
+            LanguageManager.getMessage(Variablelist.chat_seeker, p).toString()));
+
       }
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle()
             .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_chooseprop_name, p))) {
-      if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .startsWith(VariableManager
+      if (e.getCurrentItem().getItemMeta().getDisplayName().startsWith(VariableManager
           .message(Fileaccess.getString("prefix.inv-item", Fileaccess.getConfig())))) {
         PropManager.choosedBlock.put(p, e.getCurrentItem().getType());
         p.sendMessage(LanguageManager.getMessage(Variablelist.chat_choosedprop, p).replace("%name%",
