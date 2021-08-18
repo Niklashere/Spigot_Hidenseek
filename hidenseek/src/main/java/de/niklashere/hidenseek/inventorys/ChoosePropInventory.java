@@ -37,16 +37,16 @@ public class ChoosePropInventory {
         .message(Fileaccess.getString("prefix.inv-item", Fileaccess.getConfig()));
 
     inv.setItem(11, new ItemBuilder(Material.CRAFTING_TABLE)
-        .setDisplayName(prefix + Material.CRAFTING_TABLE.name()).build());
-    inv.setItem(11, new ItemBuilder(Material.HAY_BLOCK)
-        .setDisplayName(prefix + Material.HAY_BLOCK.name()).build());
+        .setDisplayName(prefix + Material.CRAFTING_TABLE.name().replace("_", " ")).build());
+    inv.setItem(12, new ItemBuilder(Material.HAY_BLOCK)
+        .setDisplayName(prefix + Material.HAY_BLOCK.name().replace("_", " ")).build());
     inv.setItem(13, new ItemBuilder(Material.ANVIL)
-        .setDisplayName(prefix + Material.ANVIL.name()).build());
-    inv.setItem(11, new ItemBuilder(Material.NOTE_BLOCK)
-        .setDisplayName(prefix + Material.NOTE_BLOCK.name()).build());
+        .setDisplayName(prefix + Material.ANVIL.name().replace("_", " ")).build());
+    inv.setItem(14, new ItemBuilder(Material.NOTE_BLOCK)
+        .setDisplayName(prefix + Material.NOTE_BLOCK.name().replace("_", " ")).build());
 
     inv.setItem(15, new ItemBuilder(Material.BOOKSHELF)
-        .setDisplayName(prefix + Material.BOOKSHELF.name()).build());
+        .setDisplayName(prefix + Material.BOOKSHELF.name().replace("_", " ")).build());
 
     p.openInventory(inv);
   }

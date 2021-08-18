@@ -80,7 +80,9 @@ public class WarmupCountdown {
         PropManager props = new PropManager(all);
         PropManager.propsList.put(all, props);
 
-        PropManager.choosedBlock.put(all, Material.STONE);
+        if (PropManager.choosedBlock.get(all) == null) {
+          PropManager.choosedBlock.put(all, Material.BOOKSHELF);
+        }
         props.setProp(PropManager.choosedBlock.get(all));
         PropManager.propsList.put(all, props);
 
@@ -108,6 +110,7 @@ public class WarmupCountdown {
 
       @Override
       public void run() {
+        
         if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.min",
             Fileaccess.getConfig()) && RoleManager.getHiders().size() >= 1
             && RoleManager.getSeekers().size() >= 1) {

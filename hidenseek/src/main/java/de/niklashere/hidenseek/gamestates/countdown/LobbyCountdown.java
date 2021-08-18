@@ -47,10 +47,11 @@ public class LobbyCountdown {
         if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.min",
             Fileaccess.getConfig())) {
           time--;
-          if (time >= Fileaccess.getInt("countdown.Full", Fileaccess.getConfig()) + 2
-              && Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.Full",
+
+          if (time >= Fileaccess.getInt("Countdown.Full", Fileaccess.getConfig()) + 2
+              && Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("skip-lobby",
                   Fileaccess.getConfig())) {
-            time = Fileaccess.getInt("countdown.Full", Fileaccess.getConfig()) + 1;
+            time = Fileaccess.getInt("Countdown.Full", Fileaccess.getConfig()) + 1;
           }
           for (Player all : Bukkit.getOnlinePlayers()) {
             all.setLevel(time);
@@ -66,6 +67,7 @@ public class LobbyCountdown {
                   .replaceAll("%t%", time + "").replaceAll("%s%",
                       LanguageManager.getMessage(Variablelist.chat_secondSingular, all)));
             }
+
           }
           if (time == 5) {
             Bukkit.createWorld(

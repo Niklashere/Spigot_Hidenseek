@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek.listener;
 
 import de.niklashere.hidenseek.files.languages.Variablelist;
+import de.niklashere.hidenseek.inventorys.ChoosePropInventory;
 import de.niklashere.hidenseek.inventorys.HintInventory;
 import de.niklashere.hidenseek.inventorys.MapvotingInventory;
 import de.niklashere.hidenseek.inventorys.RoleInventory;
@@ -59,6 +60,9 @@ public class PlayerInteractListener implements Listener {
       } else if (e.getItem().getItemMeta().getDisplayName()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p))) {
         RoleInventory.openInventory(p);
+      } else if (e.getItem().getItemMeta().getDisplayName()
+          .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.items_lobby_slimeball, p))) {
+        ChoosePropInventory.openInventory(p);
       }
     } else {
       e.setCancelled(true);
