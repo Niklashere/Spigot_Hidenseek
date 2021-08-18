@@ -43,7 +43,7 @@ public class InventoryClickListener implements Listener {
 
   /**
    * Called when the event occurs.
-   * 
+   *
    * @param e event
    */
   @EventHandler
@@ -376,7 +376,6 @@ public class InventoryClickListener implements Listener {
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()
         && p.getOpenInventory().getTitle()
             .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_chooseprop_name, p))) {
-              System.out.println("a");
       if (e.getCurrentItem().getItemMeta().getDisplayName()
           .startsWith(VariableManager
           .message(Fileaccess.getString("prefix.inv-item", Fileaccess.getConfig())))) {

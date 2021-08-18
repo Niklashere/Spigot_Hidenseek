@@ -55,7 +55,6 @@ public class IngameCountdown {
 
       @Override
       public void run() {
-        
         if (Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.min",
             Fileaccess.getConfig()) && RoleManager.getHiders().size() >= 1
             && RoleManager.getSeekers().size() >= 1) {

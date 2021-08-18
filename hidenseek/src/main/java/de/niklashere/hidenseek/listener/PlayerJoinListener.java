@@ -30,7 +30,7 @@ public class PlayerJoinListener implements Listener {
 
   /**
    * Called when the event occurs.
-   * 
+   *
    * @param e event
    */
   @EventHandler

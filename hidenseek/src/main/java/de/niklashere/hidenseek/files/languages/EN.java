@@ -69,9 +69,9 @@ public class EN {
     addMessage(Variablelist.chat_wait_ended, "%pc%You can use %cs%%name%%cp% again.");
     addMessage(Variablelist.chat_mapvoting, "%pc%You voted for the map %cs%%name%%cp%.");
 
-    String[] won = { "%pc%%cs%=====================",
+    String[] won = {"%pc%%cs%=====================",
         "%pc%The map %cs%%name%%cp% won the map voting.",
-        "%pc%This map was build by %cs%%author%%cp%.", "%pc%%cs%=====================" };
+        "%pc%This map was build by %cs%%author%%cp%.", "%pc%%cs%====================="};
     addMessageList(Variablelist.chat_mapvoting_won, won);
 
     addMessage(Variablelist.chat_role, "%pc%You joined the role %cs%%name%%cp%.");
@@ -85,9 +85,9 @@ public class EN {
     // Commands
 
     // Stats Command
-    String[] stats = { "%pc%%cs%=====================", "%pc%was cought: %cs%%sc%",
+    String[] stats = {"%pc%%cs%=====================", "%pc%was cought: %cs%%sc%",
         "%pc%has found: %cs%%sf%", "%pc%wins: %cs%%sw%", "%pc%plays: %cs%%spl%",
-        "%pc%points: %cs%%spo%", "%pc%%cs%=====================" };
+        "%pc%points: %cs%%spo%", "%pc%%cs%====================="};
     addMessageList(Variablelist.command_stats, stats);
     addMessage(Variablelist.command_stats_usage, "%pc%%cw%/stats <player>");
 
@@ -154,7 +154,7 @@ public class EN {
 
   /**
    * Adds a message to a config, if not already exist.
-   * 
+   *
    * @param string  String under wich the message should be saved
    * @param message The content that should be saved behind string
    */
@@ -165,6 +165,12 @@ public class EN {
     }
   }
 
+  /**
+   * Adds a list of messages to a config, if not already exist.
+   *
+   * @param string  List of strings under wich the message should be saved
+   * @param message The content that should be saved behind string
+   */
   private static void addMessageList(String string, String[] message) {
     File file = new File("plugins/hidenseek/languages", language + ".yml");
     if (Fileaccess.getStringList(string, file) == null

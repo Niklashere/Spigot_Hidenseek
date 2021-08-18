@@ -2,7 +2,7 @@ package de.niklashere.hidenseek.files.languages;
 
 /**
  * Class that defines all strings for the language files.
- * 
+ *
  * @author Niklashere
  * @since 03.08.2021
  */
@@ -90,7 +90,7 @@ public class Variablelist {
   // Chooseprop Inventory
   private static String chooseprop = inventory + "chooseprop.";
   public static String inv_chooseprop_name = chooseprop + "name";
-  
+
 
   // Items
   private static String items = "items.";

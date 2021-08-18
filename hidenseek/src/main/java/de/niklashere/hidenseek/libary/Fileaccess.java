@@ -37,7 +37,7 @@ public class Fileaccess {
 
   /**
    * Loads all files from a folder.
-   * 
+   *
    * @param subfolder Name of the directory in the hidenseek folder.
    */
   public static void loadFolder(String subfolder) {
@@ -47,7 +47,7 @@ public class Fileaccess {
 
   /**
    * Converts a filelist to a Arraylist.
-   * 
+   *
    * @param files list of files
    * @return arraylist with files
    */
@@ -61,7 +61,7 @@ public class Fileaccess {
 
   /**
    * Get the config file.
-   * 
+   *
    * @return config file
    */
   public static File getConfig() {
@@ -70,7 +70,7 @@ public class Fileaccess {
 
   /**
    * Get a string form a file.
-   * 
+   *
    * @param string string to access.
    * @param file   file to access
    * @return string
@@ -88,7 +88,7 @@ public class Fileaccess {
 
   /**
    * Get a stringlist from a file.
-   * 
+   *
    * @param string string to access
    * @param file   file to access
    * @return stringlist
@@ -100,7 +100,7 @@ public class Fileaccess {
 
   /**
    * Get a boolean from a file.
-   * 
+   *
    * @param string string to access
    * @param file   file to access
    * @return boolean
@@ -118,7 +118,7 @@ public class Fileaccess {
 
   /**
    * Get a location from a file.
-   * 
+   *
    * @param string string to access
    * @param file   file to access
    * @return location
@@ -142,7 +142,7 @@ public class Fileaccess {
 
   /**
    * Get integer from file.
-   * 
+   *
    * @param string string to access
    * @param file   file to access
    * @return integer
@@ -160,7 +160,7 @@ public class Fileaccess {
 
   /**
    * Save the location in a file.
-   * 
+   *
    * @param string String under which to save
    * @param file   file to access
    * @param p      player to get location
@@ -182,7 +182,7 @@ public class Fileaccess {
 
   /**
    * Save a Integer in a file.
-   * 
+   *
    * @param string String under which to save
    * @param file   file to access
    * @param i      integer to save
@@ -199,7 +199,7 @@ public class Fileaccess {
 
   /**
    * Save String in a file.
-   * 
+   *
    * @param string  String under which to save
    * @param file    file to access
    * @param string2 string to save
@@ -216,7 +216,7 @@ public class Fileaccess {
 
   /**
    * Save String in a file.
-   * 
+   *
    * @param string     String under which to save
    * @param file       file to access
    * @param stringlist stringlist to save

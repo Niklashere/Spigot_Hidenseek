@@ -26,7 +26,7 @@ public class PlayerInteractListener implements Listener {
 
   /**
    * Called when the event occurs.
-   * 
+   *
    * @param e event
    */
   @EventHandler
