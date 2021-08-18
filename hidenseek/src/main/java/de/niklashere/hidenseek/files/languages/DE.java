@@ -69,9 +69,9 @@ public class DE {
     addMessage(Variablelist.chat_wait_ended, "%pc%Du kannst %cs%%name%%cp% wieder benutzen.");
     addMessage(Variablelist.chat_mapvoting, "%pc%Du hast für die Map %cs%%name%%cp% gevoted.");
 
-    String[] won = {"%pc%%cs%=====================",
+    String[] won = { "%pc%%cs%=====================",
         "%pc%Die Karte %cs%%name%%cp% hat das Mapvoting gewonnen.",
-        "%pc%Die Karte wurde von %cs%%author%%cp% gebaut.", "%pc%%cs%====================="};
+        "%pc%Die Karte wurde von %cs%%author%%cp% gebaut.", "%pc%%cs%=====================" };
     addMessageList(Variablelist.chat_mapvoting_won, won);
 
     addMessage(Variablelist.chat_role, "%pc%Du bist der Rolle %cs%%name%%cp% beigetreten.");
@@ -84,9 +84,9 @@ public class DE {
     // Commands
 
     // Stats Command
-    String[] stats = {"%pc%%cs%=====================", "%pc%wurde Gefangen: %cs%%sc%",
+    String[] stats = { "%pc%%cs%=====================", "%pc%wurde Gefangen: %cs%%sc%",
         "%pc%hat Gefunden: %cs%%sf%", "%pc%Gewonnen: %cs%%sw%", "%pc%Spiele: %cs%%spl%",
-        "%pc%Punkte: %cs%%spo%", "%pc%%cs%====================="};
+        "%pc%Punkte: %cs%%spo%", "%pc%%cs%=====================" };
     addMessageList(Variablelist.command_stats, stats);
     addMessage(Variablelist.command_stats_usage, "%pc%%cw%/stats <player>");
 
@@ -95,6 +95,15 @@ public class DE {
         "%pc%Zu foldenden Sprachen kann gewechselt werden: ");
     addMessage(Variablelist.command_lang_switch, "%pc%Folgende Sprache wurde ausgewählt: ");
     addMessage(Variablelist.command_lang_usage, "%pc%/language <language-code>");
+
+    // Leaderboard Command
+    String[] lead = { "%pc%%cs%=====================", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%%cs%=====================" };
+    addMessageList(Variablelist.command_lead, lead);
 
     // Inventory
 
@@ -129,7 +138,6 @@ public class DE {
     addMessage(Variablelist.inv_chooseprop_name, "%pin%Wähle Prop");
     addMessage(Variablelist.chat_choosedprop,
         "%pc%Du hast %cs%%name%%cp% als dein Prop ausgewählt.");
-
 
     // Items
 

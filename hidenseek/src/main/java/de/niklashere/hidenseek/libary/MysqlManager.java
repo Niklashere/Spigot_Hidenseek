@@ -18,7 +18,7 @@ public class MysqlManager {
   private static String DATABASE = Fileaccess.getString("MySQL.database", Fileaccess.getConfig());
   private static String USER = Fileaccess.getString("MySQL.user", Fileaccess.getConfig());
   private static String PASSWORD = Fileaccess.getString("MySQL.password", Fileaccess.getConfig());
-  private static Connection con;
+  public static Connection con;
 
   /**
    * Needed parameter to establish a MySQL connection.

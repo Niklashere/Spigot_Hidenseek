@@ -53,6 +53,10 @@ public class Variablelist {
   public static String command_lang_languages = lang + "languages";
   public static String command_lang_switch = lang + "switch";
   public static String command_lang_usage = lang + "usage";
+  
+  // Leaderboard Commands
+  private static String lead = command + "language.";
+  public static String command_lead = lead + "leaderboard";
 
   // Inventory
   private static String inventory = "inventory.";
