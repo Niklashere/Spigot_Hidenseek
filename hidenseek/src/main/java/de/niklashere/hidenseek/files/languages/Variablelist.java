@@ -55,7 +55,7 @@ public class Variablelist {
   public static String command_lang_usage = lang + "usage";
   
   // Leaderboard Commands
-  private static String lead = command + "language.";
+  private static String lead = command + "leaderboard.";
   public static String command_lead = lead + "leaderboard";
 
   // Inventory
