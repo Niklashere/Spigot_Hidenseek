@@ -30,19 +30,20 @@ public class StatsManager {
    * 
    * @param i how many top players
    */
-  public static ArrayList<String> getTop(int i) {
-    ArrayList<String> list = new ArrayList<>();
+  public static ArrayList<UUID> getTop(int i) {
+    ArrayList<UUID> list = new ArrayList<>();
     try (Statement st = MysqlManager.con.createStatement();
         ResultSet rs = st
             .executeQuery("SELECT UUID FROM Stats ORDER BY points DESC LIMIT " + i + ";")) {
+
       while (rs.next()) {
-        list.add(rs.getString("UUID"));
+
+        list.add(UUID.fromString(rs.getString("UUID")));
       }
     } catch (SQLException e) {
       MysqlManager.connect();
       System.err.println(e);
     }
-    System.out.println(list.toString());
     return list;
 
   }

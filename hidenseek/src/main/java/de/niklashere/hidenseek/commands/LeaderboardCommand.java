@@ -4,9 +4,9 @@ import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.StatsManager;
-import de.niklashere.hidenseek.libary.UuidFetcher;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -28,18 +28,15 @@ public class LeaderboardCommand implements CommandExecutor {
       final String[] args) {
     Player p = (Player) sender;
     int pos = 0;
-    ArrayList<String> top = StatsManager.getTop(
+    ArrayList<UUID> top = StatsManager.getTop(
         Fileaccess.getStringList(Variablelist.command_lead, LanguageManager.getLanguage(p)).size());
-    System.out.println("a1  " + top.toString());
+
     for (int i = 0; Fileaccess
         .getStringList(Variablelist.command_lead, LanguageManager.getLanguage(p)).size()
         - 1 >= i; i++) {
-      System.out.println("a2  " + top.get(pos).toString());
-
-      if (top.get(pos) != null && LanguageManager
+      if (top.size() - 1 >= pos && LanguageManager
           .getMessageFromList(Variablelist.command_lead, p, i).contains("%pos%")) {
-        System.out.println("a3  " + top.get(pos).toString());
-        OfflinePlayer k = Bukkit.getOfflinePlayer(UuidFetcher.getUuid(top.get(pos)));
+        OfflinePlayer k = Bukkit.getOfflinePlayer(top.get(pos));
         p.sendMessage(LanguageManager.getMessageFromList(Variablelist.command_lead, p, k, i)
             .replaceAll("%pos%", pos + ""));
         pos++;
