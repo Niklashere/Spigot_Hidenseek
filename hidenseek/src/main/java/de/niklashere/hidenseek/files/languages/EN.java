@@ -96,6 +96,15 @@ public class EN {
         "%pc%The following languages can be selected: ");
     addMessage(Variablelist.command_lang_switch, "%pc%You switched your language to: ");
     addMessage(Variablelist.command_lang_usage, "%pc%/language <language-code>");
+    
+    // Leaderboard Command
+    String[] lead = { "%pc%%cs%=====================", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%#%pos% %cs%%pk%%cp% - %spo%",
+        "%pc%#%pos% %cs%%pk%%cp% - %spo%", "%pc%%cs%=====================" };
+    addMessageList(Variablelist.command_lead, lead);
 
     // Inventory
 

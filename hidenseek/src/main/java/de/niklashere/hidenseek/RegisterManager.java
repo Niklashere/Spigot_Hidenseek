@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek;
 
 import de.niklashere.hidenseek.commands.LanguageCommand;
+import de.niklashere.hidenseek.commands.LeaderboardCommand;
 import de.niklashere.hidenseek.commands.SetupCommand;
 import de.niklashere.hidenseek.commands.StatsCommand;
 import de.niklashere.hidenseek.files.languages.DE;
@@ -78,6 +79,7 @@ public class RegisterManager {
    */
   public void registerCommands() {
     plugin.getCommand("language").setExecutor(new LanguageCommand());
+    plugin.getCommand("leaderboard").setExecutor(new LeaderboardCommand());
     plugin.getCommand("setup").setExecutor(new SetupCommand());
     plugin.getCommand("stats").setExecutor(new StatsCommand());
 

@@ -1,5 +1,9 @@
 package de.niklashere.hidenseek.libary;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.UUID;
 
 /**
@@ -18,7 +22,30 @@ public class StatsManager {
    */
   public static boolean playerExists(UUID uuid) {
     return MysqlManager.queryString("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
-    "UUID") != null;
+        "UUID") != null;
+  }
+
+  /**
+   * Request i amount of top players.
+   * 
+   * @param i how many top players
+   */
+  public static ArrayList<UUID> getTop(int i) {
+    ArrayList<UUID> list = new ArrayList<>();
+    try (Statement st = MysqlManager.con.createStatement();
+        ResultSet rs = st
+            .executeQuery("SELECT UUID FROM Stats ORDER BY points DESC LIMIT " + i + ";")) {
+
+      while (rs.next()) {
+
+        list.add(UUID.fromString(rs.getString("UUID")));
+      }
+    } catch (SQLException e) {
+      MysqlManager.connect();
+      System.err.println(e);
+    }
+    return list;
+
   }
 
   /**
@@ -40,8 +67,7 @@ public class StatsManager {
    * @return wins
    */
   public static Integer getWins(UUID uuid) {
-    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
-    "wins");
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';", "wins");
   }
 
   /**
@@ -51,8 +77,7 @@ public class StatsManager {
    * @return coughts
    */
   public static Integer getCought(UUID uuid) {
-    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
-    "cought");
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';", "cought");
   }
 
   /**
@@ -62,8 +87,7 @@ public class StatsManager {
    * @return founds
    */
   public static Integer getFound(UUID uuid) {
-    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
-    "found");
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';", "found");
   }
 
   /**
@@ -105,8 +129,7 @@ public class StatsManager {
    * @return played games
    */
   public static Integer getPlayes(UUID uuid) {
-    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
-    "plays");
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';", "plays");
   }
 
   /**
@@ -148,8 +171,7 @@ public class StatsManager {
    * @return points
    */
   public static Integer getPoints(UUID uuid) {
-    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';",
-    "points");
+    return MysqlManager.queryInt("SELECT * FROM Stats WHERE UUID= '" + uuid + "';", "points");
   }
 
   /**
