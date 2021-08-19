@@ -19,7 +19,7 @@ The following features are planed for the release version 1.0*
 - [x] Spectating
 - [x] Hints
 - [x] Points
-- [ ] Leaderboard
+- [x] Leaderboard
 - [x] Stats
 - [x] Prop hunt
 - [x] MySQL Support
