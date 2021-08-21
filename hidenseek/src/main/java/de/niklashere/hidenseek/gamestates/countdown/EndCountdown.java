@@ -6,6 +6,7 @@ import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.LayoutManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -35,8 +36,8 @@ public class EndCountdown {
         all.showPlayer(App.instance, p);
       }
     }
-    startCountdown();
     Gamestate.setState(Gamestate.End);
+    startCountdown();
   }
 
   /**
@@ -54,6 +55,10 @@ public class EndCountdown {
    * Start Endcountdown.
    */
   private static void startCountdown() {
+    for (Player all : Bukkit.getOnlinePlayers()) {
+      LayoutManager.setLayout(all);
+
+    }
     new BukkitRunnable() {
       @Override
       public void run() {

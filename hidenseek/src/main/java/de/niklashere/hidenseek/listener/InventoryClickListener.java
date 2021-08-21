@@ -349,7 +349,8 @@ public class InventoryClickListener implements Listener {
             .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_seeker, p))) {
           if (RoleManager.getSeekers().size() <= Fileaccess.getInt("max-seeker",
               Fileaccess.getConfig())) {
-            if (RoleManager.playerList.get(RoleManager.getPlayer(p)) == null) {
+            if (RoleManager.playerList.size() == 0
+                || RoleManager.playerList.get(RoleManager.getPlayer(p)) == null) {
               PlayerData playerData = new PlayerData(p);
               playerData.setHider(true);
               RoleManager.playerList.add(playerData);
@@ -368,14 +369,15 @@ public class InventoryClickListener implements Listener {
           }
         } else if (e.getCurrentItem().getItemMeta().getDisplayName()
             .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_role_hider, p))) {
-          if (RoleManager.playerList.get(RoleManager.getPlayer(p)) == null) {
+          if (RoleManager.playerList.size() == 0
+              || RoleManager.playerList.get(RoleManager.getPlayer(p)) == null) {
             PlayerData playerData = new PlayerData(p);
             playerData.setHider(true);
             RoleManager.playerList.add(playerData);
 
           } else {
-            RoleManager.playerList.get(RoleManager.getPlayer(p)).setHider(true);
             RoleManager.playerList.get(RoleManager.getPlayer(p)).setSeeker(false);
+            RoleManager.playerList.get(RoleManager.getPlayer(p)).setHider(true);
 
           }
           p.sendMessage(LanguageManager.getMessage(Variablelist.chat_role, p).replace("%name%",
@@ -393,10 +395,8 @@ public class InventoryClickListener implements Listener {
         }
       } else if (p.getOpenInventory().getTitle()
           .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_gamemode_name, p))) {
-        System.out.println("a1");
         if (e.getCurrentItem().getItemMeta().getDisplayName()
             .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_gamemode_classic, p))) {
-          System.out.println("a2");
 
           Gamemode.voted.put(p, "classic");
           p.sendMessage(LanguageManager.getMessage(Variablelist.chat_voted_mode, p)
@@ -404,7 +404,6 @@ public class InventoryClickListener implements Listener {
 
         } else if (e.getCurrentItem().getItemMeta().getDisplayName()
             .equalsIgnoreCase(LanguageManager.getMessage(Variablelist.inv_gamemode_prop, p))) {
-          System.out.println("a3");
 
           Gamemode.voted.put(p, "prop");
           p.sendMessage(LanguageManager.getMessage(Variablelist.chat_voted_mode, p)

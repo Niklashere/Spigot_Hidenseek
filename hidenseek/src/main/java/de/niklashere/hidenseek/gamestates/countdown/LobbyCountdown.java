@@ -76,12 +76,14 @@ public class LobbyCountdown {
             int classic = 0;
             int prop = 0;
             for (Player all : Bukkit.getOnlinePlayers()) {
-              if (Gamemode.voted.get(all).equalsIgnoreCase("classic")) {
-                classic++;
+              if (Gamemode.voted.get(all) != null) {
+                if (Gamemode.voted.get(all).equalsIgnoreCase("classic")) {
+                  classic++;
 
-              } else if (Gamemode.voted.get(all).equalsIgnoreCase("prop")) {
-                prop++;
+                } else if (Gamemode.voted.get(all).equalsIgnoreCase("prop")) {
+                  prop++;
 
+                }
               }
 
               if (prop >= classic) {
