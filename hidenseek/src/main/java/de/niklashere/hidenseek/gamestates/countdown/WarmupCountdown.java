@@ -12,6 +12,8 @@ import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.PropManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
+import java.util.Random;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -88,7 +90,8 @@ public class WarmupCountdown {
         PropManager.propsList.put(all, props);
 
         if (PropManager.choosedBlock.get(all) == null) {
-          PropManager.choosedBlock.put(all, Material.BOOKSHELF);
+          int rdm = new Random().nextInt(Fileaccess.getStringList("props", VoteManager.getResults()).size() - 1);
+          PropManager.choosedBlock.put(all, Material.getMaterial(Fileaccess.getStringList("props", VoteManager.getResults()).get(rdm)));
         }
         props.setProp(PropManager.choosedBlock.get(all));
         PropManager.propsList.put(all, props);

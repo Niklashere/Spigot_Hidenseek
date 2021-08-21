@@ -1,5 +1,12 @@
-world: world
+world: world-2
 author: author
+material: CRAFTING_TABLE
+props:
+  - CRAFTING_TABLE
+  - HAY_BLOCK
+  - ANVIL
+  - NOTE_BLOCK
+  - BOOKSHELF
 spawnpoint-seeker:
   X: -93.5
   Y: 67.0

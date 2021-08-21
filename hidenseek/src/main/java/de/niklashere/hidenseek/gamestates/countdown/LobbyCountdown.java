@@ -23,7 +23,7 @@ public class LobbyCountdown {
   /**
    * Countdown length configured in config file.
    */
-  private static int time = Fileaccess.getInt("Countdown.Lobby", Fileaccess.getConfig()) + 1;
+  public static int time = Fileaccess.getInt("Countdown.Lobby", Fileaccess.getConfig()) + 1;
 
   /**
    * Method to start the Lobby Countdown.
@@ -49,7 +49,7 @@ public class LobbyCountdown {
           time--;
 
           if (time >= Fileaccess.getInt("Countdown.Full", Fileaccess.getConfig()) + 2
-              && Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("skip-lobby",
+              && Bukkit.getOnlinePlayers().size() >= Fileaccess.getInt("Players.skip-lobby",
                   Fileaccess.getConfig())) {
             time = Fileaccess.getInt("Countdown.Full", Fileaccess.getConfig()) + 1;
           }
@@ -69,9 +69,9 @@ public class LobbyCountdown {
             }
 
           }
-          if (time == 5) {
-            Bukkit.createWorld(
-                WorldCreator.name(Fileaccess.getString("world", VoteManager.getResults())));
+          if (time == Fileaccess.getInt("Countdown.Full", Fileaccess.getConfig()) - 10) {
+            Bukkit.createWorld(WorldCreator
+                .name(Fileaccess.getString("spawnpoint-seeker.World", VoteManager.getResults())));
             for (Player all : Bukkit.getOnlinePlayers()) {
 
               for (int i = 0; Fileaccess
@@ -81,7 +81,8 @@ public class LobbyCountdown {
                     .getMessageFromList(Variablelist.chat_mapvoting_won, all, i)
                     .replace("%name%", Fileaccess.getString("world", VoteManager.getResults()))
                     .replace("%author%", Fileaccess.getString("author", VoteManager.getResults())));
-
+                InventoryManager.clearInv(all);
+                InventoryManager.lobbyItems(all);
               }
             }
 

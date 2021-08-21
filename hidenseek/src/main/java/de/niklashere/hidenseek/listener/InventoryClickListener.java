@@ -322,24 +322,24 @@ public class InventoryClickListener implements Listener {
 
       ArrayList<File> maps = VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
       if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(prefix + maps.get(0).getName().replace(".yml", ""))) {
+          .equalsIgnoreCase(prefix + Fileaccess.getString("world", maps.get(0)))) {
         VoteManager.addVote(maps.get(0), p);
         MapvotingInventory.openInventory(p);
         p.sendMessage(LanguageManager.getMessage(Variablelist.chat_mapvoting, p).replace("%name%",
-            maps.get(0).getName().replace(".yml", "")));
+            Fileaccess.getString("world", maps.get(0))));
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(prefix + maps.get(1).getName().replace(".yml", ""))) {
+          .equalsIgnoreCase(prefix + Fileaccess.getString("world", maps.get(1)))) {
         VoteManager.addVote(maps.get(1), p);
         MapvotingInventory.openInventory(p);
         p.sendMessage(LanguageManager.getMessage(Variablelist.chat_mapvoting, p).replace("%name%",
-            maps.get(1).getName().replace(".yml", "")));
+            Fileaccess.getString("world", maps.get(1))));
 
       } else if (e.getCurrentItem().getItemMeta().getDisplayName()
-          .equalsIgnoreCase(prefix + maps.get(2).getName().replace(".yml", ""))) {
+          .equalsIgnoreCase(prefix + Fileaccess.getString("world", maps.get(2)))) {
         VoteManager.addVote(maps.get(2), p);
         MapvotingInventory.openInventory(p);
         p.sendMessage(LanguageManager.getMessage(Variablelist.chat_mapvoting, p).replace("%name%",
-            maps.get(2).getName().replace(".yml", "")));
+            Fileaccess.getString("world", maps.get(2))));
 
       }
     } else if (e.getCurrentItem() != null && e.getCurrentItem().hasItemMeta()

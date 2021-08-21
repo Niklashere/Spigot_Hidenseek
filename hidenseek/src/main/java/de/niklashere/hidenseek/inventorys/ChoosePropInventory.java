@@ -5,6 +5,7 @@ import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.ItemBuilder;
 import de.niklashere.hidenseek.libary.LanguageManager;
 import de.niklashere.hidenseek.libary.VariableManager;
+import de.niklashere.hidenseek.libary.VoteManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -36,18 +37,15 @@ public class ChoosePropInventory {
     String prefix = VariableManager
         .message(Fileaccess.getString("prefix.inv-item", Fileaccess.getConfig()));
 
-    inv.setItem(11, new ItemBuilder(Material.CRAFTING_TABLE)
-        .setDisplayName(prefix + Material.CRAFTING_TABLE.name().replace("_", " ")).build());
-    inv.setItem(12, new ItemBuilder(Material.HAY_BLOCK)
-        .setDisplayName(prefix + Material.HAY_BLOCK.name().replace("_", " ")).build());
-    inv.setItem(13, new ItemBuilder(Material.ANVIL)
-        .setDisplayName(prefix + Material.ANVIL.name().replace("_", " ")).build());
-    inv.setItem(14, new ItemBuilder(Material.NOTE_BLOCK)
-        .setDisplayName(prefix + Material.NOTE_BLOCK.name().replace("_", " ")).build());
+    for (int i = 0; 4 >= i; i++) {
+      inv.setItem(11 + i, new ItemBuilder(
+          Material.getMaterial(Fileaccess.getStringList("props", VoteManager.getResults()).get(i)))
+              .setDisplayName(prefix + Material
+                  .getMaterial(Fileaccess.getStringList("props", VoteManager.getResults()).get(i))
+                  .name().replace("_", " "))
+              .build());
 
-    inv.setItem(15, new ItemBuilder(Material.BOOKSHELF)
-        .setDisplayName(prefix + Material.BOOKSHELF.name().replace("_", " ")).build());
-
+    }
     p.openInventory(inv);
   }
 }

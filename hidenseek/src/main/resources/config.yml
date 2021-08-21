@@ -1,6 +1,6 @@
 Countdown:
-  Lobby: 20
-  Full: 20
+  Lobby: 120
+  Full: 30
   Warmup: 20
   Ingame: 120
   End: 20
