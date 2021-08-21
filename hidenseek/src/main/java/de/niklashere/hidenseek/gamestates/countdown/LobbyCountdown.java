@@ -2,6 +2,7 @@ package de.niklashere.hidenseek.gamestates.countdown;
 
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
+import de.niklashere.hidenseek.gamestates.Gamemode;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
@@ -72,7 +73,22 @@ public class LobbyCountdown {
           if (time == Fileaccess.getInt("Countdown.Full", Fileaccess.getConfig()) - 10) {
             Bukkit.createWorld(WorldCreator
                 .name(Fileaccess.getString("spawnpoint-seeker.World", VoteManager.getResults())));
+            int classic = 0;
+            int prop = 0;
             for (Player all : Bukkit.getOnlinePlayers()) {
+              if (Gamemode.voted.get(all).equalsIgnoreCase("classic")) {
+                classic++;
+
+              } else if (Gamemode.voted.get(all).equalsIgnoreCase("prop")) {
+                prop++;
+
+              }
+
+              if (prop >= classic) {
+                Gamemode.setMode(Gamemode.Prophunt);
+              } else {
+                Gamemode.setMode(Gamemode.Classic);
+              }
 
               for (int i = 0; Fileaccess
                   .getStringList(Variablelist.chat_mapvoting_won, LanguageManager.getLanguage(all))

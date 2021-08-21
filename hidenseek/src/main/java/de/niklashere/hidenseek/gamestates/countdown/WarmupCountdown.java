@@ -2,6 +2,7 @@ package de.niklashere.hidenseek.gamestates.countdown;
 
 import de.niklashere.hidenseek.App;
 import de.niklashere.hidenseek.files.languages.Variablelist;
+import de.niklashere.hidenseek.gamestates.Gamemode;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.PlayerData;
 import de.niklashere.hidenseek.gamestates.RoleManager;
@@ -82,20 +83,25 @@ public class WarmupCountdown {
 
       InventoryManager.clearInv(all);
       if (RoleManager.playerList.get(i).isHider()) {
-        GhostMaker.addGhost(all, all.getName());
-        all.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
         all.teleport(Fileaccess.getLocation("spawnpoint-hider", VoteManager.getResults()));
         InventoryManager.hiderItems(all);
-        PropManager props = new PropManager(all);
-        PropManager.propsList.put(all, props);
 
-        if (PropManager.choosedBlock.get(all) == null) {
-          int rdm = new Random().nextInt(Fileaccess.getStringList("props", VoteManager.getResults()).size() - 1);
-          PropManager.choosedBlock.put(all, Material.getMaterial(Fileaccess.getStringList("props", VoteManager.getResults()).get(rdm)));
+        if (Gamemode.isMode(Gamemode.Prophunt)) {
+          GhostMaker.addGhost(all, all.getName());
+          all.addPotionEffect(
+              new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
+          PropManager props = new PropManager(all);
+          PropManager.propsList.put(all, props);
+
+          if (PropManager.choosedBlock.get(all) == null) {
+            int rdm = new Random()
+                .nextInt(Fileaccess.getStringList("props", VoteManager.getResults()).size() - 1);
+            PropManager.choosedBlock.put(all, Material
+                .getMaterial(Fileaccess.getStringList("props", VoteManager.getResults()).get(rdm)));
+          }
+          props.setProp(PropManager.choosedBlock.get(all));
+          PropManager.propsList.put(all, props);
         }
-        props.setProp(PropManager.choosedBlock.get(all));
-        PropManager.propsList.put(all, props);
-
       } else if (RoleManager.playerList.get(i).isSpectator()) {
         GhostMaker.addGhost(all, "spectator");
         all.addPotionEffect(

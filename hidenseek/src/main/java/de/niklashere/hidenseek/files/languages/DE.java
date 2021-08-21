@@ -82,6 +82,9 @@ public class DE {
     addMessage(Variablelist.chat_hider, "Verstecker");
     addMessage(Variablelist.chat_seeker, "Sucher");
     addMessage(Variablelist.chat_spectator, "Spectator");
+    addMessage(Variablelist.chat_voted_mode, "%pc%Du hast für %cs%%name%%cp% gestimmt.");
+    addMessage(Variablelist.chat_voted_classic, "Klassik");
+    addMessage(Variablelist.chat_voted_prophunt, "Prophunt");
 
     // Commands
 
@@ -140,6 +143,11 @@ public class DE {
     addMessage(Variablelist.inv_chooseprop_name, "%pin%Wähle Prop");
     addMessage(Variablelist.chat_choosedprop,
         "%pc%Du hast %cs%%name%%cp% als dein Prop ausgewählt.");
+    
+    // Choose Gamemode Inventory
+    addMessage(Variablelist.inv_gamemode_name, "%pin%Wähle Spielmodus");
+    addMessage(Variablelist.inv_gamemode_classic, "%pin%Klassik");
+    addMessage(Variablelist.inv_gamemode_prop, "%pin%Prophunt");
 
     // Items
 
@@ -147,6 +155,7 @@ public class DE {
     addMessage(Variablelist.items_lobby_chest, "%pii%Karte wählen");
     addMessage(Variablelist.items_lobby_redBanner, "%pii%Rolle wählen");
     addMessage(Variablelist.items_lobby_slimeball, "%pii%Wähle Prop");
+    addMessage(Variablelist.items_lobby_fireworkstar, "%pii%Wähle Spielmodus");
 
     // Seekeritems
     addMessage(Variablelist.items_seeker_sword, "%pii%Schwert");
