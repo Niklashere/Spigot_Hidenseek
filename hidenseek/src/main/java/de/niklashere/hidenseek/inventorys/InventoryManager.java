@@ -1,6 +1,7 @@
 package de.niklashere.hidenseek.inventorys;
 
 import de.niklashere.hidenseek.files.languages.Variablelist;
+import de.niklashere.hidenseek.gamestates.Gamemode;
 import de.niklashere.hidenseek.gamestates.Gamestate;
 import de.niklashere.hidenseek.gamestates.countdown.LobbyCountdown;
 import de.niklashere.hidenseek.libary.ItemBuilder;
@@ -42,22 +43,27 @@ public class InventoryManager {
   public static void lobbyItems(final Player p) {
     if (Gamestate.isState(Gamestate.Lobby)) {
       if (LobbyCountdown.time >= 21) {
-      p.getInventory().setItem(1, new ItemBuilder(Material.CHEST)
-          .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_chest, p)).build());
-      p.getInventory().setItem(2,
-          new ItemBuilder(Material.RED_BANNER)
-              .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p))
-              .build());
-      } else {
         p.getInventory().setItem(1,
-        new ItemBuilder(Material.SLIME_BALL)
-            .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_slimeball, p))
+            new ItemBuilder(Material.RED_BANNER)
+                .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p))
+                .build());
+        p.getInventory().setItem(2, new ItemBuilder(Material.CHEST)
+            .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_chest, p)).build());
+        p.getInventory().setItem(3, new ItemBuilder(Material.FIREWORK_STAR)
+            .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_fireworkstar, p))
             .build());
+      } else {
 
-        p.getInventory().setItem(2,
-        new ItemBuilder(Material.RED_BANNER)
-            .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p))
-            .build());
+        p.getInventory().setItem(1,
+            new ItemBuilder(Material.RED_BANNER)
+                .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_redBanner, p))
+                .build());
+        if (Gamemode.isMode(Gamemode.Prophunt)) {
+          p.getInventory().setItem(2,
+              new ItemBuilder(Material.SLIME_BALL)
+                  .setDisplayName(LanguageManager.getMessage(Variablelist.items_lobby_slimeball, p))
+                  .build());
+        }
 
       }
     }

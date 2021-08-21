@@ -40,6 +40,10 @@ public class Variablelist {
   public static String chat_seeker = chat + "seeker";
   public static String chat_spectator = chat + "spectator";
   public static String chat_choosedprop = chat + "choosedprop";
+  public static String chat_voted_mode = chat + "choosed_gamemode";
+  public static String chat_voted_classic = chat + "classic";
+  public static String chat_voted_prophunt = chat + "prophunt";
+
 
   // Commands
   private static String command = "commands.";
@@ -96,6 +100,12 @@ public class Variablelist {
   private static String chooseprop = inventory + "chooseprop.";
   public static String inv_chooseprop_name = chooseprop + "name";
 
+  // Choose Gamemode Inventory
+  private static String gamemode = inventory + "gamemode.";
+  public static String inv_gamemode_name = gamemode + "name";
+  public static String inv_gamemode_classic = gamemode + "classic";
+  public static String inv_gamemode_prop = gamemode + "prophunt";
+
 
   // Items
   private static String items = "items.";
@@ -105,6 +115,7 @@ public class Variablelist {
   public static String items_lobby_chest = lobby + "chest";
   public static String items_lobby_redBanner = lobby + "red_banner";
   public static String items_lobby_slimeball = lobby + "slimeball";
+  public static String items_lobby_fireworkstar = lobby + "fireworkstar";
 
   // Seekeritems
   private static String seeker = items + "seeker.";

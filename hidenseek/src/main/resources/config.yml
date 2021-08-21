@@ -5,6 +5,7 @@ Countdown:
   Ingame: 120
   End: 20
 Players:
+  spectator: 20
   max: 10
   min: 1
   seeker: 1
@@ -14,6 +15,12 @@ MySQL:
   database: hidenseek
   user: hidenseek
   password: password
+motd:
+  Lobby: "&aLobby"
+  Full: "&eFull"
+  Warmup: "&cWarmup"
+  Ingame: "&cIngame"
+  End: "&4End"
 points:
   found: 10
   cought: 5
