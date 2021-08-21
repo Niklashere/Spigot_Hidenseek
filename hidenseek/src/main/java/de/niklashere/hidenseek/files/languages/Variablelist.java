@@ -21,6 +21,7 @@ public class Variablelist {
   public static String chat_countdownIngame = chat + "countdown-ingame";
   public static String chat_countdownEnd = chat + "countdown-end";
   public static String chat_skiplobby = chat + "skip-lobby";
+  public static String chat_already_skipped = chat + "already-skipped";
   public static String chat_secondSingular = chat + "second-singular";
   public static String chat_secondPlural = chat + "second-plural";
   public static String chat_missingPermission = chat + "missing-permission";

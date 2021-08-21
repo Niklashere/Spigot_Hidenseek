@@ -41,12 +41,15 @@ public class MapvotingInventory {
         .message(Fileaccess.getString("prefix.inv-item", Fileaccess.getConfig()));
 
     ArrayList<File> maps = VoteManager.rdmMap(Fileaccess.listOfFiles.get("maps"), 3);
-    inv.setItem(11, new ItemBuilder(Material.GRASS)
-        .setDisplayName(prefix + maps.get(0).getName().replace(".yml", "")).build());
-    inv.setItem(13, new ItemBuilder(Material.DIRT)
-        .setDisplayName(prefix + maps.get(1).getName().replace(".yml", "")).build());
-    inv.setItem(15, new ItemBuilder(Material.STONE)
-        .setDisplayName(prefix + maps.get(2).getName().replace(".yml", "")).build());
+    inv.setItem(11,
+        new ItemBuilder(Material.getMaterial(Fileaccess.getString("material", maps.get(0))))
+            .setDisplayName(prefix + Fileaccess.getString("world", maps.get(0))).build());
+    inv.setItem(13,
+        new ItemBuilder(Material.getMaterial(Fileaccess.getString("material", maps.get(1))))
+            .setDisplayName(prefix + Fileaccess.getString("world", maps.get(1))).build());
+    inv.setItem(15,
+        new ItemBuilder(Material.getMaterial(Fileaccess.getString("material", maps.get(2))))
+            .setDisplayName(prefix + Fileaccess.getString("world", maps.get(2))).build());
 
     p.openInventory(inv);
   }

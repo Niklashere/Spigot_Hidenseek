@@ -10,3 +10,4 @@ commands:
   stats:
   language:
   leaderboard:
+  skip:

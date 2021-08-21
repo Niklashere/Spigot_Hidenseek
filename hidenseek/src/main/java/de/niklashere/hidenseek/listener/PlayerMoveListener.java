@@ -45,7 +45,8 @@ public class PlayerMoveListener implements Listener {
             public void run() {
               PropManager prop = PropManager.propsList.get(p);
 
-              if (!RoleManager.playerList.get(RoleManager.getPlayer(p)).isHider()) {
+              if (RoleManager.playerList.size() - 1 >= RoleManager.getPlayer(p)
+                  && !RoleManager.playerList.get(RoleManager.getPlayer(p)).isHider()) {
                 timer.put(p, -2);
                 p.setExp(0);
               }
@@ -69,9 +70,8 @@ public class PlayerMoveListener implements Listener {
                     }
                   }
                 }
-                
+
                 timer.put(p, timer.get(p) - 1);
-                
 
               } else if (timer.get(p) == -1) {
                 PropManager.setBlock(p, PropManager.choosedBlock.get(p));
