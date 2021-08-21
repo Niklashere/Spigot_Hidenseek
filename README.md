@@ -23,7 +23,9 @@ The following features are planed for the release version 1.0*
 - [x] Stats
 - [x] Prop hunt
 - [x] MySQL Support
-- [ ] "classic" hide'n'seek and prophunt
+- [x] "classic" hide'n'seek and prophunt
+- [x] /skip
+- [x] motd and max players support
 - [ ] /forcemap
 - [ ] Coin System/Vault
 - [ ] execute commands at specific states of the game
