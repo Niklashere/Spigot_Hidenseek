@@ -10,6 +10,7 @@ import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.GhostMaker;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.LayoutManager;
 import de.niklashere.hidenseek.libary.PropManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
@@ -60,7 +61,7 @@ public class WarmupCountdown {
     int seeker = 0;
     while (RoleManager.playerList.size() - 1 >= i) {
       if (RoleManager.playerList.get(i).isSeeker()) {
-        seeker = seeker + 1;
+        seeker++;
       }
       i++;
     }
@@ -70,7 +71,7 @@ public class WarmupCountdown {
       if (RoleManager.playerList.get(i).isHider()) {
         RoleManager.playerList.get(i).setHider(false);
         RoleManager.playerList.get(i).setSeeker(true);
-        seeker = seeker + 1;
+        seeker++;
       }
 
       i++;
@@ -114,14 +115,18 @@ public class WarmupCountdown {
       i++;
     }
 
-    startCountdown();
     Gamestate.setState(Gamestate.WarmUp);
+    startCountdown();
   }
 
   /**
    * Start Warmupcountdown.
    */
   private static void startCountdown() {
+    for (Player all : Bukkit.getOnlinePlayers()) {
+      LayoutManager.setLayout(all);
+
+    }
     new BukkitRunnable() {
 
       @Override

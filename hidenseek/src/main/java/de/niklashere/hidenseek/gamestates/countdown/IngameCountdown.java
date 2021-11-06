@@ -8,6 +8,7 @@ import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.GhostMaker;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.LayoutManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
 import org.bukkit.Bukkit;
@@ -30,8 +31,6 @@ public class IngameCountdown {
    * Method to start the Ingame countdown.
    */
   public static void startIngameCD() {
-    startCountdown();
-    Gamestate.setState(Gamestate.Ingame);
     int i = 0;
     while (RoleManager.playerList.size() - 1 >= i) {
 
@@ -45,12 +44,18 @@ public class IngameCountdown {
 
       i++;
     }
+    Gamestate.setState(Gamestate.Ingame);
+    startCountdown();
   }
 
   /**
    * Start Ingamecountdown.
    */
   private static void startCountdown() {
+    for (Player all : Bukkit.getOnlinePlayers()) {
+      LayoutManager.setLayout(all);
+
+    }
     new BukkitRunnable() {
 
       @Override

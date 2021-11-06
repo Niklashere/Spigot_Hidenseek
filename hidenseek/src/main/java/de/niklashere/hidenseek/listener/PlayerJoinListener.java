@@ -9,6 +9,7 @@ import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.GhostMaker;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.LayoutManager;
 import de.niklashere.hidenseek.libary.PropManager;
 import de.niklashere.hidenseek.libary.VoteManager;
 
@@ -36,6 +37,7 @@ public class PlayerJoinListener implements Listener {
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent e) {
     Player p = e.getPlayer();
+    LayoutManager.setLayout(p);
     for (PotionEffect effect : p.getActivePotionEffects()) {
       p.removePotionEffect(effect.getType());
     }

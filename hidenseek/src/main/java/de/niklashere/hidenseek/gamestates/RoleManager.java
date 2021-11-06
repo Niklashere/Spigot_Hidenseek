@@ -4,6 +4,7 @@ import de.niklashere.hidenseek.files.languages.Variablelist;
 import de.niklashere.hidenseek.inventorys.InventoryManager;
 import de.niklashere.hidenseek.libary.Fileaccess;
 import de.niklashere.hidenseek.libary.LanguageManager;
+import de.niklashere.hidenseek.libary.LayoutManager;
 import de.niklashere.hidenseek.libary.PropManager;
 import de.niklashere.hidenseek.libary.StatsManager;
 import de.niklashere.hidenseek.libary.VoteManager;
@@ -119,7 +120,7 @@ public class RoleManager {
     p.teleport(Fileaccess.getLocation("spawnpoint-seeker", VoteManager.getResults()));
     StatsManager.addCought(p.getUniqueId(), 1);
     StatsManager.addFound(k.getUniqueId(), 1);
-
+    LayoutManager.setLayout(p);
   }
 
   /**

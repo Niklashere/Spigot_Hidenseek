@@ -55,3 +55,137 @@ spawnpoint-lobby:
   Yaw: -83.5
   Pitch: 54.5
   World: world
+Tablist:
+  enabled: true
+  Lobby:
+    Header:
+      - "&bHide'n'Seek"
+    Footer:
+      - "Visit: &bgithub.com/Niklashere/Spigot_Hidenseek"
+  WarmUp:
+    Header:
+      - "&bHide'n'Seek"
+    Footer:
+      - "Visit: &bgithub.com/Niklashere/Spigot_Hidenseek"
+  Ingame:
+    Header:
+      - "&bHide'n'Seek"
+    Footer:
+      - "Visit: &bgithub.com/Niklashere/Spigot_Hidenseek"
+  End:
+    Header:
+      - "&bHide'n'Seek"
+    Footer:
+      - "Visit: &bgithub.com/Niklashere/Spigot_Hidenseek"
+Ranks:
+  - Admin
+  - Moderator
+  - Supporter
+  - Player
+Displaynames:
+  enabled: true
+  Seeker: "&c"
+  Hider: "&a"
+  Spectator: "&7&o"
+  Lobby:
+    Admin: 
+      Prefix: "&4&lAdmin&f "
+      Suffix: ""
+    Moderator: 
+      Prefix: "&2&lModerator&f "
+      Suffix: ""
+    Supporter: 
+      Prefix: "&a&lSupporter&f "
+      Suffix: ""
+    Player: 
+      Prefix: ""
+      Suffix: ""
+  WarmUp:
+    Admin: 
+      Prefix: "%role% "
+      Suffix: ""
+    Moderator: 
+      Prefix: "%role% "
+      Suffix: ""
+    Supporter: 
+      Prefix: "%role% "
+      Suffix: ""
+    Player: 
+      Prefix: "%role% "
+      Suffix: ""
+  Ingame:
+    Admin: 
+      Prefix: "%role% "
+      Suffix: ""
+    Moderator: 
+      Prefix: "%role% "
+      Suffix: ""
+    Supporter: 
+      Prefix: "%role% "
+      Suffix: ""
+    Player: 
+      Prefix: "%role% "
+      Suffix: ""
+  End:
+    Admin: 
+      Prefix: "&4&lAdmin&f "
+      Suffix: ""
+    Moderator: 
+      Prefix: "&2&lModerator&f "
+      Suffix: ""
+    Supporter: 
+      Prefix: "&a&lSupporter&f "
+      Suffix: ""
+    Player: 
+      Prefix: ""
+      Suffix: ""
+PlayerListName:
+  enabled: true
+  Seeker: "&c"
+  Hider: "&a"
+  Spectator: "&7&o"
+  Lobby:
+    Admin: "&4&lAdmin&f %pp%"
+    Moderator: "&2&lModerator&f %pp%"
+    Supporter: "&a&lSupporter&f %pp%"
+    Player: "%pp%"
+  WarmUp:
+    Admin: "%role%%pp%"
+    Moderator: "%role%%pp%"
+    Supporter: "%role%%pp%"
+    Player: "%role%%pp%"
+  Ingame:
+    Admin: "%role%%pp%"
+    Moderator: "%role%%pp%"
+    Supporter: "%role%%pp%"
+    Player: "%role%%pp%"
+  End:
+    Admin: "&4&lAdmin&f %pp%"
+    Moderator: "&2&lModerator&f %pp%"
+    Supporter: "&a&lSupporter&f %pp%"
+    Player: "%pp%"
+Chat:
+  enabled: true
+  Seeker: "&c"
+  Hider: "&a"
+  Spectator: "&7&o"
+  Lobby:
+    Admin: "&4&lAdmin&f %pp%&8: &7"
+    Moderator: "&2&lModerator&f %pp%&8: &7"
+    Supporter: "&a&lSupporter&f %pp%&8: &7"
+    Player: "%pp%&8: &7"
+  WarmUp:
+    Admin: "%role%%pp%&8: &7"
+    Moderator: "%role%%pp%&8: &7"
+    Supporter: "%role%%pp%&8: &7"
+    Player: "%role%%pp%&8: &7"
+  Ingame:
+    Admin: "%role%%pp%&8: &7"
+    Moderator: "%role%%pp%&8: &7"
+    Supporter: "%role%%pp%&8: &7"
+    Player: "%role%%pp%&8: &7"
+  End:
+    Admin: "&4&lAdmin&f %pp%"
+    Moderator: "&2&lModerator&f %pp%&8: &7"
+    Supporter: "&a&lSupporter&f %pp%&8: &7"
+    Player: "%pp%&8: &7"

@@ -8,6 +8,7 @@ import de.niklashere.hidenseek.commands.StatsCommand;
 import de.niklashere.hidenseek.files.languages.DE;
 import de.niklashere.hidenseek.files.languages.EN;
 import de.niklashere.hidenseek.libary.Fileaccess;
+import de.niklashere.hidenseek.listener.AsyncPlayerChatListener;
 import de.niklashere.hidenseek.listener.BlockBreakListener;
 import de.niklashere.hidenseek.listener.BlockPlaceListener;
 import de.niklashere.hidenseek.listener.EntityBlockChangeListener;
@@ -53,6 +54,9 @@ public class RegisterManager {
    */
   public void registerEvents() {
     PluginManager pm = Bukkit.getPluginManager();
+    if (Fileaccess.getBoolean("Chat.enabled", Fileaccess.getConfig())) {
+      pm.registerEvents(new AsyncPlayerChatListener(), plugin);
+    }
     pm.registerEvents(new BlockBreakListener(), plugin);
     pm.registerEvents(new BlockPlaceListener(), plugin);
     pm.registerEvents(new EntityDamageByEntityListener(), plugin);
